@@ -27,7 +27,7 @@ use Drupal\drealty\DrealtyListingTypeInterface;
  *     },
  *     "list_builder" = "Drupal\drealty\DrealtyListingTypeListBuilder",
  *   },
- *   admin_permission = "administer content types",
+ *   admin_permission = "administer drealty listing types",
  *   config_prefix = "type",
  *   bundle_of = "drealty_listing",
  *   entity_keys = {
@@ -35,7 +35,7 @@ use Drupal\drealty\DrealtyListingTypeInterface;
  *     "label" = "name"
  *   },
  *   links = {
- *     "add-form" = "drealty.add",
+ *     "add-form" = "drealty.type_add",
  *     "edit-form" = "drealty.type_edit",
  *     "delete-form" = "drealty.type_delete_confirm"
  *   }
@@ -182,8 +182,6 @@ class DrealtyListingType extends ConfigEntityBase implements DrealtyListingTypeI
         'status' => TRUE,
         'revision' => FALSE,
       ),
-      'preview' => DRUPAL_OPTIONAL,// @TODO vet this.
-      'submitted' => TRUE,
     ), $values['settings']['drealty_listing']);
   }
 

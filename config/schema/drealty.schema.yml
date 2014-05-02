@@ -1,0 +1,85 @@
+# Schema for the configuration files of the drealty module.
+
+drealty.settings:
+  type: mapping
+  label: 'DRealty settings'
+  mapping:
+    use_admin_theme:
+      type: boolean
+      label: 'Use admin theme when editing or creating listings'
+
+drealty.type.*:
+  type: mapping
+  label: 'Drealty Listing type'
+  mapping:
+    type:
+      type: string
+      label: 'Machine-readable name'
+    uuid:
+      type: string
+      label: 'UUID'
+    name:
+      type: label
+      label: 'Name'
+    description:
+      type: text
+      label: 'Description'
+    help:
+      type: text
+      label: 'Explanation or submission guidelines'
+    has_title:
+      type: boolean
+      label: 'Has title'
+    title_label:
+      type: label
+      label: 'Title field label'
+    settings:
+      type: mapping
+      label: 'Settings'
+      mapping:
+        drealty:
+          type: drealty.settings.drealty
+    status:
+      type: boolean
+      label: 'Enabled status of the configuration entity'
+    langcode:
+      type: string
+      label: 'Default language'
+
+drealty.settings.drealty:
+  type: mapping
+  label: 'Drealty Listing type settings'
+  mapping:
+    options:
+      type: mapping
+      label: 'Publishing options'
+      mapping:
+        status:
+          type: boolean
+          label: 'Published'
+        revision:
+          type: boolean
+          label: 'Create new revision'
+
+action.configuration.drealty_listing_publish_action:
+  type: action_configuration_default
+  label: 'Publish selected content configuration'
+
+action.configuration.drealty_listing_save_action:
+  type: action_configuration_default
+  label: 'save content configuration'
+
+action.configuration.drealty_listing_unpublish_by_keyword_action:
+  type: mapping
+  label: 'Unpublish content containing keyword(s) configuration'
+  mapping:
+    keyword:
+      type: sequence
+      label: 'Keywords'
+      sequence:
+        - type: sequence
+          label: 'Keyword'
+
+action.configuration.drealty_listing_unpublish_action:
+  type: action_configuration_default
+  label: 'Unpublish selected content configuration'
