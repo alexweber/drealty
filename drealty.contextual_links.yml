@@ -1,0 +1,10 @@
+drealty.listing_edit:
+  route_name: drealty.listing_edit
+  group: drealty_listing
+  title: Edit
+
+drealty.listing_delete_confirm:
+  route_name: drealty.listing_delete_confirm
+  group: drealty_listing
+  title: Delete
+  weight: 10
