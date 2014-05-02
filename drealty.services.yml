@@ -1,0 +1,16 @@
+services:
+  access_check.drealty_listing.revision:
+    class: Drupal\drealty\Access\DrealtyListingRevisionAccessCheck # @TODO implement this
+    arguments: ['@entity.manager', '@database']
+    tags:
+      - { name: access_check, applies_to: _access_drealty_listing_revision }
+  access_check.drealty_listing.add:
+    class: Drupal\drealty\Access\DrealtyListingAddAccessCheck # @TODO implement this
+    arguments: ['@entity.manager']
+    tags:
+      - { name: access_check, applies_to: _drealty_listing_add_access }
+  drealty.admin_path.route_subscriber:
+    class: Drupal\drealty\EventSubscriber\DrealtyListingAdminRouteSubscriber # @TODO implement this
+    arguments: ['@config.factory']
+    tags:
+      - { name: event_subscriber }
