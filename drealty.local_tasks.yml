@@ -1,0 +1,30 @@
+drealty.listing_view:
+  route_name: drealty.listing_view
+  base_route: drealty.listing_view
+  title: 'View'
+drealty.listing_edit:
+  route_name: drealty.listing_edit
+  base_route: drealty.listing_view
+  title: Edit
+drealty.listing_delete_confirm:
+  route_name: drealty.listing_delete_confirm
+  base_route: drealty.listing_view
+  title: Delete
+  weight: 10
+drealty.listing_overview:
+  title: Drealty Listings
+  route_name: drealty.listing_overview
+  base_route: drealty.listing_overview
+drealty.listing_revision_overview:
+  route_name: drealty.listing_revision_overview
+  base_route: drealty.listing_view
+  title: 'Revisions'
+  weight: 20
+drealty.type_edit:
+  title: 'Edit'
+  route_name: drealty.type_edit
+  base_route: drealty.type_edit
+drealty.type_overview:
+  title: List
+  route_name: drealty.type_overview
+  base_route: drealty.type_overview
