@@ -1,0 +1,10 @@
+drealty.type_add:
+  route_name: drealty.type_add
+  title: 'Add drealty listing type'
+  appears_on:
+    - drealty.type_overview
+drealty.listing_add:
+  route_name: drealty.listing_add
+  title: 'Add drealty listing'
+  appears_on:
+    - drealty.listing_overview
