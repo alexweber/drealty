@@ -3,8 +3,8 @@ drealty.type_add:
   title: 'Add drealty listing type'
   appears_on:
     - drealty.type_overview
-drealty.listing_add:
-  route_name: drealty.listing_add
+drealty.listing_add_page:
+  route_name: drealty.listing_add_page
   title: 'Add drealty listing'
   appears_on:
     - drealty.listing_overview

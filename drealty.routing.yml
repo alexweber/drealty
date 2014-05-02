@@ -22,7 +22,7 @@ drealty.listing_edit:
   options:
     _drealty_listing_operation_route: TRUE
 
-drealty.listing_add:
+drealty.listing_add_page:
   path: '/drealty-listing/add'
   defaults:
     _title: 'Add listing'
