@@ -1,0 +1,143 @@
+drealty.listing_overview:
+  path: '/admin/content/drealty'
+  defaults:
+    _title: 'DRealty Listings'
+    _entity_list: 'drealty_listing'
+  requirements:
+    _permission: 'access content overview' # come back to this.
+
+drealty.listing_multiple_delete_confirm:
+  path: '/admin/content/drealty/delete'
+  defaults:
+    _form: '\Drupal\drealty\Form\DeleteMultiple' # @TODO create this
+  requirements:
+    _permission: 'administer drealty listings' # @TODO create this
+
+drealty.listing_edit:
+  path: '/drealty-listing/{drealty_listing}/edit'
+  defaults:
+    _entity_form: 'drealty_listing.edit'
+  requirements:
+    _entity_access: 'drealty_listing.update'
+  options:
+    _drealty_listing_operation_route: TRUE
+
+drealty.listing_add:
+  path: '/drealty-listing/add'
+  defaults:
+    _title: 'Add listing'
+    _content: '\Drupal\drealty\Controller\DrealtyListingController::addPage' # @TODO create this
+  options:
+    _access_mode: 'ANY'
+    _drealty_listing_operation_route: TRUE
+  requirements:
+    _permission: 'administer drealty listings'
+    _drealty_listing_add_access: 'drealty_listing' # @TODO create this
+
+drealty.listing_add:
+  path: '/drealty-listing/add/{drealty_listing_type}'
+  defaults:
+    _content: '\Drupal\drealty\Controller\DrealtyListingController::add' # @TODO create this
+    _title_callback: '\Drupal\drealty\Controller\DrealtyListingController::addPageTitle' # @TODO create this
+  requirements:
+    _drealty_listing_add_access: 'drealty_listing:{drealty_listing_type}'
+  options:
+    _drealty_listing_operation_route: TRUE
+
+drealty.listing_view:
+  path: '/drealty-listing/{drealty_listing}'
+  defaults:
+    _content: '\Drupal\drealty\Controller\DrealtyListingController::page'
+    _title_callback: '\Drupal\drealty\Controller\DrealtyListingController::pageTitle'
+  requirements:
+    _entity_access: 'drealty_listing.view'
+
+drealty.listing_delete_confirm:
+  path: '/drealty-listing/{drealty_listing}/delete'
+  defaults:
+    _entity_form: 'drealty_listing.delete'
+    _title: 'Delete'
+  requirements:
+    _entity_access: 'drealty_listing.delete'
+  options:
+    _drealty_listing_operation_route: TRUE
+
+drealty.listing_revision_overview:
+  path: '/drealty-listing/{drealty_listing}/revisions'
+  defaults:
+    _title: 'Revisions'
+    _content: '\Drupal\drealty\Controller\DrealtyListingController::revisionOverview' # @TODO create this
+  requirements:
+    _access_drealty_listing_revision: 'view' # @TODO create this
+  options:
+    _drealty_listing_operation_route: TRUE
+
+drealty.listing_revision_show:
+  path: '/drealty-listing/{drealty_listing}/revisions/{drealty_listing_revision}/view'
+  defaults:
+    _content: '\Drupal\drealty\Controller\DrealtyListingController::revisionShow'
+    _title_callback: '\Drupal\drealty\Controller\DrealtyListingController::revisionPageTitle'
+  requirements:
+    _access_drealty_listing_revision: 'view'
+
+drealty.listing_revision_revert_confirm:
+  path: '/drealty-listing/{drealty_listing}/revisions/{drealty_listing_revision}/revert'
+  defaults:
+    _form: '\Drupal\drealty\Form\DrealtyListingRevisionRevertForm' # @TODO create this
+    _title: 'Revert to earlier revision'
+  requirements:
+    _access_drealty_listing_revision: 'update'
+  options:
+    _drealty_listing_operation_route: TRUE
+
+drealty.listing_revision_delete_confirm:
+  path: '/drealty-listing/{drealty_listing}/revisions/{drealty_listing_revision}/delete'
+  defaults:
+    _form: '\Drupal\drealty\Form\DrealtyListingRevisionDeleteForm'
+    _title: 'Delete earlier revision'
+  requirements:
+    _access_drealty_listing_revision: 'delete'
+  options:
+    _drealty_listing_operation_route: TRUE
+
+#drealty.structure: @TODO create landing page for drealty connections and types.
+#  path: '/admin/structure/drealty'
+
+drealty.type_overview:
+  path: '/admin/structure/drealty/types'
+  defaults:
+    _content: '\Drupal\Core\Entity\Controller\EntityListController::listing'
+    entity_type: 'drealty_listing_type'
+    _title: 'Drealty Listing types'
+  requirements:
+    _permission: 'administer drealty listing types'
+
+drealty.type_add:
+  path: '/admin/structure/drealty/types/add'
+  defaults:
+    _entity_form: 'drealty_listing_type.add'
+    _title: 'Add drealty listing type'
+  requirements:
+    _permission: 'administer drealty listing types'
+
+drealty.type_edit:
+  path: '/admin/structure/drealty/types/manage/{drealty_listing_type}'
+  defaults:
+    _entity_form: 'drealty_listing_type.edit'
+  requirements:
+    _permission: 'administer drealty listing types'
+
+drealty.type_delete_confirm:
+  path: '/admin/structure/drealty/types/manage/{drealty_listing_type}/delete'
+  defaults:
+    _entity_form: 'drealty_listing_type.delete'
+    _title: 'Delete'
+  requirements:
+    _entity_access: 'drealty_listing_type.delete'
+
+drealty.configure_rebuild_confirm:
+  path: '/admin/reports/status/rebuild'
+  defaults:
+    _form: 'Drupal\drealty\Form\RebuildPermissionsForm'
+  requirements:
+    _permission: 'access administration pages'
