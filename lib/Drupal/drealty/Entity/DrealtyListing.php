@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains \Drupal\node\Entity\Node.
+ * Contains \Drupal\drealty\Entity\DrealtyListing.
  */
 
-namespace Drupal\node\Entity;
+namespace Drupal\drealty\Entity;
 
 use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\EntityStorageInterface;
@@ -13,32 +13,32 @@ use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\FieldDefinition;
 use Drupal\Core\Language\Language;
 use Drupal\Core\Session\AccountInterface;
-use Drupal\node\NodeInterface;
+use Drupal\drealty\DrealtyListingInterface;
 use Drupal\user\UserInterface;
 
 /**
- * Defines the node entity class.
+ * Defines the drealty listing entity class.
  *
  * @ContentEntityType(
- *   id = "node",
- *   label = @Translation("Content"),
- *   bundle_label = @Translation("Content type"),
+ *   id = "drealty_listing",
+ *   label = @Translation("Drealty Listing"),
+ *   bundle_label = @Translation("Drealty Listing type"),
  *   controllers = {
- *     "view_builder" = "Drupal\node\NodeViewBuilder",
- *     "access" = "Drupal\node\NodeAccessController",
+ *     "view_builder" = "Drupal\drealty\DrealtyListingViewBuilder",
+ *     "access" = "Drupal\drealty\DrealtyListingAccessController",
  *     "form" = {
- *       "default" = "Drupal\node\NodeFormController",
- *       "delete" = "Drupal\node\Form\NodeDeleteForm",
- *       "edit" = "Drupal\node\NodeFormController"
+ *       "default" = "Drupal\drealty\DrealtyListingFormController",
+ *       "delete" = "Drupal\drealty\Form\DrealtyListingDeleteForm",
+ *       "edit" = "Drupal\drealty\DrealtyListingFormController"
  *     },
- *     "list_builder" = "Drupal\node\NodeListBuilder",
- *     "translation" = "Drupal\node\NodeTranslationHandler"
+ *     "list_builder" = "Drupal\drealty\DrealtyListingListBuilder",
+ *     "translation" = "Drupal\drealty\DrealtyListingTranslationHandler"
  *   },
- *   base_table = "node",
- *   data_table = "node_field_data",
- *   revision_table = "node_revision",
- *   revision_data_table = "node_field_revision",
- *   uri_callback = "node_uri",
+ *   base_table = "drealty_listing",
+ *   data_table = "drealty_listing_field_data",
+ *   revision_table = "drealty_listing_revision",
+ *   revision_data_table = "drealty_listing_field_revision",
+ *   uri_callback = "drealty_listing_uri",
  *   fieldable = TRUE,
  *   translatable = TRUE,
  *   entity_keys = {
@@ -48,18 +48,18 @@ use Drupal\user\UserInterface;
  *     "label" = "title",
  *     "uuid" = "uuid"
  *   },
- *   bundle_entity_type = "node_type",
+ *   bundle_entity_type = "drealty_listing_type",
  *   permission_granularity = "bundle",
  *   links = {
- *     "canonical" = "node.view",
- *     "delete-form" = "node.delete_confirm",
- *     "edit-form" = "node.page_edit",
- *     "version-history" = "node.revision_overview",
- *     "admin-form" = "node.type_edit"
+ *     "canonical" = "drealty.listing_view",
+ *     "delete-form" = "drealty.listing_delete_confirm",
+ *     "edit-form" = "drealty.listing_edit",
+ *     "version-history" = "drealty.listing_revision_overview",
+ *     "admin-form" = "drealty.type_edit"
  *   }
  * )
  */
-class Node extends ContentEntityBase implements NodeInterface {
+class DrealtyListing extends ContentEntityBase implements DrealtyListingInterface {
 
   /**
    * {@inheritdoc}
@@ -68,23 +68,24 @@ class Node extends ContentEntityBase implements NodeInterface {
     parent::preSaveRevision($storage, $record);
 
     if ($this->newRevision) {
-      // When inserting either a new node or a new node revision, $node->log
-      // must be set because {node_field_revision}.log is a text column and
-      // therefore cannot have a default value. However, it might not be set at
-      // this point (for example, if the user submitting a node form does not
-      // have permission to create revisions), so we ensure that it is at least
-      // an empty string in that case.
-      // @todo Make the {node_field_revision}.log column nullable so that we
-      //   can remove this check.
+      // When inserting either a new drealty listing or a new drealty listing
+      // revision, $drealty_listing->log must be set because {drealty_listing_field_revision}.log
+      // is a text column and therefore cannot have a default value. However, it
+      // might not be set at this point (for example, if the user submitting a
+      // drealty listing form does not have permission to create revisions), so
+      // we ensure that it is at least an empty string in that case.
+      //
+      // @todo Make the {drealty_listing_field_revision}.log column nullable so
+      //   that we can remove this check.
       if (!isset($record->log)) {
         $record->log = '';
       }
     }
     elseif (isset($this->original) && (!isset($record->log) || $record->log === '')) {
-      // If we are updating an existing node without adding a new revision, we
-      // need to make sure $entity->log is reset whenever it is empty.
-      // Therefore, this code allows us to avoid clobbering an existing log
-      // entry with an empty one.
+      // If we are updating an existing drealty listing without adding a new
+      // revision, we need to make sure $entity->log is reset whenever it is
+      // empty. Therefore, this code allows us to avoid clobbering an existing
+      // log entry with an empty one.
       $record->log = $this->original->log->value;
     }
   }
@@ -95,18 +96,13 @@ class Node extends ContentEntityBase implements NodeInterface {
   public function postSave(EntityStorageInterface $storage, $update = TRUE) {
     parent::postSave($storage, $update);
 
-    // Update the node access table for this node, but only if it is the
-    // default revision. There's no need to delete existing records if the node
-    // is new.
-    if ($this->isDefaultRevision()) {
-      \Drupal::entityManager()->getAccessController('node')->writeGrants($this, $update);
-    }
-
-    // Reindex the node when it is updated. The node is automatically indexed
-    // when it is added, simply by being added to the node table.
-    if ($update) {
-      node_reindex_node_search($this->id());
-    }
+    // Reindex the drealty listing when it is updated. The drealty listting is
+    // automatically indexed when it is added, simply by being added to the
+    // drealty_listing table.
+    // @TODO figure out if we want to implement search stuff from node.
+//    if ($update) {
+//      node_reindex_node_search($this->id());
+//    }
   }
 
   /**
@@ -115,20 +111,14 @@ class Node extends ContentEntityBase implements NodeInterface {
   public static function preDelete(EntityStorageInterface $storage, array $entities) {
     parent::preDelete($storage, $entities);
 
-    // Assure that all nodes deleted are removed from the search index.
-    if (\Drupal::moduleHandler()->moduleExists('search')) {
-      foreach ($entities as $entity) {
-        search_reindex($entity->nid->value, 'node_search');
-      }
-    }
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public static function postDelete(EntityStorageInterface $storage, array $nodes) {
-    parent::postDelete($storage, $nodes);
-    \Drupal::service('node.grant_storage')->deleteNodeRecords(array_keys($nodes));
+    // @TODO figure out if we want to implement search stuff from node.
+    // Assure that all drealty listing s deleted are removed from the search
+    // index.
+//    if (\Drupal::moduleHandler()->moduleExists('search')) {
+//      foreach ($entities as $entity) {
+//        search_reindex($entity->nid->value, 'node_search');
+//      }
+//    }
   }
 
   /**
@@ -159,12 +149,12 @@ class Node extends ContentEntityBase implements NodeInterface {
     // If the Language module is enabled, try to use the language from content
     // negotiation.
     if (\Drupal::moduleHandler()->moduleExists('language')) {
-      // Load languages the node exists in.
-      $node_translations = $this->getTranslationLanguages();
+      // Load languages the drealty listing exists in.
+      $drealty_listing_translations = $this->getTranslationLanguages();
       // Load the language from content negotiation.
       $content_negotiation_langcode = \Drupal::languageManager()->getCurrentLanguage(Language::TYPE_CONTENT)->id;
       // If there is a translation available, use it.
-      if (isset($node_translations[$content_negotiation_langcode])) {
+      if (isset($drealty_listing_translations[$content_negotiation_langcode])) {
         $langcode = $content_negotiation_langcode;
       }
     }
@@ -210,35 +200,6 @@ class Node extends ContentEntityBase implements NodeInterface {
     return $this->get('changed')->value;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function isPromoted() {
-    return (bool) $this->get('promote')->value;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function setPromoted($promoted) {
-    $this->set('promote', $promoted ? NODE_PROMOTED : NODE_NOT_PROMOTED);
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function isSticky() {
-    return (bool) $this->get('sticky')->value;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function setSticky($sticky) {
-    $this->set('sticky', $sticky ? NODE_STICKY : NODE_NOT_STICKY);
-    return $this;
-  }
   /**
    * {@inheritdoc}
    */
@@ -319,36 +280,36 @@ class Node extends ContentEntityBase implements NodeInterface {
    */
   public static function baseFieldDefinitions(EntityTypeInterface $entity_type) {
     $fields['nid'] = FieldDefinition::create('integer')
-      ->setLabel(t('Node ID'))
-      ->setDescription(t('The node ID.'))
+      ->setLabel(t('Drealty Listing ID'))
+      ->setDescription(t('The drealty listing ID.'))
       ->setReadOnly(TRUE)
       ->setSetting('unsigned', TRUE);
 
     $fields['uuid'] = FieldDefinition::create('uuid')
       ->setLabel(t('UUID'))
-      ->setDescription(t('The node UUID.'))
+      ->setDescription(t('The drealty listing UUID.'))
       ->setReadOnly(TRUE);
 
     $fields['vid'] = FieldDefinition::create('integer')
       ->setLabel(t('Revision ID'))
-      ->setDescription(t('The node revision ID.'))
+      ->setDescription(t('The drealty listing revision ID.'))
       ->setReadOnly(TRUE)
       ->setSetting('unsigned', TRUE);
 
     $fields['type'] = FieldDefinition::create('entity_reference')
       ->setLabel(t('Type'))
-      ->setDescription(t('The node type.'))
-      ->setSetting('target_type', 'node_type')
+      ->setDescription(t('The drealty listing type.'))
+      ->setSetting('target_type', 'drealty_listing_type')
       ->setReadOnly(TRUE);
 
     $fields['langcode'] = FieldDefinition::create('language')
       ->setLabel(t('Language code'))
-      ->setDescription(t('The node language code.'))
+      ->setDescription(t('The drealty listing language code.'))
       ->setRevisionable(TRUE);
 
     $fields['title'] = FieldDefinition::create('string')
       ->setLabel(t('Title'))
-      ->setDescription(t('The title of this node, always treated as non-markup plain text.'))
+      ->setDescription(t('The title of this drealty listing, always treated as non-markup plain text.'))
       ->setRequired(TRUE)
       ->setTranslatable(TRUE)
       ->setRevisionable(TRUE)
@@ -369,7 +330,7 @@ class Node extends ContentEntityBase implements NodeInterface {
 
     $fields['uid'] = FieldDefinition::create('entity_reference')
       ->setLabel(t('Author'))
-      ->setDescription(t('The user that is the node author.'))
+      ->setDescription(t('The user that is the drealty listing author.'))
       ->setRevisionable(TRUE)
       ->setSettings(array(
         'target_type' => 'user',
@@ -379,31 +340,19 @@ class Node extends ContentEntityBase implements NodeInterface {
 
     $fields['status'] = FieldDefinition::create('boolean')
       ->setLabel(t('Publishing status'))
-      ->setDescription(t('A boolean indicating whether the node is published.'))
+      ->setDescription(t('A boolean indicating whether the drealty listing is published.'))
       ->setRevisionable(TRUE)
       ->setTranslatable(TRUE);
 
     $fields['created'] = FieldDefinition::create('created')
       ->setLabel(t('Created'))
-      ->setDescription(t('The time that the node was created.'))
+      ->setDescription(t('The time that the drealty listing was created.'))
       ->setRevisionable(TRUE)
       ->setTranslatable(TRUE);
 
     $fields['changed'] = FieldDefinition::create('changed')
       ->setLabel(t('Changed'))
-      ->setDescription(t('The time that the node was last edited.'))
-      ->setRevisionable(TRUE)
-      ->setTranslatable(TRUE);
-
-    $fields['promote'] = FieldDefinition::create('boolean')
-      ->setLabel(t('Promote'))
-      ->setDescription(t('A boolean indicating whether the node should be displayed on the front page.'))
-      ->setRevisionable(TRUE)
-      ->setTranslatable(TRUE);
-
-    $fields['sticky'] = FieldDefinition::create('boolean')
-      ->setLabel(t('Sticky'))
-      ->setDescription(t('A boolean indicating whether the node should be displayed at the top of lists in which it appears.'))
+      ->setDescription(t('The time that the drealty listing was last edited.'))
       ->setRevisionable(TRUE)
       ->setTranslatable(TRUE);
 
@@ -433,11 +382,11 @@ class Node extends ContentEntityBase implements NodeInterface {
    * {@inheritdoc}
    */
   public static function bundleFieldDefinitions(EntityTypeInterface $entity_type, $bundle, array $base_field_definitions) {
-    $node_type = node_type_load($bundle);
+    $drealty_listing_type = drealty_listing_type_load($bundle);
     $fields = array();
-    if (isset($node_type->title_label)) {
+    if (isset($drealty_listing_type->title_label)) {
       $fields['title'] = clone $base_field_definitions['title'];
-      $fields['title']->setLabel($node_type->title_label);
+      $fields['title']->setLabel($drealty_listing_type->title_label);
     }
     return $fields;
   }

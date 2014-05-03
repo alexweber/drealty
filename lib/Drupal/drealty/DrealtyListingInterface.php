@@ -13,79 +13,81 @@ use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\user\UserInterface;
 
 /**
- * Provides an interface defining a node entity.
+ * Provides an interface defining a drealty listing entity.
  */
 interface DrealtyListingInterface extends ContentEntityInterface, EntityChangedInterface, EntityOwnerInterface {
 
   /**
-   * Returns the node type.
+   * Returns the drealty listing type.
    *
    * @return string
-   *   The node type.
+   *   The drealty listing type.
    */
   public function getType();
 
   /**
-   * Returns the node title.
+   * Returns the drealty listing title.
    *
    * @return string
-   *   Title of the node.
+   *   Title of the drealty listing.
    */
   public function getTitle();
 
   /**
-   * Sets the node title.
+   * Sets the drealty listing title.
    *
    * @param string $title
-   *   The node title.
+   *   The drealty listing title.
    *
    * @return \Drupal\drealty\DrealtyListingInterface
-   *   The called node entity.
+   *   The called drealty listing entity.
    */
   public function setTitle($title);
 
   /**
-   * Returns the node creation timestamp.
+   * Returns the drealty listing creation timestamp.
    *
    * @return int
-   *   Creation timestamp of the node.
+   *   Creation timestamp of the drealty listing.
    */
   public function getCreatedTime();
 
   /**
-   * Sets the node creation timestamp.
+   * Sets the drealty listing creation timestamp.
    *
    * @param int $timestamp
-   *   The node creation timestamp.
+   *   The drealty listing creation timestamp.
    *
    * @return \Drupal\drealty\DrealtyListingInterface
-   *   The called node entity.
+   *   The called drealty listing entity.
    */
   public function setCreatedTime($timestamp);
 
   /**
-   * Returns the node published status indicator.
+   * Returns the drealty listing published status indicator.
    *
-   * Unpublished nodes are only visible to their authors and to administrators.
+   * Unpublished drealty listings are only visible to their authors and to
+   * administrators.
    *
    * @return bool
-   *   TRUE if the node is published.
+   *   TRUE if the drealty listing is published.
    */
   public function isPublished();
 
   /**
-   * Sets the published status of a node..
+   * Sets the published status of a drealty listing.
    *
    * @param bool $published
-   *   TRUE to set this node to published, FALSE to set it to unpublished.
+   *   TRUE to set this drealty listing to published, FALSE to set it to
+   *   unpublished.
    *
    * @return \Drupal\drealty\DrealtyListingInterface
-   *   The called node entity.
+   *   The called drealty listing entity.
    */
   public function setPublished($published);
 
   /**
-   * Returns the node revision creation timestamp.
+   * Returns the drealty listing revision creation timestamp.
    *
    * @return int
    *   The UNIX timestamp of when this revision was created.
@@ -93,18 +95,18 @@ interface DrealtyListingInterface extends ContentEntityInterface, EntityChangedI
   public function getRevisionCreationTime();
 
   /**
-   * Sets the node revision creation timestamp.
+   * Sets the drealty listing revision creation timestamp.
    *
    * @param int $timestamp
    *   The UNIX timestamp of when this revision was created.
    *
    * @return \Drupal\drealty\DrealtyListingInterface
-   *   The called node entity.
+   *   The called drealty listing entity.
    */
   public function setRevisionCreationTime($timestamp);
 
   /**
-   * Returns the node revision author.
+   * Returns the drealty listing revision author.
    *
    * @return \Drupal\user\UserInterface
    *   The user entity for the revision author.
@@ -112,21 +114,21 @@ interface DrealtyListingInterface extends ContentEntityInterface, EntityChangedI
   public function getRevisionAuthor();
 
   /**
-   * Sets the node revision author.
+   * Sets the drealty listing revision author.
    *
    * @param int $uid
    *   The user ID of the revision author.
    *
    * @return \Drupal\drealty\DrealtyListingInterface
-   *   The called node entity.
+   *   The called drealty listing entity.
    */
   public function setRevisionAuthorId($uid);
 
   /**
-   * Prepares the langcode for a node.
+   * Prepares the langcode for a drealty listing.
    *
    * @return string
-   *   The langcode for this node.
+   *   The langcode for this drealty listing.
    */
   public function prepareLangcode();
 
