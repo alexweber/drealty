@@ -32,7 +32,7 @@ drealty.listing_add_page:
     _drealty_listing_operation_route: TRUE
   requirements:
     _permission: 'administer drealty listings'
-    _drealty_listing_add_access: 'drealty_listing' # @TODO create this
+    _drealty_listing_add_access: 'drealty_listing'
 
 drealty.listing_add:
   path: '/drealty-listing/add/{drealty_listing_type}'
@@ -83,7 +83,7 @@ drealty.listing_revision_show:
 drealty.listing_revision_revert_confirm:
   path: '/drealty-listing/{drealty_listing}/revisions/{drealty_listing_revision}/revert'
   defaults:
-    _form: '\Drupal\drealty\Form\DrealtyListingRevisionRevertForm' # @TODO create this
+    _form: '\Drupal\drealty\Form\DrealtyListingRevisionRevertForm'
     _title: 'Revert to earlier revision'
   requirements:
     _access_drealty_listing_revision: 'update'

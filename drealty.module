@@ -5,6 +5,9 @@
  * DRealty Module.
  */
 
+use Drupal\drealty\DrealtyListingInterface;
+use Drupal\drealty\DrealtyListingTypeInterface;
+
 /**
  * Implements hook_permission().
  */
@@ -44,4 +47,22 @@ function drealty_form_system_themes_admin_form_submit($form, &$form_state) {
     ->set('use_admin_theme', $form_state['values']['drealty_use_admin_theme'])
     ->save();
   \Drupal::service('router.builder')->setRebuildNeeded();
+}
+
+/**
+ * Returns the drealty listing type label for the passed drealty listing.
+ *
+ * @param \Drupal\drealty\DrealtyListingInterface $drealty_listing
+ *   A drealty listing entity to return the drealty listing type's label for.
+ *
+ * @return string|false
+ *   The drealty listing type label or FALSE if the drealty listing type is not
+ *   found.
+ *
+ * @todo Add this as generic helper method for config entities representing
+ *   entity bundles.
+ */
+function drealty_get_type_label(DrealtyListingInterface $drealty_listing) {
+  $type = entity_load('drealty_listing_type', $drealty_listing->bundle());
+  return $type ? $type->label() : FALSE;
 }

@@ -123,7 +123,7 @@ class DeleteMultiple extends ConfirmFormBase {
       $count = count($this->drealty_listings);
       watchdog('drealty', 'Deleted @count drealty listings.', array('@count' => $count));
       drupal_set_message(\Drupal::translation()->formatPlural($count, 'Deleted 1 drealty listing.', 'Deleted @count drealty listings.'));
-      Cache::invalidateTags(array('content' => TRUE));
+      Cache::invalidateTags(array('content' => TRUE)); // @TODO figure out what this means.
     }
     $form_state['redirect_route']['route_name'] = 'drealty.listing_overview';
   }
