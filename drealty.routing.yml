@@ -9,7 +9,7 @@ drealty.listing_overview:
 drealty.listing_multiple_delete_confirm:
   path: '/admin/content/drealty/delete'
   defaults:
-    _form: '\Drupal\drealty\Form\DeleteMultiple' # @TODO create this
+    _form: '\Drupal\drealty\Form\DeleteMultiple'
   requirements:
     _permission: 'administer drealty listings' # @TODO create this
 
