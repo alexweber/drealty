@@ -66,3 +66,19 @@ function drealty_listing_get_type_label(DrealtyListingInterface $drealty_listing
   $type = entity_load('drealty_listing_type', $drealty_listing->bundle());
   return $type ? $type->label() : FALSE;
 }
+
+/**
+ * Entity URI callback.
+ *
+ * @param \Drupal\drealty\DrealtyListingInterface $drealty_listing
+ *   A drealty listing entity.
+ *
+ * @return array
+ *   An array with 'path' as the key and the path to the drealty listing as its
+ *   value.
+ */
+function drealty_listing_uri(DrealtyListingInterface $drealty_listing) {
+  return new Url('drealty.listing_view', array(
+    'drealty_listing' => $drealty_listing->id(),
+  ));
+}
