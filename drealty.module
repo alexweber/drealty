@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * DRealty Module.
+ */
+
+/**
+ * Implements hook_permission().
+ */
+function drealty_permission() {
+  $perms = array(
+    'administer drealty listings' => array(
+      'title' => t('Administer DRealty Listings'),
+    ),
+  );
+
+  return $perms;
+}
