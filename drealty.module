@@ -62,7 +62,7 @@ function drealty_form_system_themes_admin_form_submit($form, &$form_state) {
  * @todo Add this as generic helper method for config entities representing
  *   entity bundles.
  */
-function drealty_get_type_label(DrealtyListingInterface $drealty_listing) {
+function drealty_listing_get_type_label(DrealtyListingInterface $drealty_listing) {
   $type = entity_load('drealty_listing_type', $drealty_listing->bundle());
   return $type ? $type->label() : FALSE;
 }
