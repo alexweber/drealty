@@ -1,11 +1,11 @@
 services:
   access_check.drealty_listing.revision:
-    class: Drupal\drealty\Access\DrealtyListingRevisionAccessCheck # @TODO implement this
+    class: Drupal\drealty\Access\DrealtyListingRevisionAccessCheck
     arguments: ['@entity.manager', '@database']
     tags:
       - { name: access_check, applies_to: _access_drealty_listing_revision }
   access_check.drealty_listing.add:
-    class: Drupal\drealty\Access\DrealtyListingAddAccessCheck # @TODO implement this
+    class: Drupal\drealty\Access\DrealtyListingAddAccessCheck
     arguments: ['@entity.manager']
     tags:
       - { name: access_check, applies_to: _drealty_listing_add_access }
