@@ -10,7 +10,7 @@ services:
     tags:
       - { name: access_check, applies_to: _drealty_listing_add_access }
   drealty.admin_path.route_subscriber:
-    class: Drupal\drealty\EventSubscriber\DrealtyListingAdminRouteSubscriber # @TODO implement this
+    class: Drupal\drealty\EventSubscriber\DrealtyListingAdminRouteSubscriber
     arguments: ['@config.factory']
     tags:
       - { name: event_subscriber }
