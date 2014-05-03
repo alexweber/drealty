@@ -82,3 +82,16 @@ function drealty_listing_uri(DrealtyListingInterface $drealty_listing) {
     'drealty_listing' => $drealty_listing->id(),
   ));
 }
+
+/**
+ * Menu argument loader: Loads a drealty listing type by string.
+ *
+ * @param $name
+ *   The machine name of a drealty listing type to load.
+ *
+ * @return \Drupal\drealty\DrealtyListingTypeInterface
+ *   A drealty listing type object or NULL if $name does not exist.
+ */
+function drealty_listing_type_load_load($name) {
+  return entity_load('drealty_listing_type', $name);
+}
