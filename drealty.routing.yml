@@ -26,7 +26,7 @@ drealty.listing_add_page:
   path: '/drealty-listing/add'
   defaults:
     _title: 'Add listing'
-    _content: '\Drupal\drealty\Controller\DrealtyListingController::addPage' # @TODO create this
+    _content: '\Drupal\drealty\Controller\DrealtyListingController::addPage'
   options:
     _access_mode: 'ANY'
     _drealty_listing_operation_route: TRUE
@@ -37,8 +37,8 @@ drealty.listing_add_page:
 drealty.listing_add:
   path: '/drealty-listing/add/{drealty_listing_type}'
   defaults:
-    _content: '\Drupal\drealty\Controller\DrealtyListingController::add' # @TODO create this
-    _title_callback: '\Drupal\drealty\Controller\DrealtyListingController::addPageTitle' # @TODO create this
+    _content: '\Drupal\drealty\Controller\DrealtyListingController::add'
+    _title_callback: '\Drupal\drealty\Controller\DrealtyListingController::addPageTitle'
   requirements:
     _drealty_listing_add_access: 'drealty_listing:{drealty_listing_type}'
   options:
@@ -66,7 +66,7 @@ drealty.listing_revision_overview:
   path: '/drealty-listing/{drealty_listing}/revisions'
   defaults:
     _title: 'Revisions'
-    _content: '\Drupal\drealty\Controller\DrealtyListingController::revisionOverview' # @TODO create this
+    _content: '\Drupal\drealty\Controller\DrealtyListingController::revisionOverview'
   requirements:
     _access_drealty_listing_revision: 'view' # @TODO create this
   options:
