@@ -5,6 +5,7 @@ drealty.admin:
     _title: 'DRealty'
   requirements:
     _permission: 'access administration pages'
+# Connections.
 drealty.connection_list:
   path: '/admin/drealty/connections'
   defaults:
