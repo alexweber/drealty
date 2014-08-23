@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains Drupal\drealty\ConnectionListBuilder
+ * Contains \Drupal\drealty\ConnectionListBuilder
  */
 
 namespace Drupal\drealty;
