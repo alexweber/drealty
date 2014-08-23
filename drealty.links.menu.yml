@@ -1,0 +1,5 @@
+drealty.connection_list:
+  title: DRealty Connections
+  description: 'Administer DRealty Connections'
+  parent: system.admin
+  route_name: drealty.connection_list

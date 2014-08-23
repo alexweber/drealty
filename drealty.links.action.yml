@@ -1,0 +1,5 @@
+drealty.connection_add:
+  route_name: 'drealty.connection_add'
+  title: 'New DRealty Connection'
+  appears_on:
+    - 'drealty.connection_list'
