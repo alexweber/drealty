@@ -160,3 +160,37 @@ function drealty_listing_is_page(ListingInterface $listing) {
   }
   return (!empty($page_listing) ? $page_listing->id() == $listing->id() : FALSE);
 }
+
+/**
+ * Implements hook_entity_extra_field_info().
+ */
+function drealty_entity_extra_field_info() {
+  $extra = array();
+  $module_language_enabled = \Drupal::moduleHandler()->moduleExists('language');
+  $description = t('DRealty module element');
+
+  foreach (ListingType::loadMultiple() as $bundle) {
+    // Add the 'language' select if Language module is enabled and the bundle
+    // has multilingual support.
+    // Visibility of the ordering of the language selector is the same as on the
+    // drealty_listing/add form.
+    if ($module_language_enabled) {
+      $configuration = language_get_default_configuration('drealty_listing', $bundle->type);
+      if ($configuration['language_show']) {
+        $extra['drealty_listing'][$bundle->type]['form']['langcode'] = array(
+          'label' => t('Language'),
+          'description' => $description,
+          'weight' => 0,
+        );
+      }
+    }
+    $extra['drealty_listing'][$bundle->type]['display']['langcode'] = array(
+      'label' => t('Language'),
+      'description' => $description,
+      'weight' => 0,
+      'visible' => FALSE,
+    );
+  }
+
+  return $extra;
+}
