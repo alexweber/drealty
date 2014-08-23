@@ -1,0 +1,7 @@
+.toolbar-icon-drealty:before {
+  background-image: url('../icons/787878/drealty.svg');
+}
+.toolbar-icon-drealty:active:before,
+.toolbar-icon-drealty.active:before {
+  background-image: url('../icons/000000/drealty.svg');
+}

@@ -30,3 +30,12 @@ function drealty_permission() {
 function drealty_connection_load($id) {
   return ConnectionEntity::load($id);
 }
+
+/**
+ * Implements hook_toolbar_alter().
+ */
+function drealty_toolbar_alter(&$items) {
+  if (isset($items['administration']['tray'])) {
+    $items['administration']['tray']['#attached']['css'][] = drupal_get_path('module', 'drealty') . '/assets/css/drealty.admin.css';
+  }
+}
