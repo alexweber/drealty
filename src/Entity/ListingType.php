@@ -36,8 +36,8 @@ use Drupal\Component\Utility\NestedArray;
  *   },
  *   links = {
  *     "add-form" = "drealty.listing_type_add",
- *     "edit-form" = "drealty.listing_type_edit",
- *     "delete-form" = "drealty.listing_type_delete_confirm"
+ *     "edit-form" = "entity.drealty_listing_type.edit_form",
+ *     "delete-form" = "entity.drealty_listing_type.delete_form"
  *   }
  * )
  */
