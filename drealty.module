@@ -383,3 +383,11 @@ function drealty_modules_uninstalled($modules) {
     }
   }
 }
+
+/**
+ * Implements hook_ENTITY_TYPE_delete() for 'language_entity'.
+ */
+function drealty_language_entity_delete(LanguageEntity $language) {
+  // On listings with this language, unset the language.
+  \Drupal::entityManager()->getStorage('drealty_listing')->clearRevisionsLanguage($language);
+}
