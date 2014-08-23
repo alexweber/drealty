@@ -82,6 +82,94 @@ drealty.listing_list:
   requirements:
     _permission: 'access administration pages'
 
+drealty.listing_add_page:
+  path: '/drealty_listing/add'
+  defaults:
+    _title: 'Add listing'
+    _content: '\Drupal\drealty\Controller\ListingController::addPage'
+  options:
+    _access_mode: 'ANY'
+    _drealty_operation_route: TRUE
+  requirements:
+    _permission: 'administer drealty listings'
+    _drealty_listing_add_access: 'drealty_listing'
+
+drealty.listing_add:
+  path: '/drealty_listing/add/{drealty_listing_type}'
+  defaults:
+    _content: '\Drupal\drealty\Controller\ListingController::add'
+    _title_callback: '\Drupal\drealty\Controller\ListingController::addPageTitle'
+  requirements:
+    _drealty_listing_add_access: 'drealty_listing:{drealty_listing_type}'
+  options:
+    _drealty_operation_route: TRUE
+
+entity.drealty_listing.canonical:
+  path: '/drealty_listing/{drealty_listing}'
+  defaults:
+    _content: '\Drupal\drealty\Controller\ListingViewController::view'
+    _title_callback: '\Drupal\drealty\Controller\ListingViewController::title'
+  requirements:
+    _entity_access: 'drealty_listing.view'
+
+entity.drealty_listing.edit_form:
+  path: '/drealty_listing/{drealty_listing}/edit'
+  defaults:
+    _entity_form: 'drealty_listing.edit'
+  requirements:
+    _entity_access: 'drealty_listing.update'
+  options:
+    _drealty_operation_route: TRUE
+
+entity.drealty_listing.delete_form:
+  path: '/drealty_listing/{drealty_listing}/delete'
+  defaults:
+    _entity_form: 'drealty_listing.delete'
+    _title: 'Delete'
+  requirements:
+    _entity_access: 'drealty_listing.delete'
+  options:
+    _drealty_operation_route: TRUE
+
+# Revisions.
+drealty.listing_revision_overview:
+  path: '/drealty_listing/{drealty_listing}/revisions'
+  defaults:
+    _title: 'Revisions'
+    _content: '\Drupal\drealty\Controller\ListingController::revisionOverview'
+  requirements:
+    _access_drealty_listing_revision: 'view'
+  options:
+    _drealty_operation_route: TRUE
+
+drealty.listing_revision_show:
+  path: '/drealty_listing/{drealty_listing}/revisions/{drealty_listing_revision}/view'
+  defaults:
+    _content: '\Drupal\drealty\Controller\ListingController::revisionShow'
+    _title_callback: '\Drupal\drealty\Controller\ListingController::revisionPageTitle'
+  requirements:
+    _access_drealty_listing_revision: 'view'
+
+drealty.listing_revision_revert_confirm:
+  path: '/drealty_listing/{drealty_listing}/revisions/{drealty_listing_revision}/revert'
+  defaults:
+    _form: '\Drupal\drealty\Form\ListingRevisionRevertForm'
+    _title: 'Revert to earlier revision'
+  requirements:
+    _access_drealty_listing_revision: 'update'
+  options:
+    _drealty_operation_route: TRUE
+
+drealty.listing_revision_delete_confirm:
+  path: '/drealty_listing/{drealty_listing}/revisions/{drealty_listing_revision}/delete'
+  defaults:
+    _form: '\Drupal\drealty\Form\ListingRevisionDeleteForm'
+    _title: 'Delete earlier revision'
+  requirements:
+    _access_drealty_listing_revision: 'delete'
+  options:
+    _drealty_operation_route: TRUE
+
 # Actions.
 drealty.multiple_delete_confirm:
   path: '/admin/content/drealty/delete'
