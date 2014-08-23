@@ -2,14 +2,14 @@
 
 /**
  * @file
- * Contains \Drupal\drealty\PropertyTypeInterface
+ * Contains \Drupal\drealty\ListingTypeInterface
  */
 
 namespace Drupal\drealty;
 
 use Drupal\Core\Entity\ContentEntityInterface;
 
-interface PropertyTypeInterface extends ContentEntityInterface {
+interface ListingTypeInterface extends ContentEntityInterface {
 
   /**
    * Returns the configured property type settings of a given module, if any.
