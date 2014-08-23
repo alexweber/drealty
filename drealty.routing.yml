@@ -12,14 +12,14 @@ drealty.connection_add:
     _title: 'Add a new connection'
   requirements:
     _permission: 'administer drealty connections'
-drealty.connection_edit:
+entity.drealty_connection.edit_form:
   path: '/admin/drealty/connections/edit/{drealty_connection}'
   defaults:
     _entity_form: 'drealty_connection.edit'
     _title: 'Edit connection'
   requirements:
     _permission: 'administer drealty connections'
-drealty.connection_delete:
+entity.drealty_connection.delete_form:
   path: '/admin/drealty/connections/delete/{drealty_connection}'
   defaults:
     _entity_form: 'drealty_connection.delete'
