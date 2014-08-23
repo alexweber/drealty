@@ -116,3 +116,20 @@ function drealty_listing_last_changed($lid, $langcode = NULL) {
   $changed = \Drupal::entityManager()->getStorage('drealty_listing')->loadUnchanged($lid)->getChangedTime();
   return $changed ? $changed : FALSE;
 }
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function drealty_theme_suggestions_drealty_listing(array $variables) {
+  $suggestions = array();
+  $listing = $variables['elements']['#drealty_listing'];
+  $sanitized_view_mode = strtr($variables['elements']['#view_mode'], '.', '_');
+
+  $suggestions[] = 'drealty_listing__' . $sanitized_view_mode;
+  $suggestions[] = 'drealty_listing__' . $listing->bundle();
+  $suggestions[] = 'drealty_listing__' . $listing->bundle() . '__' . $sanitized_view_mode;
+  $suggestions[] = 'drealty_listing__' . $listing->id();
+  $suggestions[] = 'drealty_listing__' . $listing->id() . '__' . $sanitized_view_mode;
+
+  return $suggestions;
+}
