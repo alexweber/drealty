@@ -67,7 +67,7 @@ class ListingTranslationHandler extends ContentTranslationHandler {
    * {@inheritdoc}
    */
   protected function entityFormTitle(EntityInterface $entity) {
-    $type_name = $entity->bundle();
+    $type_name = drealty_get_type_label($entity);
     return t('<em>Edit @type</em> @title', array('@type' => $type_name, '@title' => $entity->label()));
   }
 
