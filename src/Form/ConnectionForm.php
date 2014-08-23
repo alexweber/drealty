@@ -9,6 +9,7 @@ namespace Drupal\drealty\Form;
 
 use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 
 /**
@@ -21,7 +22,7 @@ class ConnectionForm extends EntityForm {
   /**
    * {@inheritdoc}
    */
-  public function form(array $form, array &$form_state) {
+  public function form(array $form, FormStateInterface $form_state) {
     $form = parent::form($form, $form_state);
 
     $connection = $this->entity;
@@ -59,19 +60,19 @@ class ConnectionForm extends EntityForm {
   /**
    * {@inheritdoc}
    */
-  public function save(array $form, array &$form_state) {
+  public function save(array $form, FormStateInterface $form_state) {
     $connection = $this->entity;
 
     $status = $connection->save();
 
     if ($status) {
       // Setting the success message.
-      drupal_set_message($this->t('Drealty Connection saved successfully: @label.', array(
+      drupal_set_message($this->t('Connection @label saved successfully.', array(
         '@label' => $connection->name,
       )));
     }
     else {
-      drupal_set_message($this->t('There was an error saving the Drealty Connection: @label.', array(
+      drupal_set_message($this->t('There was an error saving the connection: @label.', array(
         '@label' => $connection->name,
       )));
     }
