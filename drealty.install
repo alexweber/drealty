@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the drealty module.
+ */
+
+/**
+ * Implements hook_requirements().
+ */
+function drealty_requirements($phase) {
+  $requirements = array();
+
+  // @TODO
+
+  return $requirements;
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function drealty_uninstall() {
+  // Delete listing type variables.
+  $types = \Drupal::configFactory()->listAll('drealty.type.');
+  foreach ($types as $config_name) {
+    $type = \Drupal::config($config_name)->get('type');
+    if (\Drupal::moduleHandler()->moduleExists('language')) {
+      $key = language_get_default_configuration_settings_key('drealty_listing', $type);
+      \Drupal::config('language.settings')->clear($key)->save();
+    }
+  }
+
+  // Delete any stored state.
+  \Drupal::state()->delete('drealty.cron_last');
+}
