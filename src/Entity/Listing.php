@@ -33,6 +33,7 @@ use Drupal\user\UserInterface;
  *       "edit" = "Drupal\drealty\ListingForm"
  *     },
  *     "list_builder" = "Drupal\drealty\ListingListBuilder",
+ *     "translation" = "Drupal\drealty\ListingTranslationHandler"
  *   },
  *   base_table = "drealty_listing",
  *   data_table = "drealty_listing_field_data",
