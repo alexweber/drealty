@@ -102,6 +102,24 @@ class ListingTypeForm extends EntityForm {
       ),
       '#description' => t('Users with the <em>Administer DRealty Listings</em> permission will be able to override these options.'),
     );
+
+    if ($this->moduleHandler->moduleExists('language')) {
+      $form['language'] = array(
+        '#type' => 'details',
+        '#title' => t('Language settings'),
+        '#group' => 'additional_settings',
+      );
+
+      $language_configuration = language_get_default_configuration('drealty_listing', $type->id());
+      $form['language']['language_configuration'] = array(
+        '#type' => 'language_configuration',
+        '#entity_information' => array(
+          'entity_type' => 'drealty_listing',
+          'bundle' => $type->id(),
+        ),
+        '#default_value' => $language_configuration,
+      );
+    }
     return $form;
   }
 
