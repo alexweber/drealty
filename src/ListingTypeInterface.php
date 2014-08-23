@@ -7,9 +7,9 @@
 
 namespace Drupal\drealty;
 
-use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Config\Entity\ConfigEntityInterface;
 
-interface ListingTypeInterface extends ContentEntityInterface {
+interface ListingTypeInterface extends ConfigEntityInterface {
 
   /**
    * Returns the configured property type settings of a given module, if any.
