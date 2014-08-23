@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * DRealty module.
+ */
+
+/**
+ * Implements hook_permission().
+ */
+function drealty_permission() {
+  $return = array();
+
+  $return['administer drealty connections'] = array(
+    'title' => t('Administer DRealty Connections'),
+    'restrict access' => TRUE,
+  );
+
+  return $return;
+}
