@@ -126,6 +126,11 @@ function drealty_permission() {
     ),
   );
 
+  // Generate standard listing permissions for all applicable listing types.
+  foreach (ListingType::loadMultiple() as $type) {
+    $perms += drealty_list_permissions($type);
+  }
+
   return $perms;
 }
 
