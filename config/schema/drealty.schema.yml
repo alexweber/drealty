@@ -1,0 +1,16 @@
+# Schema for the configuration files of the DRealty module.
+
+drealty.drealty_connection.*:
+  type: mapping
+  label: 'DRealty Connection'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    uuid:
+      type: string
+      label: 'UUID'
+    name:
+      type: label
+      label: 'Name'
+      translatable: true
