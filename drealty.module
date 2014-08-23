@@ -39,7 +39,7 @@ function drealty_help($route_name, RouteMatchInterface $route_match) {
     case 'field_ui.form_display_overview_drealty_listing':
     case 'field_ui.form_display_overview_form_mode_drealty_listing':
       $type = $route_match->getParameter('drealty_listing_type');
-      return '<p>' . t('Listing items can be edited using different form modes. Here, you can define which fields are shown and hidden when %type content is edited in each form mode, and define how the field form widgets are displayed in each form mode.', array('%type' => $type->label())) . '</p>' ;
+      return '<p>' . t('Listing items can be edited using different form modes. Here, you can define which fields are shown and hidden when %type listing is edited in each form mode, and define how the field form widgets are displayed in each form mode.', array('%type' => $type->label())) . '</p>' ;
 
     case 'field_ui.display_overview_drealty_listing':
     case 'field_ui.display_overview_view_mode_drealty_listing':
