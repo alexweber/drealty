@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains \Drupal\drealty\Form\ConnectionForm.
+ * Contains \Drupal\drealty\ConnectionForm.
  */
 
-namespace Drupal\drealty\Form;
+namespace Drupal\drealty;
 
 use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Entity\EntityTypeInterface;
