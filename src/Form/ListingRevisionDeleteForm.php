@@ -127,7 +127,7 @@ class ListingRevisionDeleteForm extends ConfirmFormBase {
       'drealty.drealty_listing_view',
       array('drealty_listing' => $this->revision->id())
     );
-    if ($this->connection->query('SELECT COUNT(DISTINCT vid) FROM {drealty_listing_field_revision} WHERE nid = :nid', array(':nid' => $this->revision->id()))->fetchField() > 1) {
+    if ($this->connection->query('SELECT COUNT(DISTINCT vid) FROM {drealty_listing_field_revision} WHERE id = :id', array(':id' => $this->revision->id()))->fetchField() > 1) {
       $form_state->setRedirect(
         'drealty.listing_revision_overview',
         array('drealty_listing' => $this->revision->id())

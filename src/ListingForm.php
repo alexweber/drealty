@@ -407,8 +407,8 @@ class ListingForm extends ContentEntityForm {
     }
 
     if ($listing->id()) {
-      $form_state['values']['nid'] = $listing->id();
-      $form_state['nid'] = $listing->id();
+      $form_state['values']['id'] = $listing->id();
+      $form_state['id'] = $listing->id();
       if ($listing->access('view')) {
         $form_state->setRedirect(
           'drealty.drealty_listing_view',

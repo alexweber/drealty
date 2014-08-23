@@ -118,7 +118,7 @@ class Listing extends ContentEntityBase implements ListingInterface {
     // Assure that all listings deleted are removed from the search index.
 //    if (\Drupal::moduleHandler()->moduleExists('search')) {
 //      foreach ($entities as $entity) {
-//        search_reindex($entity->nid->value, 'listing_search');
+//        search_reindex($entity->id->value, 'listing_search');
 //      }
 //    }
   }
@@ -310,7 +310,7 @@ class Listing extends ContentEntityBase implements ListingInterface {
    * {@inheritdoc}
    */
   public static function baseFieldDefinitions(EntityTypeInterface $entity_type) {
-    $fields['nid'] = FieldDefinition::create('integer')
+    $fields['id'] = FieldDefinition::create('integer')
       ->setLabel(t('Listing ID'))
       ->setDescription(t('The listing ID.'))
       ->setReadOnly(TRUE)

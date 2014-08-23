@@ -146,7 +146,7 @@ class ListingRevisionAccessCheck implements AccessInterface {
       // different revisions so there is no need for a separate database check.
       // Also, if you try to revert to or delete the default revision, that's
       // not good.
-      if ($listing->isDefaultRevision() && ($this->connection->query('SELECT COUNT(*) FROM {drealty_listing_field_revision} WHERE nid = :nid AND default_langcode = 1', array(':nid' => $listing->id()))->fetchField() == 1 || $op == 'update' || $op == 'delete')) {
+      if ($listing->isDefaultRevision() && ($this->connection->query('SELECT COUNT(*) FROM {drealty_listing_field_revision} WHERE id = :id AND default_langcode = 1', array(':id' => $listing->id()))->fetchField() == 1 || $op == 'update' || $op == 'delete')) {
         $this->access[$cid] = FALSE;
       }
       elseif ($account->hasPermission('administer drealty listings')) {
