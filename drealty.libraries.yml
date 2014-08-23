@@ -1,0 +1,18 @@
+drealty.listing:
+  version: VERSION
+  js:
+    assets/js/listing.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - core/drupal.form
+
+drealty.listing_types:
+  version: VERSION
+  js:
+    assets/js/listing_types.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupal.form
