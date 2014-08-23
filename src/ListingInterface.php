@@ -135,7 +135,7 @@ interface ListingInterface extends ContentEntityInterface, EntityChangedInterfac
    * @param int $timestamp
    *   The UNIX timestamp of when this revision was created.
    *
-   * @return \Drupal\drealty\NodeInterface
+   * @return \Drupal\drealty\ListingInterface
    *   The called listing entity.
    */
   public function setRevisionCreationTime($timestamp);
