@@ -40,7 +40,7 @@ class ConnectionListBuilder extends ConfigEntityListBuilder {
    */
   public function render() {
     $build = parent::render();
-    $build['#empty'] = $this->t('There are no DRealty Connections available.');
+    $build['#empty'] = $this->t('There are no connections available.');
     return $build;
   }
 
