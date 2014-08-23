@@ -63,3 +63,11 @@ entity.drealty_listing_type.delete_form:
     _title: 'Delete listing type'
   requirements:
     _permission: 'administer drealty listing-types'
+# Listings.
+drealty.listing_list:
+  path: '/admin/content/drealty'
+  defaults:
+    _entity_list: 'drealty_listing'
+    _title: 'DRealty Listings'
+  requirements:
+    _permission: 'access administration pages'

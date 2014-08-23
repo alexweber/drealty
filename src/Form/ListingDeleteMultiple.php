@@ -83,7 +83,7 @@ class ListingDeleteMultiple extends ConfirmFormBase {
    * {@inheritdoc}
    */
   public function getCancelUrl() {
-    return new Url('drealty.drealty_listing_list');
+    return new Url('drealty.listing_list');
   }
 
   /**
@@ -124,7 +124,7 @@ class ListingDeleteMultiple extends ConfirmFormBase {
       $this->logger('content')->notice('Deleted @count listings.', array('@count' => $count));
       drupal_set_message(format_plural($count, 'Deleted 1 listing.', 'Deleted @count listings.'));
     }
-    $form_state->setRedirect('drealty.drealty_listing_list');
+    $form_state->setRedirect('drealty.listing_list');
   }
 
 }
