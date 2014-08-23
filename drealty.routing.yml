@@ -1,3 +1,4 @@
+# Admin landing page.
 drealty.admin:
   path: '/admin/drealty'
   defaults:
@@ -5,7 +6,8 @@ drealty.admin:
     _title: 'DRealty'
   requirements:
     _permission: 'access administration pages'
-# Connections.
+
+# Connections UI.
 drealty.connection_list:
   path: '/admin/drealty/connections'
   defaults:
@@ -13,6 +15,7 @@ drealty.connection_list:
     _title: 'DRealty Connections'
   requirements:
     _permission: 'administer drealty connections'
+
 drealty.connection_add:
   path: '/admin/drealty/connections/add'
   defaults:
@@ -20,6 +23,7 @@ drealty.connection_add:
     _title: 'Add a new connection'
   requirements:
     _permission: 'administer drealty connections'
+
 entity.drealty_connection.edit_form:
   path: '/admin/drealty/connections/edit/{drealty_connection}'
   defaults:
@@ -27,6 +31,7 @@ entity.drealty_connection.edit_form:
     _title: 'Edit connection'
   requirements:
     _permission: 'administer drealty connections'
+
 entity.drealty_connection.delete_form:
   path: '/admin/drealty/connections/delete/{drealty_connection}'
   defaults:
@@ -34,7 +39,8 @@ entity.drealty_connection.delete_form:
     _title: 'Delete connection'
   requirements:
     _permission: 'administer drealty connections'
-# Listing Types.
+
+# Listing Types UI.
 drealty.listing_type_list:
   path: '/admin/drealty/listing-types'
   defaults:
@@ -42,6 +48,7 @@ drealty.listing_type_list:
     _title: 'DRealty Listing Types'
   requirements:
     _permission: 'administer drealty listing types'
+
 drealty.listing_type_add:
   path: '/admin/drealty/listing-types/add'
   defaults:
@@ -49,6 +56,7 @@ drealty.listing_type_add:
     _title: 'Add a new listing type'
   requirements:
     _permission: 'administer drealty listing-types'
+
 entity.drealty_listing_type.edit_form:
   path: '/admin/drealty/listing-types/edit/{drealty_listing_type}'
   defaults:
@@ -56,6 +64,7 @@ entity.drealty_listing_type.edit_form:
     _title: 'Edit listing type'
   requirements:
     _permission: 'administer drealty listing-types'
+
 entity.drealty_listing_type.delete_form:
   path: '/admin/drealty/listing-types/delete/{drealty_listing_type}'
   defaults:
@@ -63,7 +72,8 @@ entity.drealty_listing_type.delete_form:
     _title: 'Delete listing type'
   requirements:
     _permission: 'administer drealty listing-types'
-# Listings.
+
+# Listings UI.
 drealty.listing_list:
   path: '/admin/content/drealty'
   defaults:
