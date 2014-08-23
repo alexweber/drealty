@@ -1,23 +1,23 @@
 drealty.admin_content:
   title: Real Estate Listings
-  route_name: drealty.listings_list
+  route_name: drealty.listing_list
   base_route: system.admin_content
-drealty.listing_view:
-  route_name: drealty.listing_view
-  base_route: drealty.listing_view
+entity.drealty_listing.canonical:
+  route_name: entity.drealty_listing.canonical
+  base_route: entity.drealty_listing.canonical
   title: 'View'
-drealty.listing_edit:
-  route_name: drealty.listing_edit
-  base_route: drealty.listing_view
+entity.drealty_listing.edit_form:
+  route_name: entity.drealty_listing.edit_form
+  base_route: entity.drealty_listing.canonical
   title: Edit
-drealty.listing_delete:
-  route_name: drealty.listing_delete
-  base_route: drealty.listing_view
+entity.drealty_listing.delete_form:
+  route_name: entity.drealty_listing.delete_form
+  base_route: entity.drealty_listing.canonical
   title: Delete
   weight: 10
-drealty.revision_overview:
-  route_name: drealty.revision_overview
-  base_route: drealty.listing_view
+drealty.listing_revision_overview:
+  route_name: drealty.listing_revision_overview
+  base_route: entity.drealty_listing.canonical
   title: 'Revisions'
   weight: 20
 drealty.type_edit:

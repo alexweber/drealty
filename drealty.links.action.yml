@@ -9,3 +9,9 @@ drealty.listing_type_add:
   title: 'New listing type'
   appears_on:
     - 'drealty.listing_type_list'
+
+drealty.add_page:
+  route_name: drealty.listing_add_page
+  title: 'Add listing'
+  appears_on:
+    - drealty.listing_list
