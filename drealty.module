@@ -70,12 +70,12 @@ function drealty_theme() {
   return array(
     'drealty_listing' => array(
       'render element' => 'elements',
-      'file' => 'drealty.pages.inc',
+      'file' => 'drealty.theme.inc',
       'template' => 'drealty-listing',
     ),
     'drealty_listing_add_list' => array(
       'variables' => array('content' => NULL),
-      'file' => 'drealty.pages.inc',
+      'file' => 'drealty.theme.inc',
       'template' => 'drealty-listing-add-list',
     ),
     'drealty_listing_edit_form' => array(

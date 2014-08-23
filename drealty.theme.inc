@@ -2,7 +2,7 @@
 
 /**
  * @file
- *
+ * Theme functions.
  */
 
 use Drupal\Component\Utility\Xss;
