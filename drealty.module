@@ -133,3 +133,13 @@ function drealty_theme_suggestions_drealty_listing(array $variables) {
 
   return $suggestions;
 }
+
+/**
+ * Implements hook_preprocess_HOOK() for HTML document templates.
+ */
+function drealty_preprocess_html(&$variables) {
+  // If on an individual listing page, add the listing type to body classes.
+  if (($listing = \Drupal::routeMatch()->getParameter('drealty_listing')) && $listing instanceof ListingInterface) {
+    $variables['attributes']['class'][] = drupal_html_class('drealty--type-' . $listing->getType());
+  }
+}
