@@ -3,3 +3,9 @@ drealty.connection_add:
   title: 'New connection'
   appears_on:
     - 'drealty.connection_list'
+
+drealty.listing_type_add:
+  route_name: 'drealty.listing_type_add'
+  title: 'New listing type'
+  appears_on:
+    - 'drealty.listing_type_list'
