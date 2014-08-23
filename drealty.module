@@ -36,7 +36,9 @@ function drealty_permission() {
  * Menu argument loader. Returns a DRealty Connection entity.
  *
  * @param $id
- * @return \Drupal\drealty\ConnectionInterface;
+ * @return \Drupal\drealty\ConnectionInterface
+ *
+ * @see \Drupal\drealty\ConnectionForm::Form()
  */
 function drealty_connection_load($id) {
   return ConnectionEntity::load($id);
@@ -46,7 +48,9 @@ function drealty_connection_load($id) {
  * Menu argument loader. Returns a DRealty Listing Type entity.
  *
  * @param $id
- * @return \Drupal\drealty\ListingTypeInterface;
+ * @return \Drupal\drealty\ListingTypeInterface
+ *
+ * @see \Drupal\drealty\ListingTypeForm::Form()
  */
 function drealty_listing_type_load($id) {
   return ListingType::load($id);
