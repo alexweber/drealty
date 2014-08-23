@@ -10,6 +10,58 @@ use Drupal\drealty\Entity\ListingType;
 use Drupal\drealty\ListingInterface;
 
 /**
+ * Implements hook_help().
+ */
+function drealty_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.drealty':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('The DRealty module manages the creation, editing, deletion, settings, and display of the Real Estate connections, resources and listings. Content items provided by the DRealty module are typically displayed as pages on your site, and include a title, some meta-data (author, creation time, listing type, etc.), and optional fields containing text or other data (fields are managed by the <a href="!field">Field module</a>). For more information, see <a href="!drealty">the online documentation for the DRealty module</a>.', array('!drealty' => 'https://drupal.org/project/drealty', '!field' => \Drupal::url('help.page', array('name' => 'field')))) . '</p>';
+      $output .= '<h3>' . t('Uses') . '</h3>';
+      $output .= '<dl>';
+      $output .= '<dt>' . t('Creating listings') . '</dt>';
+      $output .= '<dd>' . t('When a new listing is created, the DRealty module records basic information about the content, including the author, date of creation, and the <a href="!listing-type">Listing type</a>. It also manages the <em>publishing options</em>, which define whether or not the content is published, promoted to the front page of the site, and/or sticky at the top of content lists. Default settings can be configured for each <a href="!listing-type">type of listing</a> on your site.', array('!listing-type' => \Drupal::url('drealty.listing_type_list'))) . '</dd>';
+      $output .= '<dt>' . t('Creating custom content types') . '</dt>';
+      $output .= '<dd>' . t('The DRealty module gives users with the <em>Administer drealty listing types</em> permission the ability to <a href="!listing-new">create new listing types</a> in addition to the default ones already configured. Creating custom listing types allows you the flexibility to add <a href="!field">fields</a> and configure default settings that suit the differing needs of various site content.', array('!listing-new' => \Drupal::url('drealty.listing_type_add'), '!field' => \Drupal::url('help.page', array('name' => 'field')))) . '</dd>';
+      $output .= '<dt>' . t('Administering listings') . '</dt>';
+      $output .= '<dd>' . t('The <a href="!content">Listings administration page</a> allows you to review and bulk manage your site listings.', array('!content' => \Drupal::url('drealty.listing_list'))) . '</dd>';
+      $output .= '<dt>' . t('Creating revisions') . '</dt>';
+      $output .= '<dd>' . t('The DRealty module also enables you to create multiple versions of any listing, and revert to older versions using the <em>Revision information</em> settings.') . '</dd>';
+      $output .= '<dt>' . t('User permissions') . '</dt>';
+      $output .= '<dd>' . t('The DRealty module makes a number of permissions available for each listing type, which can be set by role on the <a href="!permissions">permissions page</a>.', array('!permissions' => \Drupal::url('user.admin_permissions', array(), array('fragment' => 'module-drealty')))) . '</dd>';
+      $output .= '</dl>';
+      return $output;
+
+    case 'drealty.listing_type_add':
+      return '<p>' . t('Individual listing types can have different fields, behaviors, and permissions assigned to them.') . '</p>';
+
+    case 'field_ui.form_display_overview_drealty_listing':
+    case 'field_ui.form_display_overview_form_mode_drealty_listing':
+      $type = $route_match->getParameter('drealty_listing_type');
+      return '<p>' . t('Listing items can be edited using different form modes. Here, you can define which fields are shown and hidden when %type content is edited in each form mode, and define how the field form widgets are displayed in each form mode.', array('%type' => $type->label())) . '</p>' ;
+
+    case 'field_ui.display_overview_drealty_listing':
+    case 'field_ui.display_overview_view_mode_drealty_listing':
+      $type = $route_match->getParameter('drealty_listing_type');
+      return '<p>' . t('Listing items can be displayed using different view modes: Teaser, Full content, Print, RSS, etc. <em>Teaser</em> is a short format that is typically used in lists of multiple listings. <em>Full content</em> is typically used when the listing is displayed on its own page.') . '</p>' .
+      '<p>' . t('Here, you can define which fields are shown and hidden when %type content is displayed in each view mode, and define how the fields are displayed in each view mode.', array('%type' => $type->label())) . '</p>';
+
+    case 'drealty.listing_revision_overview':
+      return '<p>' . t('Revisions allow you to track differences between multiple versions of your listing, and revert back to older versions.') . '</p>';
+
+    case 'entity.drealty_listing.edit_form':
+      $listing = $route_match->getParameter('drealty_listing');
+      $type = $listing->getType();
+      return (!empty($type->help) ? Xss::filterAdmin($type->help) : '');
+
+    case 'drealty.listing_add':
+      $type = $route_match->getParameter('drealty_listing_type');
+      return (!empty($type->help) ? Xss::filterAdmin($type->help) : '');
+  }
+}
+
+/**
  * Implements hook_permission().
  */
 function drealty_permission() {
