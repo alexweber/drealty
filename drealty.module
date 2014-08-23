@@ -143,3 +143,20 @@ function drealty_preprocess_html(&$variables) {
     $variables['attributes']['class'][] = drupal_html_class('drealty--type-' . $listing->getType());
   }
 }
+
+/**
+ * Checks whether the current page is the full page view of the passed-in listing.
+ *
+ * @param \Drupal\drealty\ListingInterface $listing
+ *   A listing entity.
+ *
+ * @return integer|FALSE
+ *   The ID of the listing if this is a full page view, otherwise FALSE.
+ */
+function drealty_listing_is_page(ListingInterface $listing) {
+  $route_match = \Drupal::routeMatch();
+  if ($route_match->getRouteName() == 'entity.drealty_listing.canonical') {
+    $page_listing = $route_match->getParameter('drealty_listing');
+  }
+  return (!empty($page_listing) ? $page_listing->id() == $listing->id() : FALSE);
+}
