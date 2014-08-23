@@ -6,7 +6,7 @@ services:
       - { name: access_check, applies_to: _access_drealty_listing_revision }
       - { name: backend_overridable }
   access_check.drealty_listing.add:
-    class: Drupal\node\Access\ListingAddAccessCheck
+    class: Drupal\drealty\Access\ListingAddAccessCheck
     arguments: ['@entity.manager']
     tags:
       - { name: access_check, applies_to: _drealty_listing_add_access }
