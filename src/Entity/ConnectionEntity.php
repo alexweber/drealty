@@ -32,8 +32,8 @@ use Drupal\drealty\ConnectionInterface;
  *     "label" = "name"
  *   },
  *   links = {
- *     "edit-form" = "drealty.connection_edit",
- *     "delete-form" = "drealty.connection_delete",
+ *     "edit-form" = "entity.drealty_connection.edit_form",
+ *     "delete-form" = "entity.drealty_connection.delete_form"
  *   }
  * )
  */
