@@ -70,37 +70,37 @@ class ListingStorage extends ContentEntityDatabaseStorage implements ListingStor
 
     // Marking the respective fields as NOT NULL makes the indexes more
     // performant.
-    $schema['node_field_data']['fields']['changed']['not null'] = TRUE;
-    $schema['node_field_data']['fields']['created']['not null'] = TRUE;
-    $schema['node_field_data']['fields']['default_langcode']['not null'] = TRUE;
-    $schema['node_field_data']['fields']['promote']['not null'] = TRUE;
-    $schema['node_field_data']['fields']['status']['not null'] = TRUE;
-    $schema['node_field_data']['fields']['sticky']['not null'] = TRUE;
-    $schema['node_field_revision']['fields']['default_langcode']['not null'] = TRUE;
+    $schema['drealty_listing_field_data']['fields']['changed']['not null'] = TRUE;
+    $schema['drealty_listing_field_data']['fields']['created']['not null'] = TRUE;
+    $schema['drealty_listing_field_data']['fields']['default_langcode']['not null'] = TRUE;
+    $schema['drealty_listing_field_data']['fields']['promote']['not null'] = TRUE;
+    $schema['drealty_listing_field_data']['fields']['status']['not null'] = TRUE;
+    $schema['drealty_listing_field_data']['fields']['sticky']['not null'] = TRUE;
+    $schema['drealty_listing_field_revision']['fields']['default_langcode']['not null'] = TRUE;
 
     // @todo Revisit index definitions in https://drupal.org/node/2015277.
-    $schema['node_revision']['indexes'] += array(
-      'node__langcode' => array('langcode'),
+    $schema['drealty_listing_revision']['indexes'] += array(
+      'drealty_listing__langcode' => array('langcode'),
     );
-    $schema['node_revision']['foreign keys'] += array(
-      'node__revision_author' => array(
+    $schema['drealty_listing_revision']['foreign keys'] += array(
+      'drealty_listing__revision_author' => array(
         'table' => 'users',
         'columns' => array('revision_uid' => 'uid'),
       ),
     );
 
-    $schema['node_field_data']['indexes'] += array(
-      'node__changed' => array('changed'),
-      'node__created' => array('created'),
-      'node__default_langcode' => array('default_langcode'),
-      'node__langcode' => array('langcode'),
-      'node__frontpage' => array('promote', 'status', 'sticky', 'created'),
-      'node__status_type' => array('status', 'type', 'lid'),
+    $schema['drealty_listing_field_data']['indexes'] += array(
+      'drealty_listing__changed' => array('changed'),
+      'drealty_listing__created' => array('created'),
+      'drealty_listing__default_langcode' => array('default_langcode'),
+      'drealty_listing__langcode' => array('langcode'),
+      'drealty_listing__frontpage' => array('promote', 'status', 'sticky', 'created'),
+      'drealty_listing__status_type' => array('status', 'type', 'lid'),
     );
 
-    $schema['node_field_revision']['indexes'] += array(
-      'node__default_langcode' => array('default_langcode'),
-      'node__langcode' => array('langcode'),
+    $schema['drealty_listing_field_revision']['indexes'] += array(
+      'drealty_listing__default_langcode' => array('default_langcode'),
+      'drealty_listing__langcode' => array('langcode'),
     );
 
     return $schema;
