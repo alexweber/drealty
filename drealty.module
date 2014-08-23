@@ -96,3 +96,23 @@ function drealty_get_type_label(ListingInterface $listing) {
   $type = entity_load('drealty_listing_type', $listing->bundle());
   return $type ? $type->label() : FALSE;
 }
+
+/**
+ * Finds the last time a listing was changed.
+ *
+ * @param $lid
+ *   The ID of a listing.
+ * @param string $langcode
+ *   (optional) The language the listing has been last modified in. Defaults to the
+ *   listing language.
+ *
+ * @return string
+ *   A unix timestamp indicating the last time the listing was changed.
+ *
+ * @todo Remove once https://drupal.org/node/2002180 is resolved. It's only used
+ *       for validation, which will be done by EntityChangedConstraintValidator.
+ */
+function drealty_listing_last_changed($lid, $langcode = NULL) {
+  $changed = \Drupal::entityManager()->getStorage('drealty_listing')->loadUnchanged($lid)->getChangedTime();
+  return $changed ? $changed : FALSE;
+}
