@@ -360,3 +360,24 @@ function drealty_list_permissions($type) {
   );
   return $perms;
 }
+
+/**
+ * Implements hook_modules_uninstalled().
+ */
+function drealty_modules_uninstalled($modules) {
+  // Remove module-specific settings from all listing types.
+  $config_names = \Drupal::configFactory()->listAll('drealty.type.');
+  foreach ($config_names as $config_name) {
+    $config = \Drupal::config($config_name);
+    $changed = FALSE;
+    foreach ($modules as $module) {
+      if ($config->get('settings.' . $module)) {
+        $config->clear('settings.' . $module);
+        $changed = TRUE;
+      }
+    }
+    if ($changed) {
+      $config->save();
+    }
+  }
+}
