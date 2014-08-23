@@ -1,0 +1,28 @@
+drealty.connection_list:
+  path: '/admin/drealty/connections'
+  defaults:
+    _entity_list: 'drealty_connection'
+    _title: 'DRealty Connections'
+  requirements:
+    _permission: 'administer drealty connections'
+drealty.connection_add:
+  path: '/admin/drealty/connections/add'
+  defaults:
+    _entity_form: 'drealty.add'
+    _title: 'Add a new connection'
+  requirements:
+    _permission: 'administer drealty connections'
+drealty.connection_edit:
+  path: '/admin/drealty/connections/edit/{drealty_connection}'
+  defaults:
+    _entity_form: 'drealty.edit'
+    _title: 'Edit connection'
+  requirements:
+    _permission: 'administer drealty connections'
+drealty.connection_delete:
+  path: '/admin/drealty/connections/delete/{drealty_connection}'
+  defaults:
+    _entity_form: 'drealty.delete'
+    _title: 'Delete connection'
+  requirements:
+    _permission: 'administer drealty connections'
