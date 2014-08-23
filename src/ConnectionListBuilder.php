@@ -27,7 +27,7 @@ class ConnectionListBuilder extends ConfigEntityListBuilder {
    */
   public function buildRow(EntityInterface $entity) {
     // ID.
-    $row['color'] = $entity->id;
+    $row['id'] = $entity->id;
 
     // Label.
     $row['label'] = $this->getLabel($entity);
