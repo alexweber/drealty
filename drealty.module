@@ -326,7 +326,7 @@ function drealty_listing_title_list($result, $title = NULL) {
 /**
  * Helper function to generate standard listing permission list for a given type.
  *
- * @param $name
+ * @param $type
  *   The machine name of the listing type.
  *
  * @return array
@@ -335,29 +335,29 @@ function drealty_listing_title_list($result, $title = NULL) {
 function drealty_list_permissions($type) {
   // Build standard list of listing permissions for this type.
   $perms = array(
-    "create {$type->type} listing" => array(
+    "create {$type->type} drealty_listing" => array(
       'title' => t('%type_name: Create new listings', array('%type_name' => $type->name)),
     ),
-    "edit own {$type->type} listing" => array(
+    "edit own {$type->type} drealty_listing" => array(
       'title' => t('%type_name: Edit own listings', array('%type_name' => $type->name)),
     ),
-    "edit any {$type->type} listing" => array(
+    "edit any {$type->type} drealty_listing" => array(
       'title' => t('%type_name: Edit any listing', array('%type_name' => $type->name)),
     ),
-    "delete own {$type->type} listing" => array(
+    "delete own {$type->type} drealty_listing" => array(
       'title' => t('%type_name: Delete own listings', array('%type_name' => $type->name)),
     ),
-    "delete any {$type->type} listing" => array(
+    "delete any {$type->type} drealty_listing" => array(
       'title' => t('%type_name: Delete any listing', array('%type_name' => $type->name)),
     ),
-    "view {$type->type} listing revisions" => array(
+    "view {$type->type} drealty_listing revisions" => array(
       'title' => t('%type_name: View listing revisions', array('%type_name' => $type->name)),
     ),
-    "revert {$type->type} listing revisions" => array(
+    "revert {$type->type} drealty_listing revisions" => array(
       'title' => t('%type_name: Revert listing revisions', array('%type_name' => $type->name)),
       'description' => t('Role requires permission <em>view revisions</em> and <em>edit rights</em> for listings in question, or <em>administer drealty listings</em>.'),
     ),
-    "delete {$type->type} listing revisions" => array(
+    "delete {$type->type} drealty_listing revisions" => array(
       'title' => t('%type_name: Delete listing revisions', array('%type_name' => $type->name)),
       'description' => t('Role requires permission to <em>view revisions</em> and <em>delete rights</em> for listings in question, or <em>administer drealty listings</em>.'),
     ),
