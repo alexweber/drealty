@@ -81,3 +81,10 @@ drealty.listing_list:
     _title: 'DRealty Listings'
   requirements:
     _permission: 'access administration pages'
+
+drealty.multiple_delete_confirm:
+  path: '/admin/content/drealty/delete'
+  defaults:
+    _form: '\Drupal\drealty\Form\DeleteMultiple'
+  requirements:
+    _permission: 'administer drealty listings'
