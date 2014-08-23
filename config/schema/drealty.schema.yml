@@ -14,3 +14,47 @@ drealty.drealty_connection.*:
       type: label
       label: 'Name'
       translatable: true
+
+drealty.type.*:
+  type: config_entity
+  label: 'Listing type'
+  mapping:
+    name:
+      type: label
+      label: 'Name'
+    type:
+      type: string
+      label: 'Machine-readable name'
+    description:
+      type: text
+      label: 'Description'
+    help:
+      type: text
+      label: 'Explanation or submission guidelines'
+    settings:
+      type: mapping
+      label: 'Settings'
+      mapping:
+        drealty:
+          type: drealty.settings.drealty
+
+drealty.settings.drealty:
+  type: mapping
+  label: 'Listing type settings'
+  mapping:
+    options:
+      type: mapping
+      label: 'Publishing options'
+      mapping:
+        status:
+          type: boolean
+          label: 'Published'
+        promote:
+          type: boolean
+          label: 'Promoted to front page'
+        sticky:
+          type: boolean
+          label: 'Sticky at top of lists'
+        revision:
+          type: boolean
+          label: 'Create new revision'
