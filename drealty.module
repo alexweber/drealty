@@ -204,7 +204,7 @@ function drealty_get_type_label(ListingInterface $listing) {
 /**
  * Finds the last time a listing was changed.
  *
- * @param $lid
+ * @param $id
  *   The ID of a listing.
  * @param string $langcode
  *   (optional) The language the listing has been last modified in. Defaults to the
@@ -216,8 +216,8 @@ function drealty_get_type_label(ListingInterface $listing) {
  * @todo Remove once https://drupal.org/node/2002180 is resolved. It's only used
  *       for validation, which will be done by EntityChangedConstraintValidator.
  */
-function drealty_listing_last_changed($lid, $langcode = NULL) {
-  $changed = \Drupal::entityManager()->getStorage('drealty_listing')->loadUnchanged($lid)->getChangedTime();
+function drealty_listing_last_changed($id, $langcode = NULL) {
+  $changed = \Drupal::entityManager()->getStorage('drealty_listing')->loadUnchanged($id)->getChangedTime();
   return $changed ? $changed : FALSE;
 }
 
@@ -316,7 +316,7 @@ function drealty_listing_title_list($result, $title = NULL) {
   $num_rows = FALSE;
   foreach ($result as $listing) {
     // Do not use $listing->label() here, because $listing comes from the database.
-    $items[] = l($listing->title, 'drealty_listing/' . $listing->lid);
+    $items[] = l($listing->title, 'drealty_listing/' . $listing->id);
     $num_rows = TRUE;
   }
 

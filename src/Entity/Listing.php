@@ -42,7 +42,7 @@ use Drupal\user\UserInterface;
  *   fieldable = TRUE,
  *   translatable = TRUE,
  *   entity_keys = {
- *     "id" = "lid",
+ *     "id" = "id",
  *     "revision" = "vid",
  *     "bundle" = "type",
  *     "label" = "title",

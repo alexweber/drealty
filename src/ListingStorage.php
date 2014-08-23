@@ -24,8 +24,8 @@ class ListingStorage extends ContentEntityDatabaseStorage implements ListingStor
    */
   public function revisionIds(ListingInterface $listing) {
     return $this->database->query(
-      'SELECT vid FROM {drealty_listing_revision} WHERE lid=:lid ORDER BY vid',
-      array(':lid' => $listing->id())
+      'SELECT vid FROM {drealty_listing_revision} WHERE id=:id ORDER BY vid',
+      array(':id' => $listing->id())
     )->fetchCol();
   }
 
@@ -95,7 +95,7 @@ class ListingStorage extends ContentEntityDatabaseStorage implements ListingStor
       'drealty_listing__default_langcode' => array('default_langcode'),
       'drealty_listing__langcode' => array('langcode'),
       'drealty_listing__frontpage' => array('promote', 'status', 'sticky', 'created'),
-      'drealty_listing__status_type' => array('status', 'type', 'lid'),
+      'drealty_listing__status_type' => array('status', 'type', 'id'),
     );
 
     $schema['drealty_listing_field_revision']['indexes'] += array(
