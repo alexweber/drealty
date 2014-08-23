@@ -10,6 +10,7 @@ namespace Drupal\drealty\Entity;
 use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\drealty\ListingTypeInterface;
+use Drupal\Component\Utility\NestedArray;
 
 /**
  * Defines the Listing type configuration entity.
