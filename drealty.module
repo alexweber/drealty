@@ -5,8 +5,9 @@
  * DRealty module.
  */
 
-use \Drupal\drealty\Entity\ConnectionEntity;
-use \Drupal\drealty\Entity\ListingType;
+use Drupal\drealty\Entity\ConnectionEntity;
+use Drupal\drealty\Entity\ListingType;
+use Drupal\drealty\ListingInterface;
 
 /**
  * Implements hook_permission().
@@ -78,4 +79,20 @@ function drealty_toolbar_alter(&$items) {
  */
 function drealty_listing_type_update_listings($old_id, $new_id) {
   return \Drupal::entityManager()->getStorage('drealty_listing')->updateType($old_id, $new_id);
+}
+
+/**
+ * Returns the listing type label for the passed listing.
+ *
+ * @param \Drupal\drealty\ListingInterface $listing
+ *   A listing entity to return the listing type's label for.
+ *
+ * @return string|false
+ *   The listing type label or FALSE if the listing type is not found.
+ *
+ * @TODO use the generic helper when available
+ */
+function drealty_get_type_label(ListingInterface $listing) {
+  $type = entity_load('drealty_listing_type', $listing->bundle());
+  return $type ? $type->label() : FALSE;
 }
