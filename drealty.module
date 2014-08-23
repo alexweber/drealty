@@ -107,6 +107,23 @@ function drealty_permission() {
       'title' => t('Access the Listing overview page'),
       'description' => t('Get an overview of <a href="!url">all listings</a>.', array('!url' => \Drupal::url('drealty.listing_list'))),
     ),
+    'view drealty listings' => array(
+      'title' => t('View published listings'),
+    ),
+    'view own unpublished drealty listings' => array(
+      'title' => t('View own unpublished listings'),
+    ),
+    'view all drealty listing revisions' => array(
+      'title' => t('View all listing revisions'),
+    ),
+    'revert all drealty listing revisions' => array(
+      'title' => t('Revert all listing revisions'),
+      'description' => t('Role requires permission <em>view revisions</em> and <em>edit rights</em> for listings in question, or <em>administer drealty listings</em>.'),
+    ),
+    'delete all drealty listing revisions' => array(
+      'title' => t('Delete all listing revisions'),
+      'description' => t('Role requires permission to <em>view revisions</em> and <em>delete rights</em> for listings in question, or <em>administer drealty listings</em>.'),
+    ),
   );
 
   return $perms;
