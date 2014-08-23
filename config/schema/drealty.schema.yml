@@ -1,5 +1,4 @@
-# Schema for the configuration files of the DRealty module.
-
+# Connection config entity.
 drealty.drealty_connection.*:
   type: mapping
   label: 'DRealty Connection'
@@ -15,6 +14,7 @@ drealty.drealty_connection.*:
       label: 'Name'
       translatable: true
 
+# Listing type config entity.
 drealty.type.*:
   type: config_entity
   label: 'Listing type'
@@ -38,6 +38,7 @@ drealty.type.*:
         drealty:
           type: drealty.settings.drealty
 
+# Listing type module settings.
 drealty.settings.drealty:
   type: mapping
   label: 'Listing type settings'
