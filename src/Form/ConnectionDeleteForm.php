@@ -2,17 +2,17 @@
 
 /**
  * @file
- * Contains \Drupal\flower\Form\ConnectionDeleteForm.
+ * Contains \Drupal\drealty\Form\ConnectionDeleteForm.
  */
 
-namespace Drupal\flower\Form;
+namespace Drupal\drealty\Form;
 
 use Drupal\Core\Entity\EntityConfirmFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 
 /**
- * Form that handles the removal of flower entities.
+ * Form that handles the removal of DRealty Connection entities.
  */
 class ConnectionDeleteForm extends EntityConfirmFormBase {
 
