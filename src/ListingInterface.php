@@ -122,7 +122,7 @@ interface ListingInterface extends ContentEntityInterface, EntityChangedInterfac
   public function setPublished($published);
 
   /**
-   * Returns the node revision creation timestamp.
+   * Returns the listing revision creation timestamp.
    *
    * @return int
    *   The UNIX timestamp of when this revision was created.
@@ -130,18 +130,18 @@ interface ListingInterface extends ContentEntityInterface, EntityChangedInterfac
   public function getRevisionCreationTime();
 
   /**
-   * Sets the node revision creation timestamp.
+   * Sets the listing revision creation timestamp.
    *
    * @param int $timestamp
    *   The UNIX timestamp of when this revision was created.
    *
-   * @return \Drupal\node\NodeInterface
-   *   The called node entity.
+   * @return \Drupal\drealty\NodeInterface
+   *   The called listing entity.
    */
   public function setRevisionCreationTime($timestamp);
 
   /**
-   * Returns the node revision author.
+   * Returns the listing revision author.
    *
    * @return \Drupal\user\UserInterface
    *   The user entity for the revision author.
@@ -149,21 +149,21 @@ interface ListingInterface extends ContentEntityInterface, EntityChangedInterfac
   public function getRevisionAuthor();
 
   /**
-   * Sets the node revision author.
+   * Sets the listing revision author.
    *
    * @param int $uid
    *   The user ID of the revision author.
    *
-   * @return \Drupal\node\NodeInterface
-   *   The called node entity.
+   * @return \Drupal\drealty\ListingInterface
+   *   The called listing entity.
    */
   public function setRevisionAuthorId($uid);
 
   /**
-   * Prepares the langcode for a node.
+   * Prepares the langcode for a listing.
    *
    * @return string
-   *   The langcode for this node.
+   *   The langcode for this listing.
    */
   public function prepareLangcode();
 
