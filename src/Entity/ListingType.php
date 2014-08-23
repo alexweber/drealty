@@ -23,7 +23,7 @@ use Drupal\Component\Utility\NestedArray;
  *     "form" = {
  *       "add" = "Drupal\drealty\ListingTypeForm",
  *       "edit" = "Drupal\drealty\ListingTypeForm",
- *       "delete" = "Drupal\drealty\Form\ListingTypeDeleteConfirm"
+ *       "delete" = "Drupal\drealty\Form\ListingTypeDeleteForm"
  *     },
  *     "list_builder" = "Drupal\drealty\ListingTypeListBuilder",
  *   },
