@@ -16,7 +16,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * Provides a form for listing type deletion.
  */
-class ListingTypeDeleteConfirm extends EntityConfirmFormBase {
+class ListingTypeDeleteForm extends EntityConfirmFormBase {
 
   /**
    * The database connection.
