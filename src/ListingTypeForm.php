@@ -58,14 +58,6 @@ class ListingTypeForm extends EntityForm {
       )),
     );
 
-    $form['description'] = array(
-      '#title' => t('Description'),
-      '#type' => 'textarea',
-      '#default_value' => $type->description,
-      '#description' => t('Describe this listing type. The text will be displayed on the <em>Add listing</em> page.'),
-    );
-
-    // @TODO verify that this works
     $form['additional_settings'] = array(
       '#type' => 'vertical_tabs',
       '#attached' => array(
@@ -73,12 +65,26 @@ class ListingTypeForm extends EntityForm {
       ),
     );
 
-    $form['submission']['help']  = array(
+    $form['description_tab'] = array(
+      '#group' => 'additional_settings',
+      '#type' => 'details',
+      '#title' => t('Description & Help'),
+    );
+
+    $form['description_tab']['description'] = array(
+      '#title' => t('Description'),
+      '#type' => 'textarea',
+      '#default_value' => $type->description,
+      '#description' => t('Describe this listing type. The text will be displayed on the <em>Add listing</em> page.'),
+    );
+
+    $form['description_tab']['help']  = array(
       '#type' => 'textarea',
       '#title' => t('Explanation or submission guidelines'),
       '#default_value' => $type->help,
       '#description' => t('This text will be displayed at the top of the page when creating or editing listings of this type.'),
     );
+
     $form['workflow'] = array(
       '#type' => 'details',
       '#title' => t('Publishing options'),
