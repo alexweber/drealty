@@ -45,3 +45,18 @@ function drealty_toolbar_alter(&$items) {
     $items['administration']['tray']['#attached']['css'][] = drupal_get_path('module', 'drealty') . '/assets/css/drealty.admin.css';
   }
 }
+
+/**
+ * Updates all listings of one type to be of another type.
+ *
+ * @param string $old_id
+ *   The current listing type of the listings.
+ * @param string $new_id
+ *   The new listing type of the listings.
+ *
+ * @return
+ *   The number of listings whose listing type field was modified.
+ */
+function drealty_listing_type_update_listings($old_id, $new_id) {
+  return \Drupal::entityManager()->getStorage('drealty_listing')->updateType($old_id, $new_id);
+}
