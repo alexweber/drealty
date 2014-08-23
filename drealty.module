@@ -5,6 +5,8 @@
  * DRealty module.
  */
 
+use \Drupal\drealty\Entity\ConnectionEntity;
+
 /**
  * Implements hook_permission().
  */
@@ -17,4 +19,14 @@ function drealty_permission() {
   );
 
   return $return;
+}
+
+/**
+ * Menu argument loader. Returns a DRealty Connection entity.
+ *
+ * @param $id
+ * @return \Drupal\drealty\ConnectionInterface;
+ */
+function drealty_connection_load($id) {
+  return ConnectionEntity::load($id);
 }
