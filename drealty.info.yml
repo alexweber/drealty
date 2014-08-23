@@ -1,0 +1,10 @@
+name: DRealty
+type: module
+description: 'Drupal RETS Real Estate Framework.'
+package: Real Estate
+version: 8.x-4.x-dev
+core: 8.x
+configure: drealty.admin
+project: 'drealty'
+dependencies:
+  - entity
