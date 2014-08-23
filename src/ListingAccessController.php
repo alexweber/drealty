@@ -47,7 +47,7 @@ class ListingAccessController extends EntityAccessController {
     /** @var \Drupal\drealty\ListingInterface $listing */
     /** @var \Drupal\drealty\ListingInterface  $translation */
     $translation = $listing->getTranslation($langcode);
-    // Fetch information from the node object if possible.
+    // Fetch information from the listing object if possible.
     $status = $translation->isPublished();
     $uid = $translation->getOwnerId();
 
