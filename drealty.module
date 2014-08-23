@@ -90,29 +90,26 @@ function drealty_theme() {
  * Implements hook_permission().
  */
 function drealty_permission() {
-  $return = array();
-
-  $return['administer drealty connections'] = array(
-    'title' => t('Administer DRealty Connections'),
-    'restrict access' => TRUE,
+  $perms = array(
+    'administer drealty connections' => array(
+      'title' => t('Administer DRealty Connections'),
+      'restrict access' => TRUE,
+    ),
+    'administer drealty listing types' => array(
+      'title' => t('Administer DRealty Listing Types'),
+      'restrict access' => TRUE,
+    ),
+    'administer drealty listings' => array(
+      'title' => t('Administer DRealty Listings'),
+      'restrict access' => TRUE,
+    ),
+    'access drealty listing overview' => array(
+      'title' => t('Access the Listing overview page'),
+      'description' => t('Get an overview of <a href="!url">all listings</a>.', array('!url' => \Drupal::url('drealty.listing_list'))),
+    ),
   );
 
-  $return['administer drealty listing types'] = array(
-    'title' => t('Administer DRealty Listing Types'),
-    'restrict access' => TRUE,
-  );
-
-  $return['administer drealty listings'] = array(
-    'title' => t('Administer DRealty Listings'),
-    'restrict access' => TRUE,
-  );
-
-  $return['access drealty listing overview'] = array(
-    'title' => t('Access the Listing overview page'),
-    'description' => t('Get an overview of <a href="!url">all listings</a>.', array('!url' => \Drupal::url('drealty.listing_list'))),
-  );
-
-  return $return;
+  return $perms;
 }
 
 /**
