@@ -19,9 +19,13 @@ function drealty_permission() {
     'restrict access' => TRUE,
   );
 
-
   $return['administer drealty listing types'] = array(
     'title' => t('Administer DRealty Listing Types'),
+    'restrict access' => TRUE,
+  );
+
+  $return['administer drealty listings'] = array(
+    'title' => t('Administer DRealty Listings'),
     'restrict access' => TRUE,
   );
 
