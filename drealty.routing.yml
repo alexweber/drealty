@@ -1,3 +1,10 @@
+drealty.admin:
+  path: '/admin/drealty'
+  defaults:
+    _content: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'DRealty'
+  requirements:
+    _permission: 'access administration pages'
 drealty.connection_list:
   path: '/admin/drealty/connections'
   defaults:
