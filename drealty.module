@@ -6,6 +6,7 @@
  */
 
 use \Drupal\drealty\Entity\ConnectionEntity;
+use \Drupal\drealty\Entity\ListingType;
 
 /**
  * Implements hook_permission().
@@ -35,6 +36,16 @@ function drealty_permission() {
  */
 function drealty_connection_load($id) {
   return ConnectionEntity::load($id);
+}
+
+/**
+ * Menu argument loader. Returns a DRealty Listing Type entity.
+ *
+ * @param $id
+ * @return \Drupal\drealty\ListingTypeInterface;
+ */
+function drealty_listing_type_load($id) {
+  return ListingType::load($id);
 }
 
 /**
