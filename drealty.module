@@ -246,3 +246,27 @@ function drealty_entity_extra_field_info() {
 
   return $extra;
 }
+
+/**
+ * Gathers a listing of links to listings.
+ *
+ * @param $result
+ *   A database result object from a query to fetch listing entities.
+ * @param $title
+ *   (optional) A heading for the resulting list.
+ *
+ * @return array|FALSE
+ *   A renderable array containing a list of linked listing titles fetched from
+ *   $result, or FALSE if there are no rows in $result.
+ */
+function drealty_listing_title_list($result, $title = NULL) {
+  $items = array();
+  $num_rows = FALSE;
+  foreach ($result as $listing) {
+    // Do not use $listing->label() here, because $listing comes from the database.
+    $items[] = l($listing->title, 'drealty_listing/' . $listing->lid);
+    $num_rows = TRUE;
+  }
+
+  return $num_rows ? array('#theme' => 'item_list__drealty_listing', '#items' => $items, '#title' => $title) : FALSE;
+}
