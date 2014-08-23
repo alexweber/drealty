@@ -1,0 +1,31 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a listing edit form.
+ *
+ * Two column template for the listing add/edit form.
+ *
+ * This template will be used when a listing edit form specifies 'drealty_listing_edit_form'
+ * as its #theme callback.  Otherwise, by default, listing add/edit forms will be
+ * themed by theme_form().
+ *
+ * Available variables:
+ * - form: The listing add/edit form.
+ *
+ * @see seven_form_drealty_listing_form_alter()
+ * @TODO verify this is relevant and do something?
+ *
+ * @ingroup themeable
+ */
+#}
+<div class="layout-drealty-listing-form clearfix">
+  <div class="layout-region layout-region-drealty-listing-main">
+    {{ form|without('advanced', 'actions') }}
+  </div>
+  <div class="layout-region layout-region-drealty-listing-secondary">
+    {{ form.advanced }}
+  </div>
+  <div class="layout-region layout-region-drealty-listing-footer">
+    {{ form.actions }}
+  </div>
+</div>

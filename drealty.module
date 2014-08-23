@@ -62,6 +62,31 @@ function drealty_help($route_name, RouteMatchInterface $route_match) {
 }
 
 /**
+ * Implements hook_theme().
+ */
+function drealty_theme() {
+  return array(
+    'drealty_listing' => array(
+      'render element' => 'elements',
+      'template' => 'drealty-listing',
+    ),
+    'drealty_listing_add_list' => array(
+      'variables' => array('content' => NULL),
+      'file' => 'drealty.pages.inc',
+      'template' => 'drealty-listing-add-list',
+    ),
+    'drealty_listing_edit_form' => array(
+      'render element' => 'form',
+      'template' => 'drealty-listing-edit-form',
+    ),
+    'field__drealty_listing__title' => array(
+      'base hook' => 'field',
+      'template' => 'field--drealty-listing--title',
+    ),
+  );
+}
+
+/**
  * Implements hook_permission().
  */
 function drealty_permission() {
