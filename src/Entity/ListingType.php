@@ -155,17 +155,17 @@ class ListingType extends ConfigEntityBundleBase implements ListingTypeInterface
     parent::preCreate($storage, $values);
 
     // Ensure default values are set.
-    if (!isset($values['settings']['drealty_listing'])) {
-      $values['settings']['drealty_listing'] = array();
+    if (!isset($values['settings']['drealty'])) {
+      $values['settings']['drealty'] = array();
     }
-    $values['settings']['drealty_listing'] = NestedArray::mergeDeep(array(
+    $values['settings']['drealty'] = NestedArray::mergeDeep(array(
       'options' => array(
         'status' => TRUE,
         'promote' => TRUE,
         'sticky' => FALSE,
         'revision' => FALSE,
       ),
-    ), $values['settings']['drealty_listing']);
+    ), $values['settings']['drealty']);
   }
 
 }
