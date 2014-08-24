@@ -108,15 +108,15 @@ class ListingRevisionAccessCheck implements AccessInterface {
    */
   public function checkAccess(ListingInterface $listing, AccountInterface $account, $op = 'view', $langcode = NULL) {
     $map = array(
-      'view' => 'view all revisions',
-      'update' => 'revert all revisions',
-      'delete' => 'delete all revisions',
+      'view' => 'view all drealty listing revisions',
+      'update' => 'revert all drealty listing revisions',
+      'delete' => 'delete all drealty listing revisions',
     );
     $bundle = $listing->bundle();
     $type_map = array(
-      'view' => "view $bundle revisions",
-      'update' => "revert $bundle revisions",
-      'delete' => "delete $bundle revisions",
+      'view' => "view {$bundle} revisions",
+      'update' => "revert {$bundle} revisions",
+      'delete' => "delete {$bundle} revisions",
     );
 
     if (!$listing || !isset($map[$op]) || !isset($type_map[$op])) {
