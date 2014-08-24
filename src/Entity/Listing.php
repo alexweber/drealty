@@ -55,6 +55,7 @@ use Drupal\user\UserInterface;
  *     "canonical" = "drealty.listing_view",
  *     "delete-form" = "entity.drealty_listing.delete_form",
  *     "edit-form" = "entity.drealty_listing.edit_form",
+ *     "refresh-form" = "entity.drealty_listing.refresh_form",
  *     "version-history" = "drealty.listing_revision_overview",
  *     "admin-form" = "entity.drealty_listing_type.edit_form"
  *   }
