@@ -13,12 +13,12 @@ Milestone 1
 * Fix Listing Type config entity
 * Fix Listing content entity
 * Figure out suporting D7 module classes (drealtyConnection, drealtyMetaData, etc) and port as appropriate
-* Classes/Resources/Mappings as config entities?
+* Classes/Resources/Mappings/etc as config entities?
 * Use PHPRETS via Composer's autoloader
 
 Milestone 2
 ---
-* Implements RETS Refresh "operation" for listings
+* Implement RETS Refresh for individual listings
 * Views integration
 * Devel integration
 * Token integration
@@ -26,3 +26,8 @@ Milestone 2
 * Conditions plugin
 * Entity Reference plugin
 * Search integration
+
+Milestone 3
+---
+* Port Daemon/Drush integration
+* Leverage States API & do cron magic to auto update feeds?
