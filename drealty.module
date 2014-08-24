@@ -7,7 +7,9 @@
 
 use Drupal\drealty\Entity\Connection;
 use Drupal\drealty\Entity\ListingType;
+use Drupal\drealty\Entity\RetsResource;
 use Drupal\drealty\ListingInterface;
+//use Drupal\drealty\RetsResourceInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\language\Entity\Language as LanguageEntity;
 
@@ -119,6 +121,10 @@ function drealty_permission() {
       'title' => t('Administer DRealty Connections'),
       'restrict access' => TRUE,
     ),
+    'administer drealty resources' => array(
+      'title' => t('Administer RETS Resources'),
+      'restrict access' => TRUE,
+    ),
     'administer drealty listing types' => array(
       'title' => t('Administer DRealty Listing Types'),
       'restrict access' => TRUE,
@@ -168,6 +174,18 @@ function drealty_permission() {
  */
 function drealty_connection_load($id) {
   return Connection::load($id);
+}
+
+/**
+ * Menu argument loader. Returns a DRealty Resource entity.
+ *
+ * @param $id
+ * @return \Drupal\drealty\RetsResourceInterface
+ *
+ * @see \Drupal\drealty\Form\ResourceForm::Form()
+ */
+function drealty_resource_load($id) {
+  return RetsResource::load($id);
 }
 
 /**

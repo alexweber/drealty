@@ -149,7 +149,7 @@ entity.drealty_listing.refresh_form:
   options:
     _drealty_operation_route: TRUE
 
-# Revisions.
+# Listing Revisions.
 drealty.listing_revision_overview:
   path: '/drealty_listing/{drealty_listing}/revisions'
   defaults:
@@ -188,7 +188,7 @@ drealty.listing_revision_delete_confirm:
   options:
     _drealty_operation_route: TRUE
 
-# Actions.
+# Listing Actions.
 drealty.multiple_delete_confirm:
   path: '/admin/content/drealty/delete'
   defaults:
@@ -202,3 +202,36 @@ drealty.multiple_refresh_confirm:
     _form: '\Drupal\drealty\Form\RefreshMultiple'
   requirements:
     _permission: 'administer drealty listings'
+
+# RETS Resources.
+drealty_resource.list:
+  path: '/admin/drealty/resources'
+  defaults:
+    _entity_list: 'drealty_resource'
+    _title: 'RETS Resources'
+  requirements:
+    _permission: 'administer drealty resources'
+
+drealty_resource.add:
+  path: '/admin/drealty/resources/add'
+  defaults:
+    _entity_form: 'drealty_resource.add'
+    _title: 'Add RETS Resource'
+  requirements:
+    _permission: 'administer drealty resources'
+
+drealty_resource.edit:
+  path: '/admin/drealty/resources/{drealty_resource}'
+  defaults:
+    _entity_form: 'drealty_resource.edit'
+    _title: 'Edit RETS Resource'
+  requirements:
+    _permission: 'administer drealty resources'
+
+drealty_resource.delete:
+  path: '/admin/drealty/resources/{drealty_resource}/delete'
+  defaults:
+    _entity_form: 'drealty_resource.delete'
+    _title: 'Delete RETS Resource'
+  requirements:
+    _permission: 'administer drealty resources'

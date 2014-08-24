@@ -15,3 +15,9 @@ drealty.add_page:
   title: 'Add listing'
   appears_on:
     - drealty.listing_list
+
+drealty.resource_add:
+  route_name: 'drealty_resource.add'
+  title: 'Add Resource'
+  appears_on:
+    - drealty_resource.list
