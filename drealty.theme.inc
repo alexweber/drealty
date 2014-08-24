@@ -80,8 +80,8 @@ function template_preprocess_drealty_listing(&$variables) {
   // Gather listing classes.
   $variables['attributes']['class'][] = 'drealty-listing';
   $variables['attributes']['class'][] = drupal_html_class('listing--type-' . $listing->bundle());
-  if ($listing->isPromoted()) {
-    $variables['attributes']['class'][] = 'listing--promoted';
+  if ($listing->isFeatured()) {
+    $variables['attributes']['class'][] = 'listing--featured';
   }
   if (!$listing->isPublished()) {
     $variables['attributes']['class'][] = 'listing--unpublished';

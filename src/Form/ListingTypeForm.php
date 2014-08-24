@@ -96,7 +96,7 @@ class ListingTypeForm extends EntityForm {
       '#default_value' => $drealty_settings['options'],
       '#options' => array(
         'status' => t('Published'),
-        'promote' => t('Promoted to front page'),
+        'featured' => t('Featured'),
         'revision' => t('Create new revision'),
       ),
       '#description' => t('Users with the <em>Administer DRealty Listings</em> permission will be able to override these options.'),

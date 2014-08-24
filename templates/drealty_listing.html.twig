@@ -11,7 +11,7 @@
  *   - createdtime: Formatted creation date. Preprocess functions can
  *     reformat it by calling format_date() with the desired parameters on
  *     $variables['drealty_listing']->getCreatedTime().
- *   - promoted: Whether the listing is promoted to the front page.
+ *   - featured: Whether the listing is featured to the front page.
  *   - published: Whether the listing is published.
  * - label: The title of the listing.
  * - content: All listing items. Use {{ content }} to print them all,
@@ -38,7 +38,7 @@
  *     full: "drealty-listing--view-mode-full".
  *   - drealty-listing--preview: Whether a listing is in preview mode.
  *   The following are controlled through the listing publishing options.
- *   - drealty-listing--promoted: Appears on listings promoted to the front page.
+ *   - drealty-listing--featured: Appears on featured listings.
  *   - drealty-listing--unpublished: Appears on unpublished listings visible only to site
  *     admins.
  * - title_prefix: Additional output populated by modules, intended to be

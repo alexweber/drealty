@@ -45,7 +45,7 @@
           return vals.join(', ');
         }
         else {
-          return Drupal.t('Not promoted');
+          return Drupal.t('Not featured');
         }
       });
 

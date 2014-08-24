@@ -22,14 +22,14 @@ const LISTING_NOT_PUBLISHED = 0;
 const LISTING_PUBLISHED = 1;
 
 /**
- * Denotes that the listing is not promoted to the front page.
+ * Denotes that the listing is not featured.
  */
-const LISTING_NOT_PROMOTED = 0;
+const LISTING_NOT_FEATURED = 0;
 
 /**
- * Denotes that the listing is promoted to the front page.
+ * Denotes that the listing is featured.
  */
-const LISTING_PROMOTED = 1;
+const LISTING_FEATURED = 1;
 
 /**
  * Implements hook_help().
@@ -43,7 +43,7 @@ function drealty_help($route_name, RouteMatchInterface $route_match) {
       $output .= '<h3>' . t('Uses') . '</h3>';
       $output .= '<dl>';
       $output .= '<dt>' . t('Creating listings') . '</dt>';
-      $output .= '<dd>' . t('When a new listing is created, the DRealty module records basic information about the listing, including the author, date of creation, and the <a href="!listing-type">Listing type</a>. It also manages the <em>publishing options</em>, which define whether or not the listing is published or promoted. Default settings can be configured for each <a href="!listing-type">type of listing</a> on your site.', array('!listing-type' => \Drupal::url('drealty.listing_type_list'))) . '</dd>';
+      $output .= '<dd>' . t('When a new listing is created, the DRealty module records basic information about the listing, including the author, date of creation, and the <a href="!listing-type">Listing type</a>. It also manages the <em>publishing options</em>, which define whether or not the listing is published or featured. Default settings can be configured for each <a href="!listing-type">type of listing</a> on your site.', array('!listing-type' => \Drupal::url('drealty.listing_type_list'))) . '</dd>';
       $output .= '<dt>' . t('Creating custom listing types') . '</dt>';
       $output .= '<dd>' . t('The DRealty module gives users with the <em>Administer drealty listing types</em> permission the ability to <a href="!listing-new">create new listing types</a> in addition to the default ones already configured. Creating custom listing types allows you the flexibility to add <a href="!field">fields</a> and configure default settings that suit the differing needs of various site listings.', array('!listing-new' => \Drupal::url('drealty.listing_type_add'), '!field' => \Drupal::url('help.page', array('name' => 'field')))) . '</dd>';
       $output .= '<dt>' . t('Administering listings') . '</dt>';

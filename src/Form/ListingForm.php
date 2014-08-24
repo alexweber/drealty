@@ -181,10 +181,10 @@ class ListingForm extends ContentEntityForm {
       '#optional' => TRUE,
     );
 
-    $form['promote'] = array(
+    $form['featured'] = array(
       '#type' => 'checkbox',
-      '#title' => t('Promoted to front page'),
-      '#default_value' => $listing->isPromoted(),
+      '#title' => t('Featured'),
+      '#default_value' => $listing->isFeatured(),
       '#group' => 'options',
       '#access' => $current_user->hasPermission('administer drealty listings'),
     );

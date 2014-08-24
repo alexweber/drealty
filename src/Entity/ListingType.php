@@ -162,7 +162,7 @@ class ListingType extends ConfigEntityBundleBase implements ListingTypeInterface
     $values['settings']['drealty'] = NestedArray::mergeDeep(array(
       'options' => array(
         'status' => TRUE,
-        'promote' => TRUE,
+        'featured' => TRUE,
         'revision' => FALSE,
       ),
     ), $values['settings']['drealty']);

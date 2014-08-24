@@ -89,9 +89,9 @@ drealty.settings.drealty:
         status:
           type: boolean
           label: 'Published'
-        promote:
+        featured:
           type: boolean
-          label: 'Promoted to front page'
+          label: 'Featured'
         revision:
           type: boolean
           label: 'Create new revision'

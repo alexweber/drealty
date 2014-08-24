@@ -63,23 +63,23 @@ interface ListingInterface extends ContentEntityInterface, EntityChangedInterfac
   public function setCreatedTime($timestamp);
 
   /**
-   * Returns the listing promotion status.
+   * Returns the listing featured status.
    *
    * @return bool
-   *   TRUE if the listing is promoted.
+   *   TRUE if the listing is featured.
    */
-  public function isPromoted();
+  public function isFeatured();
 
   /**
-   * Sets the listing promoted status.
+   * Sets the listing featured status.
    *
-   * @param bool $promoted
-   *   TRUE to set this listing to promoted, FALSE to set it to not promoted.
+   * @param bool $featured
+   *   TRUE to set this listing to featured, FALSE to set it to not featured.
    *
    * @return \Drupal\drealty\ListingInterface
    *   The called listing entity.
    */
-  public function setPromoted($promoted);
+  public function setFeatured($featured);
 
   /**
    * Returns the listing published status indicator.

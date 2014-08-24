@@ -207,15 +207,15 @@ class Listing extends ContentEntityBase implements ListingInterface {
   /**
    * {@inheritdoc}
    */
-  public function isPromoted() {
-    return (bool) $this->get('promote')->value;
+  public function isFeatured() {
+    return (bool) $this->get('featured')->value;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function setPromoted($promoted) {
-    $this->set('promote', $promoted ? LISTING_PROMOTED : LISTING_NOT_PROMOTED);
+  public function setFeatured($featured) {
+    $this->set('featured', $featured ? LISTING_FEATURED : LISTING_NOT_FEATURED);
     return $this;
   }
 
@@ -370,8 +370,8 @@ class Listing extends ContentEntityBase implements ListingInterface {
       ->setRevisionable(TRUE)
       ->setTranslatable(TRUE);
 
-    $fields['promote'] = FieldDefinition::create('boolean')
-      ->setLabel(t('Promote'))
+    $fields['featured'] = FieldDefinition::create('boolean')
+      ->setLabel(t('Featured'))
       ->setDescription(t('A boolean indicating whether the listing should be displayed on the front page.'))
       ->setRevisionable(TRUE)
       ->setTranslatable(TRUE);
@@ -423,8 +423,8 @@ class Listing extends ContentEntityBase implements ListingInterface {
     $options = $listing_type->getModuleSettings('drealty')['options'];
     $fields['status'] = clone $base_field_definitions['status'];
     $fields['status']->setDefaultValue(!empty($options['status']) ? LISTING_PUBLISHED : LISTING_NOT_PUBLISHED);
-    $fields['promote'] = clone $base_field_definitions['promote'];
-    $fields['promote']->setDefaultValue(!empty($options['promote']) ? LISTING_PROMOTED : LISTING_NOT_PROMOTED);
+    $fields['featured'] = clone $base_field_definitions['featured'];
+    $fields['featured']->setDefaultValue(!empty($options['featured']) ? LISTING_FEATURED : LISTING_NOT_FEATURED);
 
     return $fields;
   }
