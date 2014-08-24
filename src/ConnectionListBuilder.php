@@ -58,7 +58,7 @@ class ConnectionListBuilder extends ConfigEntityListBuilder {
     $operations['status'] = array(
       'title' => t('Status'),
       'weight' => 0,
-    ) + $entity->urlInfo('canonical')->toArray();
+    ) + $entity->urlInfo('status-form')->toArray();
 
     return $operations;
   }

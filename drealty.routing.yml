@@ -24,11 +24,11 @@ drealty.connection_add:
   requirements:
     _permission: 'administer drealty connections'
 
-entity.drealty_connection.canonical:
-  path: '/admin/drealty/connections/view/{drealty_connection}'
+entity.drealty_connection.status_form:
+  path: '/admin/drealty/connections/status/{drealty_connection}'
   defaults:
-    _content: '\Drupal\drealty\Controller\ConnectionViewController::view'
-    _title: 'View connection'
+    _entity_form: 'drealty_connection.status'
+    _title: 'Connection status'
   requirements:
     _permission: 'administer drealty connections'
 

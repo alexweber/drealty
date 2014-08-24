@@ -22,7 +22,8 @@ use Drupal\drealty\ConnectionInterface;
  *     "form" = {
  *       "add" = "Drupal\drealty\ConnectionForm",
  *       "edit" = "Drupal\drealty\ConnectionForm",
- *       "delete" = "Drupal\drealty\Form\ConnectionDeleteForm"
+ *       "delete" = "Drupal\drealty\Form\ConnectionDeleteForm",
+ *       "status" = "Drupal\drealty\Form\ConnectionStatusForm",
  *     }
  *   },
  *   config_prefix = "drealty_connection",
@@ -33,7 +34,7 @@ use Drupal\drealty\ConnectionInterface;
  *     "status" = "status"
  *   },
  *   links = {
- *     "canonical" = "entity.drealty_connection.canonical",
+ *     "status-form" = "entity.drealty_connection.status_form",
  *     "edit-form" = "entity.drealty_connection.edit_form",
  *     "delete-form" = "entity.drealty_connection.delete_form"
  *   }
