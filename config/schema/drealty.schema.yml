@@ -13,6 +13,9 @@ drealty.drealty_connection.*:
       type: label
       label: 'Name'
       translatable: true
+    status:
+      type: boolean
+      label: 'Active'
     rets:
       type: float
       label: 'RETS'

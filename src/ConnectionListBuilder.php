@@ -19,6 +19,7 @@ class ConnectionListBuilder extends ConfigEntityListBuilder {
   public function buildHeader() {
     $header['id'] = $this->t('ID');
     $header['label'] = $this->t('Name');
+    $header['status'] = $this->t('Active');
     return $header + parent::buildHeader();
   }
 
@@ -31,6 +32,9 @@ class ConnectionListBuilder extends ConfigEntityListBuilder {
 
     // Label.
     $row['label'] = $this->getLabel($entity);
+
+    // Status.
+    $row['status'] = $entity->status ? t('Yes') : t('No');
 
     return $row + parent::buildRow($entity);
   }
