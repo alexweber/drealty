@@ -83,16 +83,16 @@ class ListingController extends ControllerBase implements ContainerInjectionInte
    * Provides the listing submission form.
    *
    * @param \Drupal\drealty\ListingTypeInterface $listing_type
-   *   The listing type entity for the node.
+   *   The listing type entity for the listing.
    *
    * @return array
    *   A listing submission form.
    */
   public function add(ListingTypeInterface $listing_type) {
     $account = $this->currentUser();
-    $langcode = $this->moduleHandler()->invoke('language', 'get_default_langcode', array('node', $listing_type->type));
+    $langcode = $this->moduleHandler()->invoke('language', 'get_default_langcode', array('drealty_listing', $listing_type->type));
 
-    $listing = $this->entityManager()->getStorage('node')->create(array(
+    $listing = $this->entityManager()->getStorage('drealty_listing')->create(array(
       'uid' => $account->id(),
       'name' => $account->getUsername() ?: '',
       'type' => $listing_type->type,
@@ -114,10 +114,10 @@ class ListingController extends ControllerBase implements ContainerInjectionInte
    *   An array suitable for drupal_render().
    */
   public function revisionShow($listing_revision) {
-    $listing = $this->entityManager()->getStorage('node')->loadRevision($listing_revision);
+    $listing = $this->entityManager()->getStorage('drealty_listing')->loadRevision($listing_revision);
     $listing_view_controller = new ListingViewController($this->entityManager);
     $page = $listing_view_controller->view($listing);
-    unset($page['nodes'][$listing->id()]['#cache']);
+    unset($page['listings'][$listing->id()]['#cache']);
     return $page;
   }
 
@@ -131,12 +131,12 @@ class ListingController extends ControllerBase implements ContainerInjectionInte
    *   The page title.
    */
   public function revisionPageTitle($listing_revision) {
-    $listing = $this->entityManager()->getStorage('node')->loadRevision($listing_revision);
+    $listing = $this->entityManager()->getStorage('drealty_listing')->loadRevision($listing_revision);
     return $this->t('Revision of %title from %date', array('%title' => $listing->label(), '%date' => format_date($listing->getRevisionCreationTime())));
   }
 
   /**
-   * Generates an overview table of older revisions of a node.
+   * Generates an overview table of older revisions of a listing.
    *
    * @param \Drupal\drealty\ListingInterface $listing
    *   A listing object.
@@ -146,15 +146,15 @@ class ListingController extends ControllerBase implements ContainerInjectionInte
    */
   public function revisionOverview(ListingInterface $listing) {
     $account = $this->currentUser();
-    $listing_storage = $this->entityManager()->getStorage('node');
+    $listing_storage = $this->entityManager()->getStorage('drealty_listing');
     $type = $listing->getType();
 
     $build = array();
     $build['#title'] = $this->t('Revisions for %title', array('%title' => $listing->label()));
     $header = array($this->t('Revision'), $this->t('Operations'));
 
-    $revert_permission = (($account->hasPermission("revert $type revisions") || $account->hasPermission('revert all revisions') || $account->hasPermission('administer nodes')) && $listing->access('update'));
-    $delete_permission =  (($account->hasPermission("delete $type revisions") || $account->hasPermission('delete all revisions') || $account->hasPermission('administer nodes')) && $listing->access('delete'));
+    $revert_permission = (($account->hasPermission("revert $type revisions") || $account->hasPermission('revert all drealty listing revisions') || $account->hasPermission('administer drealty listings')) && $listing->access('update'));
+    $delete_permission =  (($account->hasPermission("delete $type revisions") || $account->hasPermission('delete all drealty listing revisions') || $account->hasPermission('administer drealty listings')) && $listing->access('delete'));
 
     $rows = array();
 
@@ -171,7 +171,7 @@ class ListingController extends ControllerBase implements ContainerInjectionInte
             '#theme' => 'username',
             '#account' => $revision_author,
           );
-          $row[] = array('data' => $this->t('!date by !username', array('!date' => $this->l($this->dateFormatter->format($revision->revision_timestamp->value, 'short'), 'node.view', array('node' => $listing->id())), '!username' => drupal_render($username)))
+          $row[] = array('data' => $this->t('!date by !username', array('!date' => $this->l($this->dateFormatter->format($revision->revision_timestamp->value, 'short'), 'entity.drealty_listing.canonical', array('drealty_listing' => $listing->id())), '!username' => drupal_render($username)))
             . (($revision->revision_log->value != '') ? '<p class="revision-log">' . Xss::filter($revision->revision_log->value) . '</p>' : ''),
             'class' => array('revision-current'));
           $row[] = array('data' => String::placeholder($this->t('current revision')), 'class' => array('revision-current'));
@@ -181,22 +181,22 @@ class ListingController extends ControllerBase implements ContainerInjectionInte
             '#theme' => 'username',
             '#account' => $revision_author,
           );
-          $row[] = $this->t('!date by !username', array('!date' => $this->l($this->dateFormatter->format($revision->revision_timestamp->value, 'short'), 'node.revision_show', array('node' => $listing->id(), 'node_revision' => $vid)), '!username' => drupal_render($username)))
+          $row[] = $this->t('!date by !username', array('!date' => $this->l($this->dateFormatter->format($revision->revision_timestamp->value, 'short'), 'drealty.listing_revision_show', array('drealty_listing' => $listing->id(), 'drealty_listing_revision' => $vid)), '!username' => drupal_render($username)))
             . (($revision->revision_log->value != '') ? '<p class="revision-log">' . Xss::filter($revision->revision_log->value) . '</p>' : '');
 
           if ($revert_permission) {
             $links['revert'] = array(
               'title' => $this->t('Revert'),
-              'route_name' => 'node.revision_revert_confirm',
-              'route_parameters' => array('node' => $listing->id(), 'node_revision' => $vid),
+              'route_name' => 'drealty.listing_revision_revert_confirm',
+              'route_parameters' => array('drealty_listing' => $listing->id(), 'drealty_listing_revision' => $vid),
             );
           }
 
           if ($delete_permission) {
             $links['delete'] = array(
               'title' => $this->t('Delete'),
-              'route_name' => 'node.revision_delete_confirm',
-              'route_parameters' => array('node' => $listing->id(), 'node_revision' => $vid),
+              'route_name' => 'drealty.listing_revision_delete_confirm',
+              'route_parameters' => array('drealty_listing' => $listing->id(), 'drealty_listing_revision' => $vid),
             );
           }
 
@@ -212,29 +212,26 @@ class ListingController extends ControllerBase implements ContainerInjectionInte
       }
     }
 
-    $build['node_revisions_table'] = array(
+    $build['drealty_listing_revisions_table'] = array(
       '#theme' => 'table',
       '#rows' => $rows,
       '#header' => $header,
-      '#attached' => array(
-        'library' => array('node/drupal.node.admin'),
-      ),
     );
 
     return $build;
   }
 
   /**
-   * The _title_callback for the node.add route.
+   * The _title_callback for the drealty.listing_add route.
    *
    * @param \Drupal\drealty\ListingTypeInterface $listing_type
-   *   The current node.
+   *   The current listing.
    *
    * @return string
    *   The page title.
    */
   public function addPageTitle(ListingTypeInterface $listing_type) {
-    return $this->t('Create @name', array('@name' => $listing_type->name));
+    return $this->t('Add @name', array('@name' => $listing_type->name));
   }
 
 }
