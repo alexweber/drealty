@@ -54,14 +54,14 @@ class ConnectionForm extends EntityForm {
       ),
     );
 
-    // Login URL.
+    // URL.
     // @TODO add front-end validation with #pattern?
-    $form['login_url'] = array(
+    $form['url'] = array(
       '#title' => t('Login URL'),
       '#type' => 'url',
       '#description' => t('Login URL given to you by your RETS provider. i.e. (http://demo.crt.realtors.org:6103/rets/login)'),
       '#required' => TRUE,
-      '#default_value' => $connection->login_url,
+      '#default_value' => $connection->url,
     );
 
     return $form;

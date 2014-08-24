@@ -58,5 +58,5 @@ class ConnectionEntity extends ConfigEntityBase implements ConnectionInterface {
    *
    * @var string
    */
-  public $login_url;
+  public $url;
 }
