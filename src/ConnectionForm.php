@@ -54,9 +54,23 @@ class ConnectionForm extends EntityForm {
       ),
     );
 
+    $form['additional_settings'] = array(
+      '#type' => 'vertical_tabs',
+      '#attached' => array(
+        // @TODO
+//        'library' => array('drealty/drealty.connection_admin'),
+      ),
+    );
+
+    $form['authentication'] = array(
+      '#group' => 'additional_settings',
+      '#type' => 'details',
+      '#title' => t('Authentication'),
+    );
+
     // URL.
     // @TODO add front-end validation with #pattern?
-    $form['url'] = array(
+    $form['authentication']['url'] = array(
       '#title' => t('Login URL'),
       '#type' => 'url',
       '#description' => t('Login URL given to you by your RETS provider. i.e. (http://demo.crt.realtors.org:6103/rets/login)'),
