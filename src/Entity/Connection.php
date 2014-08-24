@@ -19,7 +19,6 @@ use Drupal\drealty\ConnectionInterface;
  *   fieldable = FALSE,
  *   controllers = {
  *     "list_builder" = "Drupal\drealty\ConnectionListBuilder",
- *     "view_builder" = "Drupal\drealty\ConnectionViewBuilder",
  *     "form" = {
  *       "add" = "Drupal\drealty\ConnectionForm",
  *       "edit" = "Drupal\drealty\ConnectionForm",
