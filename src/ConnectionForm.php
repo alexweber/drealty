@@ -67,8 +67,9 @@ class ConnectionForm extends EntityForm {
     // Status.
     $form['status'] = array(
       '#type' => 'checkbox',
-      '#title' => $this->t('Connection Active'),
-      '#default_value' => $connection->status,
+      '#title' => $this->t('Active'),
+      '#description' => $this->t('Whether the connection is enabled.'),
+      '#default_value' => isset($connection->status) ? $connection->status : TRUE,
     );
 
     $form['additional_settings'] = array(
