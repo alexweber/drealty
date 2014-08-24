@@ -75,7 +75,7 @@ class ConnectionForm extends EntityForm {
       '#type' => 'url',
       '#description' => t('Login URL given to you by your RETS provider. i.e. (http://demo.crt.realtors.org:6103/rets/login)'),
       '#required' => TRUE,
-      '#default_value' => $connection->getUrl(),
+      '#default_value' => $connection->url,
     );
 
     // Username.
@@ -84,7 +84,7 @@ class ConnectionForm extends EntityForm {
       '#type' => 'textfield',
       '#description' => t('Login username given to you by your RETS provider'),
       '#required' => TRUE,
-      '#default_value' => $connection->getUsername(),
+      '#default_value' => $connection->username,
     );
 
     // Password.
@@ -93,7 +93,30 @@ class ConnectionForm extends EntityForm {
       '#type' => 'textfield',
       '#description' => t('Login password given to you by your RETS provider'),
       '#required' => TRUE,
-      '#default_value' => $connection->getPassword(),
+      '#default_value' => $connection->password(),
+    );
+
+    $form['agent'] = array(
+      '#group' => 'additional_settings',
+      '#type' => 'details',
+      '#title' => t('User Agent'),
+    );
+
+    // Agent String.
+    $form['agent']['agent_string'] = array(
+      '#title' => t('User Agent String'),
+      '#type' => 'textfield',
+      '#description' => t('A User Agent String.'),
+      '#required' => TRUE,
+      '#default_value' => $connection->agent_string(),
+    );
+
+    // Agent Password.
+    $form['agent']['agent_password'] = array(
+      '#title' => t('User Agent Password'),
+      '#type' => 'textfield',
+      '#description' => t('Leave blank if you don\'t have one.'),
+      '#default_value' => $connection->agent_password(),
     );
 
     return $form;

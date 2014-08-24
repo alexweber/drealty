@@ -58,47 +58,34 @@ class ConnectionEntity extends ConfigEntityBase implements ConnectionInterface {
    *
    * @var string
    */
-  protected $url;
+  public $url;
 
   /**
    * The connection login username.
    *
    * @var string
    */
-  protected $username;
+  public $username;
 
   /**
    * The connection login password.
    *
    * @var string
    */
-  protected $password;
+  public $password;
 
   /**
-   * Public getter for login URL.
+   * The connection user agent string.
    *
-   * @return string
+   * @var string
    */
-  public function getUrl() {
-    return $this->url;
-  }
+  public $agent_string;
 
   /**
-   * Public getter for login username.
+   * The connection user agent password.
    *
-   * @return string
+   * @var string
    */
-  public function getUsername() {
-    return $this->username;
-  }
-
-  /**
-   * Public getter for login password.
-   *
-   * @return string
-   */
-  public function getPassword() {
-    return $this->password;
-  }
+  public $agent_password;
 
 }

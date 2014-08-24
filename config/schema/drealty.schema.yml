@@ -22,6 +22,12 @@ drealty.drealty_connection.*:
     password:
       type: string
       label: 'Password'
+    agent_string:
+      type: string
+      label: 'User Agent String'
+    agent_password:
+      type: string
+      label: 'User Agent Password'
 
 # Listing type config entity.
 drealty.type.*:
