@@ -62,15 +62,15 @@ class ListingController extends ControllerBase implements ContainerInjectionInte
 
     // Only use listing types the user has access to.
     foreach ($this->entityManager()->getStorage('drealty_listing_type')->loadMultiple() as $type) {
-      if ($this->entityManager()->getAccessController('drealty_listing')->createAccess($type->type)) {
-        $content[$type->type] = $type;
+      if ($this->entityManager()->getAccessController('drealty_listing')->createAccess($type->id)) {
+        $content[$type->id] = $type;
       }
     }
 
     // Bypass the drealty_listing/add listing if only one listing type is available.
     if (count($content) == 1) {
       $type = array_shift($content);
-      return $this->redirect('drealty.listing_add', array('drealty_listing_type' => $type->type));
+      return $this->redirect('drealty.listing_add', array('drealty_listing_type' => $type->id));
     }
 
     return array(
@@ -90,12 +90,12 @@ class ListingController extends ControllerBase implements ContainerInjectionInte
    */
   public function add(ListingTypeInterface $listing_type) {
     $account = $this->currentUser();
-    $langcode = $this->moduleHandler()->invoke('language', 'get_default_langcode', array('drealty_listing', $listing_type->type));
+    $langcode = $this->moduleHandler()->invoke('language', 'get_default_langcode', array('drealty_listing', $listing_type->id));
 
     $listing = $this->entityManager()->getStorage('drealty_listing')->create(array(
       'uid' => $account->id(),
       'name' => $account->getUsername() ?: '',
-      'type' => $listing_type->type,
+      'type' => $listing_type->id,
       'langcode' => $langcode ? $langcode : $this->languageManager()->getCurrentLanguage()->id,
     ));
 
@@ -231,7 +231,7 @@ class ListingController extends ControllerBase implements ContainerInjectionInte
    *   The page title.
    */
   public function addPageTitle(ListingTypeInterface $listing_type) {
-    return $this->t('Add @name', array('@name' => $listing_type->name));
+    return $this->t('Add @name', array('@name' => $listing_type->label()));
   }
 
 }

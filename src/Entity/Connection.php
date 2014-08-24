@@ -30,7 +30,7 @@ use Drupal\drealty\ConnectionInterface;
  *   admin_permission = "administer drealty connections",
  *   entity_keys = {
  *     "id" = "id",
- *     "label" = "name",
+ *     "label" = "label",
  *     "status" = "status"
  *   },
  *   links = {
@@ -54,7 +54,7 @@ class Connection extends ConfigEntityBase implements ConnectionInterface {
    *
    * @var string
    */
-  public $name;
+  public $label;
 
   /**
    * The connection status.

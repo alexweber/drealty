@@ -29,15 +29,15 @@ class ConnectionForm extends EntityForm {
 
     // Change page title for the edit operation
     if ($this->operation == 'edit') {
-      $form['#title'] = $this->t('Edit connection: @name', array('@name' => $connection->name));
+      $form['#title'] = $this->t('Edit connection: @label', array('@label' => $connection->label));
     }
 
-    // The connection name.
-    $form['name'] = array(
+    // The connection label.
+    $form['label'] = array(
       '#type' => 'textfield',
       '#title' => $this->t('Connection Label'),
       '#maxlength' => 255,
-      '#default_value' => $connection->name,
+      '#default_value' => $connection->label,
       '#description' => $this->t("The human-readable name of this connection."),
       '#required' => TRUE,
     );
@@ -49,7 +49,7 @@ class ConnectionForm extends EntityForm {
       '#default_value' => $connection->id,
       '#disabled' => !$connection->isNew(),
       '#machine_name' => array(
-        'source' => array('name'),
+        'source' => array('label'),
         'exists' => 'drealty_connection_load'
       ),
     );
@@ -195,12 +195,12 @@ class ConnectionForm extends EntityForm {
     if ($status) {
       // Setting the success message.
       drupal_set_message($this->t('Connection @label saved successfully.', array(
-        '@label' => $connection->name,
+        '@label' => $connection->label,
       )));
     }
     else {
       drupal_set_message($this->t('There was an error saving the connection: @label.', array(
-        '@label' => $connection->name,
+        '@label' => $connection->label,
       )));
     }
 

@@ -299,16 +299,16 @@ function drealty_entity_extra_field_info() {
     // Visibility of the ordering of the language selector is the same as on the
     // drealty_listing/add form.
     if ($module_language_enabled) {
-      $configuration = language_get_default_configuration('drealty_listing', $bundle->type);
+      $configuration = language_get_default_configuration('drealty_listing', $bundle->id);
       if ($configuration['language_show']) {
-        $extra['drealty_listing'][$bundle->type]['form']['langcode'] = array(
+        $extra['drealty_listing'][$bundle->id]['form']['langcode'] = array(
           'label' => t('Language'),
           'description' => $description,
           'weight' => 0,
         );
       }
     }
-    $extra['drealty_listing'][$bundle->type]['display']['langcode'] = array(
+    $extra['drealty_listing'][$bundle->id]['display']['langcode'] = array(
       'label' => t('Language'),
       'description' => $description,
       'weight' => 0,
@@ -355,30 +355,30 @@ function drealty_listing_title_list($result, $title = NULL) {
 function drealty_list_permissions($type) {
   // Build standard list of listing permissions for this type.
   $perms = array(
-    "create {$type->type} drealty_listing" => array(
-      'title' => t('%type_name: Create new listings', array('%type_name' => $type->name)),
+    "create {$type->id} drealty_listing" => array(
+      'title' => t('%type_name: Create new listings', array('%type_name' => $type->label)),
     ),
-    "edit own {$type->type} drealty_listing" => array(
-      'title' => t('%type_name: Edit own listings', array('%type_name' => $type->name)),
+    "edit own {$type->id} drealty_listing" => array(
+      'title' => t('%type_name: Edit own listings', array('%type_name' => $type->label)),
     ),
-    "edit any {$type->type} drealty_listing" => array(
-      'title' => t('%type_name: Edit any listing', array('%type_name' => $type->name)),
+    "edit any {$type->id} drealty_listing" => array(
+      'title' => t('%type_name: Edit any listing', array('%type_name' => $type->label)),
     ),
-    "delete own {$type->type} drealty_listing" => array(
-      'title' => t('%type_name: Delete own listings', array('%type_name' => $type->name)),
+    "delete own {$type->id} drealty_listing" => array(
+      'title' => t('%type_name: Delete own listings', array('%type_name' => $type->label)),
     ),
-    "delete any {$type->type} drealty_listing" => array(
-      'title' => t('%type_name: Delete any listing', array('%type_name' => $type->name)),
+    "delete any {$type->id} drealty_listing" => array(
+      'title' => t('%type_name: Delete any listing', array('%type_name' => $type->label)),
     ),
-    "view {$type->type} drealty_listing revisions" => array(
-      'title' => t('%type_name: View listing revisions', array('%type_name' => $type->name)),
+    "view {$type->id} drealty_listing revisions" => array(
+      'title' => t('%type_name: View listing revisions', array('%type_name' => $type->label)),
     ),
-    "revert {$type->type} drealty_listing revisions" => array(
-      'title' => t('%type_name: Revert listing revisions', array('%type_name' => $type->name)),
+    "revert {$type->id} drealty_listing revisions" => array(
+      'title' => t('%type_name: Revert listing revisions', array('%type_name' => $type->label)),
       'description' => t('Role requires permission <em>view revisions</em> and <em>edit rights</em> for listings in question, or <em>administer drealty listings</em>.'),
     ),
-    "delete {$type->type} drealty_listing revisions" => array(
-      'title' => t('%type_name: Delete listing revisions', array('%type_name' => $type->name)),
+    "delete {$type->id} drealty_listing revisions" => array(
+      'title' => t('%type_name: Delete listing revisions', array('%type_name' => $type->label)),
       'description' => t('Role requires permission to <em>view revisions</em> and <em>delete rights</em> for listings in question, or <em>administer drealty listings</em>.'),
     ),
   );

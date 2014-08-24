@@ -30,7 +30,7 @@ class ConnectionStatusForm extends EntityForm {
     $rows = array(
       array(
         t('Name'),
-        $connection->name,
+        $connection->label,
       ),
       array(
         t('Internal ID'),

@@ -20,7 +20,7 @@ class ConnectionDeleteForm extends EntityConfirmFormBase {
    * {@inheritdoc}
    */
   public function getQuestion() {
-    return $this->t('Are you sure you want to delete this connection: @name?', array('@name' => $this->entity->name));
+    return $this->t('Are you sure you want to delete this connection: @name?', array('@name' => $this->entity->label));
   }
 
   /**

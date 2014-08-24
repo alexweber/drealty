@@ -21,9 +21,9 @@ function template_preprocess_drealty_listing_add_list(&$variables) {
   $variables['types'] = array();
   if (!empty($variables['content'])) {
     foreach ($variables['content'] as $type) {
-      $variables['types'][$type->type] = array(
-        'type' => $type->type,
-        'add_link' => l($type->name, 'drealty_listing/add/' . $type->type),
+      $variables['types'][$type->id] = array(
+        'type' => $type->id,
+        'add_link' => l($type->label, 'drealty_listing/add/' . $type->id),
         'description' => Xss::filterAdmin($type->description),
       );
     }

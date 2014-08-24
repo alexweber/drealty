@@ -42,6 +42,7 @@ function drealty_uninstall() {
   // Delete listing type variables.
   $types = \Drupal::configFactory()->listAll('drealty.type.');
   foreach ($types as $config_name) {
+    // @TODO double check this works.
     $type = \Drupal::config($config_name)->get('type');
     if (\Drupal::moduleHandler()->moduleExists('language')) {
       $key = language_get_default_configuration_settings_key('drealty_listing', $type);
