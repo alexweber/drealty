@@ -1,0 +1,16 @@
+entity.drealty_listing.edit_form:
+  route_name: entity.drealty_listing.edit_form
+  group: drealty_listing
+  title: Edit
+
+entity.drealty_listing.delete_form:
+  route_name: entity.drealty_listing.delete_form
+  group: drealty_listing
+  title: Delete
+  weight: 10
+
+entity.drealty_listing.refresh_form:
+  route_name: entity.drealty_listing.refresh_form
+  group: drealty_listing
+  title: Refresh RETS data
+  weight: 20

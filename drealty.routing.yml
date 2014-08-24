@@ -131,6 +131,16 @@ entity.drealty_listing.delete_form:
   options:
     _drealty_operation_route: TRUE
 
+entity.drealty_listing.refresh_form:
+  path: '/drealty_listing/{drealty_listing}/refresh'
+  defaults:
+    _entity_form: 'drealty_listing.refresh'
+    _title: 'Refresh RETS data'
+  requirements:
+    _permission: 'administer drealty listings'
+  options:
+    _drealty_operation_route: TRUE
+
 # Revisions.
 drealty.listing_revision_overview:
   path: '/drealty_listing/{drealty_listing}/revisions'
