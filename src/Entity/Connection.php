@@ -34,7 +34,7 @@ use Drupal\drealty\ConnectionInterface;
  *     "status" = "status"
  *   },
  *   links = {
- *     "view" = "drealty.drealty_connection_view",
+ *     "canonical" = "entity.drealty_connection.canonical",
  *     "edit-form" = "entity.drealty_connection.edit_form",
  *     "delete-form" = "entity.drealty_connection.delete_form"
  *   }

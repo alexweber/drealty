@@ -24,7 +24,7 @@ drealty.connection_add:
   requirements:
     _permission: 'administer drealty connections'
 
-drealty.drealty_connection_view:
+entity.drealty_connection.canonical:
   path: '/admin/drealty/connections/view/{drealty_connection}'
   defaults:
     _content: '\Drupal\drealty\Controller\ConnectionViewController::view'
