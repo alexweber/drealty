@@ -52,7 +52,7 @@ use Drupal\user\UserInterface;
  *   bundle_entity_type = "drealty_listing_type",
  *   permission_granularity = "bundle",
  *   links = {
- *     "canonical" = "drealty.listing_view",
+ *     "canonical" = "entity.drealty_listing.canonical",
  *     "delete-form" = "entity.drealty_listing.delete_form",
  *     "edit-form" = "entity.drealty_listing.edit_form",
  *     "refresh-form" = "entity.drealty_listing.refresh_form",
