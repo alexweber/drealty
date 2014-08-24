@@ -35,23 +35,23 @@ class ListingTypeForm extends EntityForm {
     // Prepare listing options to be used for 'checkboxes' form element.
     $keys = array_keys(array_filter($drealty_settings['options']));
     $drealty_settings['options'] = array_combine($keys, $keys);
-    $form['name'] = array(
+    $form['label'] = array(
       '#title' => t('Name'),
       '#type' => 'textfield',
-      '#default_value' => $type->name,
+      '#default_value' => $type->label,
       '#description' => t('The human-readable name of this listing type. This text will be displayed as part of the list on the <em>Add listing</em> page. It is recommended that this name begin with a capital letter and contain only letters, numbers, and spaces. This name must be unique.'),
       '#required' => TRUE,
       '#size' => 30,
     );
 
-    $form['type'] = array(
+    $form['id'] = array(
       '#type' => 'machine_name',
       '#default_value' => $type->id(),
       '#maxlength' => EntityTypeInterface::BUNDLE_MAX_LENGTH,
       '#disabled' => $type->isLocked(),
       '#machine_name' => array(
         'exists' => 'drealty_listing_type_load',
-        'source' => array('name'),
+        'source' => array('label'),
       ),
       '#description' => t('A unique machine-readable name for this listing type. It must only contain lowercase letters, numbers, and underscores. This name will be used for constructing the URL of the %listing-add page, in which underscores will be converted into hyphens.', array(
         '%listing-add' => t('Add listing'),
@@ -138,10 +138,10 @@ class ListingTypeForm extends EntityForm {
   public function validate(array $form, FormStateInterface $form_state) {
     parent::validate($form, $form_state);
 
-    $id = trim($form_state['values']['type']);
+    $id = trim($form_state['values']['id']);
     // '0' is invalid, since elsewhere we check it using empty().
     if ($id == '0') {
-      $form_state->setErrorByName('type', $this->t("Invalid machine-readable name. Enter a name other than %invalid.", array('%invalid' => $id)));
+      $form_state->setErrorByName('id', $this->t("Invalid machine-readable name. Enter a name other than %invalid.", array('%invalid' => $id)));
     }
   }
 
@@ -150,8 +150,8 @@ class ListingTypeForm extends EntityForm {
    */
   public function save(array $form, FormStateInterface $form_state) {
     $type = $this->entity;
-    $type->type = trim($type->id());
-    $type->name = trim($type->name);
+    $type->id = trim($type->id());
+    $type->label = trim($type->label);
 
     $status = $type->save();
 

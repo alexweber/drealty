@@ -32,8 +32,8 @@ use Drupal\Component\Utility\NestedArray;
  *   config_prefix = "type",
  *   bundle_of = "drealty_listing",
  *   entity_keys = {
- *     "id" = "type",
- *     "label" = "name"
+ *     "id" = "id",
+ *     "label" = "label"
  *   },
  *   links = {
  *     "add-form" = "drealty.listing_type_add",
@@ -48,19 +48,15 @@ class ListingType extends ConfigEntityBundleBase implements ListingTypeInterface
    * The machine name of this listing type.
    *
    * @var string
-   *
-   * @todo Rename to $id.
    */
-  public $type;
+  public $id;
 
   /**
    * The human-readable name of the listing type.
    *
    * @var string
-   *
-   * @todo Rename to $label.
    */
-  public $name;
+  public $label;
 
   /**
    * A brief description of this listing type.
@@ -89,7 +85,7 @@ class ListingType extends ConfigEntityBundleBase implements ListingTypeInterface
    * {@inheritdoc}
    */
   public function id() {
-    return $this->type;
+    return $this->id;
   }
 
   /**
