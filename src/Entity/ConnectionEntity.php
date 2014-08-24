@@ -59,4 +59,11 @@ class ConnectionEntity extends ConfigEntityBase implements ConnectionInterface {
    * @var string
    */
   public $url;
+
+  /**
+   * The connection login username.
+   *
+   * @var string
+   */
+  public $username;
 }
