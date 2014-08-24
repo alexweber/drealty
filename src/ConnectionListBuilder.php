@@ -48,4 +48,19 @@ class ConnectionListBuilder extends ConfigEntityListBuilder {
     return $build;
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function getDefaultOperations(EntityInterface $entity) {
+    /** @var \Drupal\Core\Config\Entity\ConfigEntityInterface $entity */
+    $operations = parent::getDefaultOperations($entity);
+
+    $operations['status'] = array(
+      'title' => t('Status'),
+      'weight' => 0,
+    ) + $entity->urlInfo('canonical')->toArray();
+
+    return $operations;
+  }
+
 }
