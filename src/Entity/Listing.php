@@ -57,7 +57,7 @@ use Drupal\user\UserInterface;
  *     "edit-form" = "entity.drealty_listing.edit_form",
  *     "refresh-form" = "entity.drealty_listing.refresh_form",
  *     "version-history" = "drealty.listing_revision_overview",
- *     "admin-form" = "entity.drealty_listing_type.edit_form"
+ *     "admin-form" = "drealty.listing_list"
  *   }
  * )
  */
