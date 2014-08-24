@@ -124,7 +124,7 @@ class ListingRevisionDeleteForm extends ConfirmFormBase {
     $listing_type = $this->listingTypeStorage->load($this->revision->bundle())->label();
     drupal_set_message(t('Revision from %revision-date of @type %title has been deleted.', array('%revision-date' => format_date($this->revision->getRevisionCreationTime()), '@type' => $listing_type, '%title' => $this->revision->label())));
     $form_state->setRedirect(
-      'drealty.drealty_listing_view',
+      'entity.drealty_listing.canonical',
       array('drealty_listing' => $this->revision->id())
     );
     if ($this->connection->query('SELECT COUNT(DISTINCT vid) FROM {drealty_listing_field_revision} WHERE id = :id', array(':id' => $this->revision->id()))->fetchField() > 1) {

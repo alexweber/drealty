@@ -411,7 +411,7 @@ class ListingForm extends ContentEntityForm {
       $form_state['id'] = $listing->id();
       if ($listing->access('view')) {
         $form_state->setRedirect(
-          'drealty.drealty_listing_view',
+          'entity.drealty_listing.canonical',
           array('drealty_listing' => $listing->id())
         );
       }
