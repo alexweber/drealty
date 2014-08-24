@@ -1,0 +1,8 @@
+id: drealty_listing.teaser
+label: Teaser
+status: true
+cache: true
+targetEntityType: drealty_listing
+dependencies:
+  module:
+    - drealty

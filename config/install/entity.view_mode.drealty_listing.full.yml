@@ -1,0 +1,8 @@
+id: drealty_listing.full
+label: 'Full content'
+status: false
+cache: true
+targetEntityType: drealty_listing
+dependencies:
+  module:
+    - drealty
