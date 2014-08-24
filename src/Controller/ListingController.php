@@ -231,7 +231,7 @@ class ListingController extends ControllerBase implements ContainerInjectionInte
    *   The page title.
    */
   public function addPageTitle(ListingTypeInterface $listing_type) {
-    return $this->t('Add @name', array('@name' => $listing_type->label()));
+    return $this->t('Add @name', array('@name' => $listing_type->label));
   }
 
 }
