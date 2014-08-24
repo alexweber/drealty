@@ -75,7 +75,7 @@ class ConnectionForm extends EntityForm {
       '#type' => 'url',
       '#description' => t('Login URL given to you by your RETS provider. i.e. (http://demo.crt.realtors.org:6103/rets/login)'),
       '#required' => TRUE,
-      '#default_value' => $connection->url,
+      '#default_value' => $connection->getUrl(),
     );
 
     // Username.
@@ -84,16 +84,16 @@ class ConnectionForm extends EntityForm {
       '#type' => 'textfield',
       '#description' => t('Login username given to you by your RETS provider'),
       '#required' => TRUE,
-      '#default_value' => $connection->username,
+      '#default_value' => $connection->getUsername(),
     );
 
     // Password.
     $form['authentication']['password'] = array(
       '#title' => t('Password'),
-      '#type' => 'password',
+      '#type' => 'textfield',
       '#description' => t('Login password given to you by your RETS provider'),
       '#required' => TRUE,
-      '#default_value' => $connection->password,
+      '#default_value' => $connection->getPassword(),
     );
 
     return $form;
