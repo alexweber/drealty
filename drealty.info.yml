@@ -8,3 +8,5 @@ configure: drealty.admin
 project: 'drealty'
 dependencies:
   - entity
+  - entity_reference
+  - options
