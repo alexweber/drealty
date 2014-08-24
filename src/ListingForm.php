@@ -95,7 +95,7 @@ class ListingForm extends ContentEntityForm {
         'class' => array('listing-form-revision-information'),
       ),
       '#attached' => array(
-        'library' => array('node/drupal.node'),
+        'library' => array('drealty/drealty.listing'),
       ),
       '#weight' => 20,
       '#optional' => TRUE,
@@ -133,7 +133,7 @@ class ListingForm extends ContentEntityForm {
         'class' => array('listing-form-author'),
       ),
       '#attached' => array(
-        'library' => array('node/drupal.node'),
+        'library' => array('drealty/drealty.listing'),
         'js' => array(
           array(
             'type' => 'setting',
@@ -175,7 +175,7 @@ class ListingForm extends ContentEntityForm {
         'class' => array('listing-form-options'),
       ),
       '#attached' => array(
-        'library' => array('node/drupal.node'),
+        'library' => array('drealty/drealty.listing'),
       ),
       '#weight' => 95,
       '#optional' => TRUE,
