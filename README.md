@@ -10,8 +10,11 @@ Roadmap
 
 Milestone 1
 ---
-
+* Fix Listing Type config entity
+* Fix Listing content entity
+* Figure out suporting D7 module classes (drealtyConnection, drealtyMetaData, etc) and port as appropriate
 * Classes/Resources/Mappings as config entities?
+* Use PHPRETS via Composer's autoloader
 
 Milestone 2
 ---
