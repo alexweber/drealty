@@ -75,7 +75,6 @@ class ListingStorage extends ContentEntityDatabaseStorage implements ListingStor
     $schema['drealty_listing_field_data']['fields']['default_langcode']['not null'] = TRUE;
     $schema['drealty_listing_field_data']['fields']['promote']['not null'] = TRUE;
     $schema['drealty_listing_field_data']['fields']['status']['not null'] = TRUE;
-    $schema['drealty_listing_field_data']['fields']['sticky']['not null'] = TRUE;
     $schema['drealty_listing_field_revision']['fields']['default_langcode']['not null'] = TRUE;
 
     // @todo Revisit index definitions in https://drupal.org/node/2015277.
@@ -94,7 +93,7 @@ class ListingStorage extends ContentEntityDatabaseStorage implements ListingStor
       'drealty_listing__created' => array('created'),
       'drealty_listing__default_langcode' => array('default_langcode'),
       'drealty_listing__langcode' => array('langcode'),
-      'drealty_listing__frontpage' => array('promote', 'status', 'sticky', 'created'),
+      'drealty_listing__frontpage' => array('promote', 'status', 'created'),
       'drealty_listing__status_type' => array('status', 'type', 'id'),
     );
 

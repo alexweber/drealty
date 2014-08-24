@@ -92,9 +92,6 @@ drealty.settings.drealty:
         promote:
           type: boolean
           label: 'Promoted to front page'
-        sticky:
-          type: boolean
-          label: 'Sticky at top of lists'
         revision:
           type: boolean
           label: 'Create new revision'

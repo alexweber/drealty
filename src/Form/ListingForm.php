@@ -189,14 +189,6 @@ class ListingForm extends ContentEntityForm {
       '#access' => $current_user->hasPermission('administer drealty listings'),
     );
 
-    $form['sticky'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Sticky at top of lists'),
-      '#default_value' => $listing->isSticky(),
-      '#group' => 'options',
-      '#access' => $current_user->hasPermission('administer drealty listings'),
-    );
-
     return parent::form($form, $form_state, $listing);
   }
 

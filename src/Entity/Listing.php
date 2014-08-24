@@ -222,20 +222,6 @@ class Listing extends ContentEntityBase implements ListingInterface {
   /**
    * {@inheritdoc}
    */
-  public function isSticky() {
-    return (bool) $this->get('sticky')->value;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function setSticky($sticky) {
-    $this->set('sticky', $sticky ? LISTING_STICKY : LISTING_NOT_STICKY);
-    return $this;
-  }
-  /**
-   * {@inheritdoc}
-   */
   public function isPublished() {
     return (bool) $this->get('status')->value;
   }
@@ -390,12 +376,6 @@ class Listing extends ContentEntityBase implements ListingInterface {
       ->setRevisionable(TRUE)
       ->setTranslatable(TRUE);
 
-    $fields['sticky'] = FieldDefinition::create('boolean')
-      ->setLabel(t('Sticky'))
-      ->setDescription(t('A boolean indicating whether the listing should be displayed at the top of lists in which it appears.'))
-      ->setRevisionable(TRUE)
-      ->setTranslatable(TRUE);
-
     $fields['revision_timestamp'] = FieldDefinition::create('created')
       ->setLabel(t('Revision timestamp'))
       ->setDescription(t('The time that the current revision was created.'))
@@ -445,8 +425,6 @@ class Listing extends ContentEntityBase implements ListingInterface {
     $fields['status']->setDefaultValue(!empty($options['status']) ? LISTING_PUBLISHED : LISTING_NOT_PUBLISHED);
     $fields['promote'] = clone $base_field_definitions['promote'];
     $fields['promote']->setDefaultValue(!empty($options['promote']) ? LISTING_PROMOTED : LISTING_NOT_PROMOTED);
-    $fields['sticky'] = clone $base_field_definitions['sticky'];
-    $fields['sticky']->setDefaultValue(!empty($options['sticky']) ? LISTING_STICKY : LISTING_NOT_STICKY);
 
     return $fields;
   }

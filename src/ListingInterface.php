@@ -82,25 +82,6 @@ interface ListingInterface extends ContentEntityInterface, EntityChangedInterfac
   public function setPromoted($promoted);
 
   /**
-   * Returns the listing sticky status.
-   *
-   * @return bool
-   *   TRUE if the listing is sticky.
-   */
-  public function isSticky();
-
-  /**
-   * Sets the listing sticky status.
-   *
-   * @param bool $sticky
-   *   TRUE to set this listing to sticky, FALSE to set it to not sticky.
-   *
-   * @return \Drupal\drealty\ListingInterface
-   *   The called listing entity.
-   */
-  public function setSticky($sticky);
-
-  /**
    * Returns the listing published status indicator.
    *
    * Unpublished listings are only visible to their authors and to administrators.

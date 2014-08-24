@@ -163,7 +163,6 @@ class ListingType extends ConfigEntityBundleBase implements ListingTypeInterface
       'options' => array(
         'status' => TRUE,
         'promote' => TRUE,
-        'sticky' => FALSE,
         'revision' => FALSE,
       ),
     ), $values['settings']['drealty']);

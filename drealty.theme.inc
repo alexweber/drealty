@@ -83,9 +83,6 @@ function template_preprocess_drealty_listing(&$variables) {
   if ($listing->isPromoted()) {
     $variables['attributes']['class'][] = 'listing--promoted';
   }
-  if ($listing->isSticky()) {
-    $variables['attributes']['class'][] = 'listing--sticky';
-  }
   if (!$listing->isPublished()) {
     $variables['attributes']['class'][] = 'listing--unpublished';
   }
