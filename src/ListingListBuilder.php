@@ -134,4 +134,25 @@ class ListingListBuilder extends EntityListBuilder {
     return $operations;
   }
 
+  /**
+   * {@inheritdoc}
+   *
+   * Builds the entity listing as renderable array for theme_table().
+   */
+  public function render() {
+    $build = array(
+      '#type' => 'table',
+      '#header' => $this->buildHeader(),
+      '#title' => $this->getTitle(),
+      '#rows' => array(),
+      '#empty' => $this->t('There are no listings yet.'),
+    );
+    foreach ($this->load() as $entity) {
+      if ($row = $this->buildRow($entity)) {
+        $build['#rows'][$entity->id()] = $row;
+      }
+    }
+    return $build;
+  }
+
 }
