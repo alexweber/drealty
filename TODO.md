@@ -9,3 +9,5 @@ TODO Shortlist
 * Condition plugin
 * Entity Reference plugin?
 * Search integration?
+
+* hook_drealty_listing_presave() ?
