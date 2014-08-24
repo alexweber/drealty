@@ -19,6 +19,9 @@ drealty.drealty_connection.*:
     username:
       type: string
       label: 'Username'
+    password:
+      type: string
+      label: 'Password'
 
 # Listing type config entity.
 drealty.type.*:

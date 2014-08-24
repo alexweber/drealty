@@ -87,6 +87,15 @@ class ConnectionForm extends EntityForm {
       '#default_value' => $connection->username,
     );
 
+    // Password.
+    $form['authentication']['password'] = array(
+      '#title' => t('Password'),
+      '#type' => 'password',
+      '#description' => t('Login password given to you by your RETS provider'),
+      '#required' => TRUE,
+      '#default_value' => $connection->password,
+    );
+
     return $form;
   }
 
