@@ -136,33 +136,29 @@ class ConnectionForm extends EntityForm {
     );
 
     $form['advanced']['use_interealty_auth'] = array(
-      '#type' => 'radios',
+      '#type' => 'checkbox',
       '#title' => t('Use Interealty Authentication'),
-      '#options' => array(TRUE => 'yes', FALSE => 'no'),
       '#required' => TRUE,
       '#default_value' => isset($connection->use_interealty_auth) ? $connection->use_interealty_auth : FALSE,
     );
 
     $form['advanced']['force_basic_auth'] = array(
-      '#type' => 'radios',
+      '#type' => 'checkbox',
       '#title' => t('Force Basic Authentication'),
-      '#options' => array(TRUE => 'yes', FALSE => 'no'),
       '#required' => TRUE,
       '#default_value' => isset($connection->force_basic_auth) ? $connection->force_basic_auth : FALSE,
     );
 
     $form['advanced']['use_compression'] = array(
-      '#type' => 'radios',
+      '#type' => 'checkbox',
       '#title' => t('Use Compression'),
-      '#options' => array(TRUE => 'yes', FALSE => 'no'),
       '#required' => TRUE,
       '#default_value' => isset($connection->use_compression) ? $connection->use_compression : FALSE,
     );
 
     $form['advanced']['disable_encoding_fix'] = array(
-      '#type' => 'radios',
+      '#type' => 'checkbox',
       '#title' => t('Disable Encoding Fix'),
-      '#options' => array(TRUE => 'yes', FALSE => 'no'),
       '#required' => TRUE,
       '#default_value' => isset($connection->disable_encoding_fix) ? $connection->disable_encoding_fix : FALSE,
     );
