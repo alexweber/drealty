@@ -10,3 +10,8 @@ services:
     arguments: ['@entity.manager']
     tags:
       - { name: access_check, applies_to: _drealty_listing_add_access }
+  paramconverter.drealty_listing:
+    class: Drupal\drealty\ParamConverter\ListingParamConverter
+    arguments: ['@entity.manager']
+    tags:
+      - { name: paramconverter, priority: 10 }
