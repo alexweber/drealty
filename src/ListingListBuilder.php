@@ -122,6 +122,11 @@ class ListingListBuilder extends EntityListBuilder {
   protected function getDefaultOperations(EntityInterface $entity) {
     $operations = parent::getDefaultOperations($entity);
 
+    $operations['refresh'] = array(
+        'title' => t('Refresh RETS data'),
+        'weight' => 0,
+      ) + $entity->urlInfo('refresh-form')->toArray();
+
     $destination = drupal_get_destination();
     foreach ($operations as $key => $operation) {
       $operations[$key]['query'] = $destination;
