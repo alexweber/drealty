@@ -215,7 +215,7 @@ class Listing extends ContentEntityBase implements ListingInterface {
    * {@inheritdoc}
    */
   public function setPromoted($promoted) {
-    $this->set('promote', $promoted ? NODE_PROMOTED : NODE_NOT_PROMOTED);
+    $this->set('promote', $promoted ? LISTING_PROMOTED : LISTING_NOT_PROMOTED);
     return $this;
   }
 
@@ -230,7 +230,7 @@ class Listing extends ContentEntityBase implements ListingInterface {
    * {@inheritdoc}
    */
   public function setSticky($sticky) {
-    $this->set('sticky', $sticky ? NODE_STICKY : NODE_NOT_STICKY);
+    $this->set('sticky', $sticky ? LISTING_STICKY : LISTING_NOT_STICKY);
     return $this;
   }
   /**
@@ -244,7 +244,7 @@ class Listing extends ContentEntityBase implements ListingInterface {
    * {@inheritdoc}
    */
   public function setPublished($published) {
-    $this->set('status', $published ? NODE_PUBLISHED : NODE_NOT_PUBLISHED);
+    $this->set('status', $published ? LISTING_PUBLISHED : LISTING_NOT_PUBLISHED);
     return $this;
   }
 
@@ -442,11 +442,11 @@ class Listing extends ContentEntityBase implements ListingInterface {
 
     $options = $listing_type->getModuleSettings('drealty')['options'];
     $fields['status'] = clone $base_field_definitions['status'];
-    $fields['status']->setDefaultValue(!empty($options['status']) ? NODE_PUBLISHED : NODE_NOT_PUBLISHED);
+    $fields['status']->setDefaultValue(!empty($options['status']) ? LISTING_PUBLISHED : LISTING_NOT_PUBLISHED);
     $fields['promote'] = clone $base_field_definitions['promote'];
-    $fields['promote']->setDefaultValue(!empty($options['promote']) ? NODE_PROMOTED : NODE_NOT_PROMOTED);
+    $fields['promote']->setDefaultValue(!empty($options['promote']) ? LISTING_PROMOTED : LISTING_NOT_PROMOTED);
     $fields['sticky'] = clone $base_field_definitions['sticky'];
-    $fields['sticky']->setDefaultValue(!empty($options['sticky']) ? NODE_STICKY : NODE_NOT_STICKY);
+    $fields['sticky']->setDefaultValue(!empty($options['sticky']) ? LISTING_STICKY : LISTING_NOT_STICKY);
 
     return $fields;
   }

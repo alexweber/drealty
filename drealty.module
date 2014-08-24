@@ -12,6 +12,36 @@ use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\language\Entity\Language as LanguageEntity;
 
 /**
+ * Denotes that the listing is not published.
+ */
+const LISTING_NOT_PUBLISHED = 0;
+
+/**
+ * Denotes that the listing is published.
+ */
+const LISTING_PUBLISHED = 1;
+
+/**
+ * Denotes that the listing is not promoted to the front page.
+ */
+const LISTING_NOT_PROMOTED = 0;
+
+/**
+ * Denotes that the listing is promoted to the front page.
+ */
+const LISTING_PROMOTED = 1;
+
+/**
+ * Denotes that the listing is not sticky at the top of the page.
+ */
+const LISTING_NOT_STICKY = 0;
+
+/**
+ * Denotes that the listing is sticky at the top of the page.
+ */
+const LISTING_STICKY = 1;
+
+/**
  * Implements hook_help().
  */
 function drealty_help($route_name, RouteMatchInterface $route_match) {
