@@ -54,6 +54,16 @@ class ConnectionForm extends EntityForm {
       ),
     );
 
+    // RETS Version.
+    $versions = drealty_rets_versions();
+    $form['rets'] = array(
+      '#type' => 'select',
+      '#title' => t('RETS Version'),
+      '#required' => TRUE,
+      '#options' => array_combine($versions, $versions),
+      '#default_value' => isset($connection->rets) ? $connection->rets : '1.5',
+    );
+
     $form['additional_settings'] = array(
       '#type' => 'vertical_tabs',
       '#attached' => array(
@@ -93,7 +103,7 @@ class ConnectionForm extends EntityForm {
       '#type' => 'textfield',
       '#description' => t('Login password given to you by your RETS provider'),
       '#required' => TRUE,
-      '#default_value' => $connection->password(),
+      '#default_value' => $connection->password,
     );
 
     $form['agent'] = array(
@@ -103,20 +113,72 @@ class ConnectionForm extends EntityForm {
     );
 
     // Agent String.
-    $form['agent']['agent_string'] = array(
+    $form['agent']['ua_string'] = array(
       '#title' => t('User Agent String'),
       '#type' => 'textfield',
       '#description' => t('A User Agent String.'),
       '#required' => TRUE,
-      '#default_value' => $connection->agent_string(),
+      '#default_value' => isset($connection->ua_string) ? $connection->ua_string : 'dRealty/1.0',
     );
 
     // Agent Password.
-    $form['agent']['agent_password'] = array(
+    $form['agent']['ua_password'] = array(
       '#title' => t('User Agent Password'),
       '#type' => 'textfield',
       '#description' => t('Leave blank if you don\'t have one.'),
-      '#default_value' => $connection->agent_password(),
+      '#default_value' => $connection->ua_password,
+    );
+
+    $form['advanced'] = array(
+      '#group' => 'additional_settings',
+      '#type' => 'details',
+      '#title' => t('Advanced'),
+    );
+
+    $form['advanced']['use_interealty_auth'] = array(
+      '#type' => 'radios',
+      '#title' => t('Use Interealty Authentication'),
+      '#options' => array(TRUE => 'yes', FALSE => 'no'),
+      '#required' => TRUE,
+      '#default_value' => isset($connection->use_interealty_auth) ? $connection->use_interealty_auth : FALSE,
+    );
+
+    $form['advanced']['force_basic_auth'] = array(
+      '#type' => 'radios',
+      '#title' => t('Force Basic Authentication'),
+      '#options' => array(TRUE => 'yes', FALSE => 'no'),
+      '#required' => TRUE,
+      '#default_value' => isset($connection->force_basic_auth) ? $connection->force_basic_auth : FALSE,
+    );
+
+    $form['advanced']['use_compression'] = array(
+      '#type' => 'radios',
+      '#title' => t('Use Compression'),
+      '#options' => array(TRUE => 'yes', FALSE => 'no'),
+      '#required' => TRUE,
+      '#default_value' => isset($connection->use_compression) ? $connection->use_compression : FALSE,
+    );
+
+    $form['advanced']['disable_encoding_fix'] = array(
+      '#type' => 'radios',
+      '#title' => t('Disable Encoding Fix'),
+      '#options' => array(TRUE => 'yes', FALSE => 'no'),
+      '#required' => TRUE,
+      '#default_value' => isset($connection->disable_encoding_fix) ? $connection->disable_encoding_fix : FALSE,
+    );
+
+    $form['advanced']['debug_mode'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Enable Debug Mode'),
+      '#description' => t('Writes phRets debug messages to drealty_debug_log.txt in the private files folder.'),
+      '#default_value' => isset($connection->debug_mode) ? $connection->debug_mode : FALSE,
+    );
+
+    $form['advanced']['nomap_mode'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Enable "No mapping" Mode'),
+      '#description' => t('This connection will not create or update items and will not be available in field mappings. It may still act on items imported by other connections which have since expired.'),
+      '#default_value' => isset($connection->nomap_mode) ? $connection->nomap_mode: FALSE,
     );
 
     return $form;

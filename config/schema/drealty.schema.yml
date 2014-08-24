@@ -13,6 +13,9 @@ drealty.drealty_connection.*:
       type: label
       label: 'Name'
       translatable: true
+    rets:
+      type: float
+      label: 'RETS'
     url:
       type: string
       label: 'URL'
@@ -22,12 +25,30 @@ drealty.drealty_connection.*:
     password:
       type: string
       label: 'Password'
-    agent_string:
+    ua_string:
       type: string
-      label: 'User Agent String'
-    agent_password:
+      label: 'User-Agent string'
+    ua_password:
       type: string
-      label: 'User Agent Password'
+      label: 'User-Agent password'
+    use_interealty_auth:
+      type: boolean
+      label: 'Use interealty authentication'
+    force_basic_auth:
+      type: boolean
+      label: 'Force basic authentication'
+    use_compression:
+      type: boolean
+      label: 'Use compression'
+    disable_encoding_fix:
+      type: boolean
+      label: 'Disble encoding fix'
+    debug_mode:
+      type: boolean
+      label: 'Debug mode'
+    nomap_mode:
+      type: boolean
+      label: 'No map mode'
 
 # Listing type config entity.
 drealty.type.*:

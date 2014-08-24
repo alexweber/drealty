@@ -54,6 +54,13 @@ class ConnectionEntity extends ConfigEntityBase implements ConnectionInterface {
   public $name;
 
   /**
+   * The connection RETS version.
+   *
+   * @var string
+   */
+  public $rets;
+
+  /**
    * The connection login url.
    *
    * @var string
@@ -79,13 +86,55 @@ class ConnectionEntity extends ConfigEntityBase implements ConnectionInterface {
    *
    * @var string
    */
-  public $agent_string;
+  public $ua_string;
 
   /**
    * The connection user agent password.
    *
    * @var string
    */
-  public $agent_password;
+  public $ua_password;
+
+  /**
+   * Use interealty authentication.
+   *
+   * @var boolean
+   */
+  public $use_interealty_auth;
+
+  /**
+   * Force basic authentication.
+   *
+   * @var boolean
+   */
+  public $force_basic_auth;
+
+  /**
+   * Use compression.
+   *
+   * @var boolean
+   */
+  public $use_compression;
+
+  /**
+   * Disable encoding fix.
+   *
+   * @var boolean
+   */
+  public $disable_encoding_fix;
+
+  /**
+   * Debug mode.
+   *
+   * @var boolean
+   */
+  public $debug_mode;
+
+  /**
+   * No map mode.
+   *
+   * @var boolean
+   */
+  public $nomap_mode;
 
 }

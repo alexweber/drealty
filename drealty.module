@@ -393,3 +393,17 @@ function drealty_language_entity_delete(LanguageEntity $language) {
   // On listings with this language, unset the language.
   \Drupal::entityManager()->getStorage('drealty_listing')->clearRevisionsLanguage($language);
 }
+
+/**
+ * Returns supported RETS versions.
+ *
+ * @return array
+ */
+function drealty_rets_versions() {
+  return array(
+    '1.0',
+    '1.5',
+    '1.7',
+    '1.7.2',
+  );
+}
