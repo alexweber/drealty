@@ -73,4 +73,32 @@ class ConnectionEntity extends ConfigEntityBase implements ConnectionInterface {
    * @var string
    */
   protected $password;
+
+  /**
+   * Public getter for login URL.
+   *
+   * @return string
+   */
+  public function getUrl() {
+    return $this->url;
+  }
+
+  /**
+   * Public getter for login username.
+   *
+   * @return string
+   */
+  public function getUsername() {
+    return $this->username;
+  }
+
+  /**
+   * Public getter for login password.
+   *
+   * @return string
+   */
+  public function getPassword() {
+    return $this->password;
+  }
+
 }
