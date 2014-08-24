@@ -35,10 +35,10 @@ class ConnectionForm extends EntityForm {
     // The connection name.
     $form['name'] = array(
       '#type' => 'textfield',
-      '#title' => $this->t('Name'),
+      '#title' => $this->t('Connection Label'),
       '#maxlength' => 255,
       '#default_value' => $connection->name,
-      '#description' => $this->t("Connection name."),
+      '#description' => $this->t("The human-readable name of this connection."),
       '#required' => TRUE,
     );
 
@@ -52,6 +52,16 @@ class ConnectionForm extends EntityForm {
         'source' => array('name'),
         'exists' => 'drealty_connection_load'
       ),
+    );
+
+    // Login URL.
+    // @TODO add front-end validation with #pattern?
+    $form['login_url'] = array(
+      '#title' => t('Login URL'),
+      '#type' => 'url',
+      '#description' => t('Login URL given to you by your RETS provider. i.e. (http://demo.crt.realtors.org:6103/rets/login)'),
+      '#required' => TRUE,
+      '#default_value' => $connection->login_url,
     );
 
     return $form;

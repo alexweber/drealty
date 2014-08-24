@@ -13,6 +13,9 @@ drealty.drealty_connection.*:
       type: label
       label: 'Name'
       translatable: true
+    login_url:
+      type: string
+      label: 'Login URL'
 
 # Listing type config entity.
 drealty.type.*:
