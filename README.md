@@ -31,3 +31,8 @@ Milestone 3
 ---
 * Port Daemon/Drush integration
 * Leverage States API & do cron magic to auto update feeds?
+
+Milestone 4
+---
+* Get a better toolbar icon?
+* Convert CSS to SASS?
