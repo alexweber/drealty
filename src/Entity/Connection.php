@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \Drupal\drealty\Entity\ConnectionEntity.
+ * Contains \Drupal\drealty\Entity\Connection.
  */
 
 namespace Drupal\drealty\Entity;
@@ -19,6 +19,7 @@ use Drupal\drealty\ConnectionInterface;
  *   fieldable = FALSE,
  *   controllers = {
  *     "list_builder" = "Drupal\drealty\ConnectionListBuilder",
+ *     "view_builder" = "Drupal\drealty\ConnectionViewBuilder",
  *     "form" = {
  *       "add" = "Drupal\drealty\ConnectionForm",
  *       "edit" = "Drupal\drealty\ConnectionForm",
@@ -32,12 +33,13 @@ use Drupal\drealty\ConnectionInterface;
  *     "label" = "name"
  *   },
  *   links = {
+ *     "view" = "drealty.drealty_connection_view",
  *     "edit-form" = "entity.drealty_connection.edit_form",
  *     "delete-form" = "entity.drealty_connection.delete_form"
  *   }
  * )
  */
-class ConnectionEntity extends ConfigEntityBase implements ConnectionInterface {
+class Connection extends ConfigEntityBase implements ConnectionInterface {
 
   /**
    * The connection ID.
