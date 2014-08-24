@@ -1,13 +1,13 @@
 /**
  * @file
- * Javascript for the listing content editing form.
+ * Javascript for the listing type edit form.
  */
 
 (function ($) {
 
   "use strict";
 
-  Drupal.behaviors.listingTypes = {
+  Drupal.behaviors.listingType = {
     attach: function (context) {
       var $context = $(context);
       // Provide the vertical tab summaries.

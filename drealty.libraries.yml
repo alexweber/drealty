@@ -8,10 +8,10 @@ drealty.listing:
     - core/drupalSettings
     - core/drupal.form
 
-drealty.listing_types:
+drealty.listing_type:
   version: VERSION
   js:
-    assets/js/listing_types.js: {}
+    assets/js/listing_type.js: {}
   dependencies:
     - core/jquery
     - core/drupal

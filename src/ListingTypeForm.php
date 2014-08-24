@@ -61,7 +61,7 @@ class ListingTypeForm extends EntityForm {
     $form['additional_settings'] = array(
       '#type' => 'vertical_tabs',
       '#attached' => array(
-        'library' => array('drealty/drealty.listing_types'),
+        'library' => array('drealty/drealty.listing_type'),
       ),
     );
 
