@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Definition of Drupal\drealty\ListingForm.
+ * Definition of Drupal\drealty\Form\ListingForm.
  */
 
-namespace Drupal\drealty;
+namespace Drupal\drealty\Form;
 
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Datetime\DrupalDateTime;

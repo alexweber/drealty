@@ -20,8 +20,8 @@ use Drupal\drealty\ConnectionInterface;
  *   controllers = {
  *     "list_builder" = "Drupal\drealty\ConnectionListBuilder",
  *     "form" = {
- *       "add" = "Drupal\drealty\ConnectionForm",
- *       "edit" = "Drupal\drealty\ConnectionForm",
+ *       "add" = "Drupal\drealty\Form\ConnectionForm",
+ *       "edit" = "Drupal\drealty\Form\ConnectionForm",
  *       "delete" = "Drupal\drealty\Form\ConnectionDeleteForm",
  *       "status" = "Drupal\drealty\Form\ConnectionStatusForm",
  *     }

@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains \Drupal\drealty\ListingTypeForm.
+ * Contains \Drupal\drealty\Form\ListingTypeForm.
  */
 
-namespace Drupal\drealty;
+namespace Drupal\drealty\Form;
 
 use Drupal\Core\Entity\EntityForm;
 use Drupal\Component\Utility\String;

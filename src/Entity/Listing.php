@@ -28,9 +28,9 @@ use Drupal\user\UserInterface;
  *     "view_builder" = "Drupal\drealty\ListingViewBuilder",
  *     "access" = "Drupal\drealty\ListingAccessController",
  *     "form" = {
- *       "default" = "Drupal\drealty\ListingForm",
+ *       "default" = "Drupal\drealty\Form\ListingForm",
  *       "delete" = "Drupal\drealty\Form\ListingDeleteForm",
- *       "edit" = "Drupal\drealty\ListingForm",
+ *       "edit" = "Drupal\drealty\Form\ListingForm",
  *       "refresh" = "Drupal\drealty\Form\ListingRefreshForm",
  *     },
  *     "list_builder" = "Drupal\drealty\ListingListBuilder",

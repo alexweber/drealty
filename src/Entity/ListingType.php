@@ -21,8 +21,8 @@ use Drupal\Component\Utility\NestedArray;
  *   controllers = {
  *     "access" = "Drupal\drealty\ListingTypeAccessController",
  *     "form" = {
- *       "add" = "Drupal\drealty\ListingTypeForm",
- *       "edit" = "Drupal\drealty\ListingTypeForm",
+ *       "add" = "Drupal\drealty\Form\ListingTypeForm",
+ *       "edit" = "Drupal\drealty\Form\ListingTypeForm",
  *       "delete" = "Drupal\drealty\Form\ListingTypeDeleteForm"
  *     },
  *     "list_builder" = "Drupal\drealty\ListingTypeListBuilder",
