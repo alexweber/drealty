@@ -3,7 +3,7 @@ DRealty for Drupal 8
 
 Drupal RETS Real Estate Framework integration
 
-This is very much in development and might or might not work at any given moment: https://travis-ci.org/alexweber/drealty.svg?branch=8.x-4.x
+This is very much in development and might or might not work at any given moment: [![Build Status](https://travis-ci.org/alexweber/drealty.svg?branch=8.x-4.x)](https://travis-ci.org/alexweber/drealty)
 
 Get involved!
 ===
