@@ -5,6 +5,11 @@ Drupal RETS Real Estate Framework integration
 
 This is very much in development and might or might not work at any given moment.
 
+Get involved
+===
+[![Gitter chat](https://badges.gitter.im/alexweber/drealty.png)](https://gitter.im/alexweber/drealty)
+
+
 Roadmap
 ===
 
