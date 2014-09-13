@@ -1,0 +1,32 @@
+administer drealty connections:
+  title: 'Administer Connections'
+  description: 'View edit and delete DRealty Connections.'
+  'restrict access': TRUE
+administer drealty resources:
+  title: 'Administer RETS Resources'
+  description: 'View edit and delete DRealty RETS Resources.'
+  'restrict access': TRUE
+administer drealty listing types:
+  title: 'Administer Listing Types'
+  description: 'View edit and delete DRealty Listing Types.'
+  'restrict access': TRUE
+administer drealty listings:
+  title: 'Administer Listings'
+  description: 'View edit and delete all DRealty listings regardless of permission restrictions.'
+  'restrict access': TRUE
+view drealty listings:
+  title: 'View published listings'
+view own unpublished drealty listings:
+  title: 'View own unpublished listings'
+view all drealty listing revisions:
+  title: 'View all listing revisions'
+revert all drealty listing revisions:
+  title: 'Revert all listing revisions'
+  description: 'Role requires permission <em>view revisions</em> and <em>edit rights</em> for listings in question or <em>administer drealty listings</em>.'
+delete all drealty listing revisions:
+  title: 'Delete all listing revisions'
+  description: 'Role requires permission to <em>view revisions</em> and <em>delete rights</em> for listings in question or <em>administer drealty listings</em>.'
+
+permission_callbacks:
+  - \Drupal\drealty\ListingPermissions::listingTypePermissions
+  - \Drupal\drealty\ListingPermissions::listingPermissions
