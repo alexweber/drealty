@@ -9,6 +9,7 @@ use Drupal\drealty\Entity\Connection;
 use Drupal\drealty\Entity\ListingType;
 use Drupal\drealty\Entity\RetsResource;
 use Drupal\drealty\ListingInterface;
+use Drupal\drealty\ListingTypeInterface;
 //use Drupal\drealty\RetsResourceInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\language\Entity\Language as LanguageEntity;
@@ -445,4 +446,15 @@ function drealty_rets_versions() {
     '1.7',
     '1.7.2',
   );
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_update() for drealty_listing_type entities on
+ * behalf of the core language module.
+ */
+function language_drealty_listing_type_update(ListingTypeInterface $type) {
+  if ($type->original->id() != $type->id()) {
+    language_save_default_configuration('drealty_listing', $type->id(), language_get_default_configuration('drealty_listing', $type->original->id()));
+    language_clear_default_configuration('drealty_listing', $type->original->id());
+  }
 }
