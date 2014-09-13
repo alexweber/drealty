@@ -96,3 +96,11 @@ drealty.type.*:
       label: 'Third party settings'
       sequence:
         - type: drealty_listing_type.third_party.[%key]
+
+condition.plugin.drealty_listing_type:
+  type: condition.plugin
+  mapping:
+    bundles:
+      type: sequence
+      sequence:
+        - type: string
