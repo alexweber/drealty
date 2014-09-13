@@ -7,6 +7,7 @@ core: 8.x
 configure: drealty.admin
 project: 'drealty'
 dependencies:
+  - composer_manager
   - entity
   - entity_reference
   - options
