@@ -64,7 +64,7 @@ drealty.listing_type_add:
     _entity_form: 'drealty_listing_type.add'
     _title: 'Add a new listing type'
   requirements:
-    _permission: 'administer drealty listing types'
+    _permission: 'administer drealty listing-types'
 
 entity.drealty_listing_type.edit_form:
   path: '/admin/drealty/listing-types/edit/{drealty_listing_type}'
@@ -72,7 +72,7 @@ entity.drealty_listing_type.edit_form:
     _entity_form: 'drealty_listing_type.edit'
     _title: 'Edit listing type'
   requirements:
-    _permission: 'administer drealty listing types'
+    _permission: 'administer drealty listing-types'
 
 entity.drealty_listing_type.delete_form:
   path: '/admin/drealty/listing-types/delete/{drealty_listing_type}'
@@ -80,7 +80,7 @@ entity.drealty_listing_type.delete_form:
     _entity_form: 'drealty_listing_type.delete'
     _title: 'Delete listing type'
   requirements:
-    _permission: 'administer drealty listing types'
+    _permission: 'administer drealty listing-types'
 
 # Listings UI.
 drealty.listing_list:
