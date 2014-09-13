@@ -8,27 +8,32 @@
 namespace Drupal\drealty;
 
 use Drupal\Core\Config\Entity\ConfigEntityInterface;
+use Drupal\Core\Config\Entity\ThirdPartySettingsInterface;
 
-interface ListingTypeInterface extends ConfigEntityInterface {
-
-  /**
-   * Returns the configured property type settings of a given module, if any.
-   *
-   * @param string $module
-   *   The name of the module whose settings to return.
-   *
-   * @return array
-   *   An associative array containing the module's settings for the property type.
-   *   Note that this can be empty, and default values do not necessarily exist.
-   */
-  public function getModuleSettings($module);
+interface ListingTypeInterface extends ConfigEntityInterface, ThirdPartySettingsInterface {
 
   /**
-   * Determines whether the property type is locked.
+   * Determines whether the listing type is locked.
    *
    * @return string|false
    *   The module name that locks the type or FALSE.
    */
   public function isLocked();
+
+  /**
+   * Returns whether a new revision should be created by default.
+   *
+   * @return bool
+   *   TRUE if a new revision should be created by default.
+   */
+  public function isNewRevision();
+
+  /**
+   * Set whether a new revision should be created by default.
+   *
+   * @param bool
+   *   TRUE if a new revision should be created by default.
+   */
+  public function setNewRevision($new_revision);
 
 }
