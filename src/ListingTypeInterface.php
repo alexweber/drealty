@@ -10,6 +10,9 @@ namespace Drupal\drealty;
 use Drupal\Core\Config\Entity\ConfigEntityInterface;
 use Drupal\Core\Config\Entity\ThirdPartySettingsInterface;
 
+/**
+ * Provides an interface defining a listing type entity.
+ */
 interface ListingTypeInterface extends ConfigEntityInterface, ThirdPartySettingsInterface {
 
   /**
