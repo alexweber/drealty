@@ -111,6 +111,14 @@ function drealty_theme() {
       'base hook' => 'field',
       'template' => 'field--drealty-listing--title',
     ),
+    'field__drealty_listing__uid' => array(
+      'base hook' => 'field',
+      'template' => 'field--drealty-listing--uid',
+    ),
+    'field__drealty_listing__created' => array(
+      'base hook' => 'field',
+      'template' => 'field--drealty-listing--created',
+    ),
   );
 }
 
