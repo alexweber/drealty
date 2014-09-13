@@ -8,9 +8,9 @@
 namespace Drupal\drealty\Entity;
 
 use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
+use Drupal\Core\Config\Entity\ThirdPartySettingsTrait;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\drealty\ListingTypeInterface;
-use Drupal\Component\Utility\NestedArray;
 
 /**
  * Defines the Listing type configuration entity.
@@ -18,10 +18,9 @@ use Drupal\Component\Utility\NestedArray;
  * @ConfigEntityType(
  *   id = "drealty_listing_type",
  *   label = @Translation("Listing type"),
- *   controllers = {
+ *   handlers = {
  *     "access" = "Drupal\drealty\ListingTypeAccessController",
  *     "form" = {
- *       "default" = "Drupal\drealty\Form\ListingTypeForm",
  *       "add" = "Drupal\drealty\Form\ListingTypeForm",
  *       "edit" = "Drupal\drealty\Form\ListingTypeForm",
  *       "delete" = "Drupal\drealty\Form\ListingTypeDeleteForm"
@@ -36,13 +35,13 @@ use Drupal\Component\Utility\NestedArray;
  *     "label" = "label"
  *   },
  *   links = {
- *     "add-form" = "drealty.listing_type_add",
  *     "edit-form" = "entity.drealty_listing_type.edit_form",
  *     "delete-form" = "entity.drealty_listing_type.delete_form"
  *   }
  * )
  */
 class ListingType extends ConfigEntityBundleBase implements ListingTypeInterface {
+  use ThirdPartySettingsTrait;
 
   /**
    * The machine name of this listing type.
@@ -73,13 +72,11 @@ class ListingType extends ConfigEntityBundleBase implements ListingTypeInterface
   public $help;
 
   /**
-   * Module-specific settings for this listing type, keyed by module name.
+   * Default value of the 'Create new revision' checkbox of this node type.
    *
-   * @var array
-   *
-   * @todo Pluginify.
+   * @var bool
    */
-  public $settings = array();
+  protected $new_revision = FALSE;
 
   /**
    * {@inheritdoc}
@@ -93,18 +90,22 @@ class ListingType extends ConfigEntityBundleBase implements ListingTypeInterface
    */
   public function isLocked() {
     // @TODO verify this.
-    $locked = \Drupal::state()->get('drealty.listing_type.locked');
+    $locked = \Drupal::state()->get('drealty_listing.type.locked');
     return isset($locked[$this->id()]) ? $locked[$this->id()] : FALSE;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getModuleSettings($module) {
-    if (isset($this->settings[$module]) && is_array($this->settings[$module])) {
-      return $this->settings[$module];
-    }
-    return array();
+  public function isNewRevision() {
+    return $this->new_revision;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setNewRevision($new_revision) {
+    $this->new_revision = $new_revision;
   }
 
   /**
@@ -144,25 +145,6 @@ class ListingType extends ConfigEntityBundleBase implements ListingTypeInterface
 
     // Clear the listing type cache to reflect the removal.
     $storage->resetCache(array_keys($entities));
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public static function preCreate(EntityStorageInterface $storage, array &$values) {
-    parent::preCreate($storage, $values);
-
-    // Ensure default values are set.
-    if (!isset($values['settings']['drealty'])) {
-      $values['settings']['drealty'] = array();
-    }
-    $values['settings']['drealty'] = NestedArray::mergeDeep(array(
-      'options' => array(
-        'status' => TRUE,
-        'featured' => FALSE,
-        'revision' => FALSE,
-      ),
-    ), $values['settings']['drealty']);
   }
 
 }
