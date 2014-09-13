@@ -19,7 +19,7 @@ use Drupal\drealty\ListingTypeInterface;
  *   id = "drealty_listing_type",
  *   label = @Translation("Listing type"),
  *   handlers = {
- *     "access" = "Drupal\drealty\ListingTypeAccessController",
+ *     "access" = "Drupal\drealty\ListingTypeAccessControlHandler",
  *     "form" = {
  *       "add" = "Drupal\drealty\Form\ListingTypeForm",
  *       "edit" = "Drupal\drealty\Form\ListingTypeForm",

@@ -7,7 +7,7 @@
 
 namespace Drupal\drealty;
 
-use Drupal\Core\Entity\EntityAccessController;
+use Drupal\Core\Entity\EntityAccessControlHandler;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Session\AccountInterface;
 
@@ -16,7 +16,7 @@ use Drupal\Core\Session\AccountInterface;
  *
  * @see \Drupal\drealty\Entity\ListingType.
  */
-class ListingTypeAccessController extends EntityAccessController {
+class ListingTypeAccessControlHandler extends EntityAccessControlHandler {
 
   /**
    * {@inheritdoc}
