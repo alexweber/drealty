@@ -88,28 +88,11 @@ drealty.type.*:
     help:
       type: text
       label: 'Explanation or submission guidelines'
-    settings:
-      type: mapping
-      label: 'Settings'
-      mapping:
-        drealty:
-          type: drealty.settings.drealty
-
-# Listing type module settings.
-drealty.settings.drealty:
-  type: mapping
-  label: 'Listing type settings'
-  mapping:
-    options:
-      type: mapping
-      label: 'Publishing options'
-      mapping:
-        status:
-          type: boolean
-          label: 'Published'
-        featured:
-          type: boolean
-          label: 'Featured'
-        revision:
-          type: boolean
-          label: 'Create new revision'
+    new_revision:
+      type: boolean
+      label: 'Whether a new revision should be created by default'
+    third_party_settings:
+      type: sequence
+      label: 'Third party settings'
+      sequence:
+        - type: drealty_listing_type.third_party.[%key]
