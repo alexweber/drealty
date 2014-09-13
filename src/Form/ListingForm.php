@@ -390,11 +390,11 @@ class ListingForm extends ContentEntityForm {
     $t_args = array('@type' => drealty_get_type_label($listing), '%title' => $listing->label());
 
     if ($insert) {
-      $this->logger('content')->notice('@type: added %title.', $context);
+      $this->logger('drealty')->notice('@type: added %title.', $context);
       drupal_set_message(t('@type %title has been created.', $t_args));
     }
     else {
-      $this->logger('content')->notice('@type: updated %title.', $context);
+      $this->logger('drealty')->notice('@type: updated %title.', $context);
       drupal_set_message(t('@type %title has been updated.', $t_args));
     }
 

@@ -113,7 +113,7 @@ class ListingRevisionRevertForm extends ConfirmFormBase {
 
     $this->revision->save();
 
-    $this->logger('content')->notice('@type: reverted %title revision %revision.', array('@type' => $this->revision->bundle(), '%title' => $this->revision->label(), '%revision' => $this->revision->getRevisionId()));
+    $this->logger('drealty')->notice('@type: reverted %title revision %revision.', array('@type' => $this->revision->bundle(), '%title' => $this->revision->label(), '%revision' => $this->revision->getRevisionId()));
     drupal_set_message(t('@type %title has been reverted back to the revision from %revision-date.', array('@type' => $this->revision->bundle(), '%title' => $this->revision->label(), '%revision-date' => format_date($original_revision_timestamp))));
     $form_state->setRedirect(
       'drealty.listing_revision_overview',

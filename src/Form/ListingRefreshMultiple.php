@@ -122,7 +122,7 @@ class ListingRefreshMultiple extends ConfirmFormBase {
 //      $this->storage->refresh($this->listings);
       $this->tempStoreFactory->get('drealty_listing_multiple_refresh_confirm')->delete(\Drupal::currentUser()->id());
       $count = count($this->listings);
-      $this->logger('content')->notice('Refreshed @count listings.', array('@count' => $count));
+      $this->logger('drealty')->notice('Refreshed @count listings.', array('@count' => $count));
       drupal_set_message(format_plural($count, 'Refreshed 1 listing.', 'Refreshed @count listings.'));
     }
     $form_state->setRedirect('drealty.listing_list');

@@ -121,7 +121,7 @@ class ListingDeleteMultiple extends ConfirmFormBase {
       $this->storage->delete($this->listings);
       $this->tempStoreFactory->get('drealty_listing_multiple_delete_confirm')->delete(\Drupal::currentUser()->id());
       $count = count($this->listings);
-      $this->logger('content')->notice('Deleted @count listings.', array('@count' => $count));
+      $this->logger('drealty')->notice('Deleted @count listings.', array('@count' => $count));
       drupal_set_message(format_plural($count, 'Deleted 1 listing.', 'Deleted @count listings.'));
     }
     $form_state->setRedirect('drealty.listing_list');

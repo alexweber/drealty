@@ -75,7 +75,7 @@ class ListingRefreshForm extends ContentEntityConfirmFormBase {
   public function submit(array $form, FormStateInterface $form_state) {
     // @TODO
 //    $this->entity->refresh();
-    $this->logger('content')->notice('@type: refreshed RETS data for: %title.', array('@type' => $this->entity->bundle(), '%title' => $this->entity->label()));
+    $this->logger('drealty')->notice('@type: refreshed RETS data for: %title.', array('@type' => $this->entity->bundle(), '%title' => $this->entity->label()));
     $listing_type_storage = $this->entityManager->getStorage('drealty_listing_type');
     $listing_type = $listing_type_storage->load($this->entity->bundle())->label();
     drupal_set_message(t('@type %title has been refreshed.', array('@type' => $listing_type, '%title' => $this->entity->label())));

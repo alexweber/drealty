@@ -120,7 +120,7 @@ class ListingRevisionDeleteForm extends ConfirmFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $this->listingStorage->deleteRevision($this->revision->getRevisionId());
 
-    $this->logger('content')->notice('@type: deleted %title revision %revision.', array('@type' => $this->revision->bundle(), '%title' => $this->revision->label(), '%revision' => $this->revision->getRevisionId()));
+    $this->logger('drealty')->notice('@type: deleted %title revision %revision.', array('@type' => $this->revision->bundle(), '%title' => $this->revision->label(), '%revision' => $this->revision->getRevisionId()));
     $listing_type = $this->listingTypeStorage->load($this->revision->bundle())->label();
     drupal_set_message(t('Revision from %revision-date of @type %title has been deleted.', array('%revision-date' => format_date($this->revision->getRevisionCreationTime()), '@type' => $listing_type, '%title' => $this->revision->label())));
     $form_state->setRedirect(
