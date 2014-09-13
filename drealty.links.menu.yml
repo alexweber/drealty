@@ -1,23 +1,23 @@
 drealty.admin:
-  title: DRealty
+  title: 'DRealty'
   description: 'Main DRealty Administration Page.'
   route_name: drealty.admin
   parent: system.admin
 
 drealty.connection_list:
-  title: Connections
+  title: 'Connections'
   description: 'Administer DRealty Connections.'
   parent: drealty.admin
   route_name: drealty.connection_list
 
 drealty.listing_type_list:
-  title: Listing Types
+  title: 'Listing Types'
   description: 'Administer DRealty Listing Types.'
   parent: drealty.admin
   route_name: drealty.listing_type_list
 
 drealty.resource_list:
-  title: RETS Resources
+  title: 'RETS Resources'
   description: 'Administer RETS Resources.'
   parent: drealty.admin
   route_name: drealty.resource_list

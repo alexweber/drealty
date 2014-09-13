@@ -1,5 +1,5 @@
 drealty.admin_content:
-  title: Real Estate Listings
+  title: 'Real Estate Listings'
   route_name: drealty.listing_list
   base_route: system.admin_content
 entity.drealty_listing.canonical:
@@ -9,16 +9,16 @@ entity.drealty_listing.canonical:
 entity.drealty_listing.edit_form:
   route_name: entity.drealty_listing.edit_form
   base_route: entity.drealty_listing.canonical
-  title: Edit
+  title: 'Edit'
 entity.drealty_listing.delete_form:
   route_name: entity.drealty_listing.delete_form
   base_route: entity.drealty_listing.canonical
-  title: Delete
+  title: 'Delete'
   weight: 10
 entity.drealty_listing.refresh_form:
   route_name: entity.drealty_listing.refresh_form
   base_route: entity.drealty_listing.canonical
-  title: refresh
+  title: 'Refresh RETS Data'
   weight: 20
 drealty.listing_revision_overview:
   route_name: drealty.listing_revision_overview
@@ -30,6 +30,6 @@ drealty.listing_type_edit:
   route_name: entity.drealty_listing_type.edit_form
   base_route: entity.drealty_listing_type.edit_form
 drealty.listing_type_list:
-  title: List
+  title: 'List'
   route_name: drealty.listing_type_list
   base_route: drealty.listing_type_list

@@ -1,14 +1,14 @@
 drealty.connection_add:
-  route_name: 'drealty.connection_add'
+  route_name: drealty.connection_add
   title: 'New connection'
   appears_on:
-    - 'drealty.connection_list'
+    - drealty.connection_list
 
 drealty.listing_type_add:
-  route_name: 'drealty.listing_type_add'
+  route_name: drealty.listing_type_add
   title: 'New listing type'
   appears_on:
-    - 'drealty.listing_type_list'
+    - drealty.listing_type_list
 
 drealty.add_page:
   route_name: drealty.listing_add_page
@@ -17,7 +17,7 @@ drealty.add_page:
     - drealty.listing_list
 
 drealty.resource_add:
-  route_name: 'drealty_resource.add'
+  route_name: drealty_resource.add
   title: 'Add Resource'
   appears_on:
     - drealty_resource.list
