@@ -7,7 +7,7 @@
 
 namespace Drupal\drealty;
 
-use Drupal\Core\Entity\ContentEntityDatabaseStorage;
+use Drupal\Core\Entity\Sql\SqlContentEntityStorage;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Language\LanguageInterface;
 
@@ -17,7 +17,7 @@ use Drupal\Core\Language\LanguageInterface;
  * This extends the base storage class, adding required special handling for
  * listing entities.
  */
-class ListingStorage extends ContentEntityDatabaseStorage implements ListingStorageInterface {
+class ListingStorage extends SqlContentEntityStorage implements ListingStorageInterface {
 
   /**
    * {@inheritdoc}
@@ -57,52 +57,6 @@ class ListingStorage extends ContentEntityDatabaseStorage implements ListingStor
       ->fields(array('langcode' => LanguageInterface::LANGCODE_NOT_SPECIFIED))
       ->condition('langcode', $language->id)
       ->execute();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getSchema() {
-    $schema = parent::getSchema();
-
-    // @TODO revisit this at a later time and add any approapriate extra indices
-    // or metadata.
-
-    // Marking the respective fields as NOT NULL makes the indexes more
-    // performant.
-    $schema['drealty_listing_field_data']['fields']['changed']['not null'] = TRUE;
-    $schema['drealty_listing_field_data']['fields']['created']['not null'] = TRUE;
-    $schema['drealty_listing_field_data']['fields']['default_langcode']['not null'] = TRUE;
-    $schema['drealty_listing_field_data']['fields']['featured']['not null'] = TRUE;
-    $schema['drealty_listing_field_data']['fields']['status']['not null'] = TRUE;
-    $schema['drealty_listing_field_revision']['fields']['default_langcode']['not null'] = TRUE;
-
-    // @todo Revisit index definitions in https://drupal.org/node/2015277.
-    $schema['drealty_listing_revision']['indexes'] += array(
-      'drealty_listing__langcode' => array('langcode'),
-    );
-    $schema['drealty_listing_revision']['foreign keys'] += array(
-      'drealty_listing__revision_author' => array(
-        'table' => 'users',
-        'columns' => array('revision_uid' => 'uid'),
-      ),
-    );
-
-    $schema['drealty_listing_field_data']['indexes'] += array(
-      'drealty_listing__changed' => array('changed'),
-      'drealty_listing__created' => array('created'),
-      'drealty_listing__default_langcode' => array('default_langcode'),
-      'drealty_listing__langcode' => array('langcode'),
-      'drealty_listing__frontpage' => array('featured', 'status', 'created'),
-      'drealty_listing__status_type' => array('status', 'type', 'id'),
-    );
-
-    $schema['drealty_listing_field_revision']['indexes'] += array(
-      'drealty_listing__default_langcode' => array('default_langcode'),
-      'drealty_listing__langcode' => array('langcode'),
-    );
-
-    return $schema;
   }
 
 }

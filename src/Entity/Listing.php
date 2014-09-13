@@ -23,8 +23,9 @@ use Drupal\user\UserInterface;
  *   id = "drealty_listing",
  *   label = @Translation("DRealty Listing"),
  *   bundle_label = @Translation("Listing type"),
- *   controllers = {
+ *   handlers = {
  *     "storage" = "Drupal\drealty\ListingStorage",
+ *     "storage_schema" = "Drupal\drealty\ListingStorageSchema",
  *     "view_builder" = "Drupal\drealty\ListingViewBuilder",
  *     "access" = "Drupal\drealty\ListingAccessController",
  *     "form" = {
@@ -50,18 +51,20 @@ use Drupal\user\UserInterface;
  *     "uuid" = "uuid"
  *   },
  *   bundle_entity_type = "drealty_listing_type",
+ *   field_ui_base_route = "entity.drealty_listing_type.edit_form",
  *   permission_granularity = "bundle",
  *   links = {
  *     "canonical" = "entity.drealty_listing.canonical",
  *     "delete-form" = "entity.drealty_listing.delete_form",
  *     "edit-form" = "entity.drealty_listing.edit_form",
+ *     "version-history" = "entity.drealty_listing.version_history",
  *     "refresh-form" = "entity.drealty_listing.refresh_form",
- *     "version-history" = "drealty.listing_revision_overview",
- *     "admin-form" = "entity.drealty_listing_type.edit_form"
  *   }
  * )
  */
 class Listing extends ContentEntityBase implements ListingInterface {
+
+  // @TODO move published/featured constants here!
 
   /**
    * {@inheritdoc}
@@ -297,7 +300,7 @@ class Listing extends ContentEntityBase implements ListingInterface {
   /**
    * {@inheritdoc}
    */
-  public static function baseBaseFieldDefinitions(EntityTypeInterface $entity_type) {
+  public static function baseFieldDefinitions(EntityTypeInterface $entity_type) {
     $fields['id'] = BaseFieldDefinition::create('integer')
       ->setLabel(t('Listing ID'))
       ->setDescription(t('The listing ID.'))
@@ -350,19 +353,47 @@ class Listing extends ContentEntityBase implements ListingInterface {
       ->setDescription(t('The user that is the listing author.'))
       ->setRevisionable(TRUE)
       ->setSetting('target_type', 'user')
-      ->setTranslatable(TRUE);
+      ->setSetting('handler', 'default')
+      ->setDefaultValueCallback(array('Drupal\drealty\Entity\Listing', 'getCurrentUserId'))
+      ->setTranslatable(TRUE)->setDisplayOptions('view', array(
+        'label' => 'hidden',
+        'type' => 'author',
+        'weight' => 0,
+      ))
+      ->setDisplayOptions('form', array(
+        'type' => 'entity_reference_autocomplete',
+        'weight' => 5,
+        'settings' => array(
+          'match_operator' => 'CONTAINS',
+          'size' => '60',
+          'autocomplete_type' => 'tags',
+          'placeholder' => '',
+        ),
+      ))
+      ->setDisplayConfigurable('form', TRUE);
 
     $fields['status'] = BaseFieldDefinition::create('boolean')
       ->setLabel(t('Publishing status'))
       ->setDescription(t('A boolean indicating whether the listing is published.'))
       ->setRevisionable(TRUE)
-      ->setTranslatable(TRUE);
+      ->setTranslatable(TRUE)
+      ->setDefaultValue(FALSE);
 
     $fields['created'] = BaseFieldDefinition::create('created')
       ->setLabel(t('Created'))
       ->setDescription(t('The time that the listing was created.'))
       ->setRevisionable(TRUE)
-      ->setTranslatable(TRUE);
+      ->setTranslatable(TRUE)
+      ->setDisplayOptions('view', array(
+        'label' => 'hidden',
+        'type' => 'timestamp',
+        'weight' => 0,
+      ))
+      ->setDisplayOptions('form', array(
+        'type' => 'datetime_timestamp',
+        'weight' => 10,
+      ))
+      ->setDisplayConfigurable('form', TRUE);
 
     $fields['changed'] = BaseFieldDefinition::create('changed')
       ->setLabel(t('Changed'))
@@ -374,7 +405,16 @@ class Listing extends ContentEntityBase implements ListingInterface {
       ->setLabel(t('Featured'))
       ->setDescription(t('A boolean indicating whether the listing should be displayed on the front page.'))
       ->setRevisionable(TRUE)
-      ->setTranslatable(TRUE);
+      ->setTranslatable(TRUE)
+      ->setDefaultValue(TRUE)
+      ->setDisplayOptions('form', array(
+        'type' => 'boolean_checkbox',
+        'settings' => array(
+          'display_label' => TRUE,
+        ),
+        'weight' => 15,
+      ))
+      ->setDisplayConfigurable('form', TRUE);
 
     $fields['revision_timestamp'] = BaseFieldDefinition::create('created')
       ->setLabel(t('Revision timestamp'))
@@ -393,35 +433,28 @@ class Listing extends ContentEntityBase implements ListingInterface {
       ->setLabel(t('Revision log message'))
       ->setDescription(t('The log entry explaining the changes in this revision.'))
       ->setRevisionable(TRUE)
-      ->setTranslatable(TRUE);
+      ->setTranslatable(TRUE)
+      ->setDisplayOptions('form', array(
+        'type' => 'string_textarea',
+        'weight' => 25,
+        'settings' => array(
+          'rows' => 4,
+        ),
+      ));
 
     return $fields;
   }
 
   /**
-   * {@inheritdoc}
+   * Default value callback for 'uid' base field definition.
+   *
+   * @see ::baseFieldDefinitions()
+   *
+   * @return array
+   *   An array of default values.
    */
-  public static function bundleBaseFieldDefinitions(EntityTypeInterface $entity_type, $bundle, array $base_field_definitions) {
-    $listing_type = ListingType::load($bundle);
-    $fields = array();
-
-    // When deleting a listing type the corresponding listing displays are deleted as
-    // well. In order to be deleted, they need to be loaded first. Entity
-    // displays, however, fetch the field definitions of the respective entity
-    // type to fill in their defaults. Therefore this function ends up being
-    // called with a non-existing bundle.
-    // @todo Fix this in https://drupal.org/node/2248795
-    if (!$listing_type) {
-      return $fields;
-    }
-
-    $options = $listing_type->getModuleSettings('drealty')['options'];
-    $fields['status'] = clone $base_field_definitions['status'];
-    $fields['status']->setDefaultValue(!empty($options['status']) ? LISTING_PUBLISHED : LISTING_NOT_PUBLISHED);
-    $fields['featured'] = clone $base_field_definitions['featured'];
-    $fields['featured']->setDefaultValue(!empty($options['featured']) ? LISTING_FEATURED : LISTING_NOT_FEATURED);
-
-    return $fields;
+  public static function getCurrentUserId() {
+    return array(\Drupal::currentUser()->id());
   }
 
 }

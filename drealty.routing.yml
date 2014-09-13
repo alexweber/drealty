@@ -150,7 +150,7 @@ entity.drealty_listing.refresh_form:
     _drealty_operation_route: TRUE
 
 # Listing Revisions.
-drealty.listing_revision_overview:
+entity.drealty_listing.version_history:
   path: '/drealty_listing/{drealty_listing}/revisions'
   defaults:
     _title: 'Revisions'

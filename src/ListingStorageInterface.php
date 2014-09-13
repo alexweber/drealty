@@ -16,6 +16,17 @@ use Drupal\Core\Session\AccountInterface;
 interface ListingStorageInterface extends EntityStorageInterface {
 
   /**
+   * Returns a list of revision IDs for a specific listing.
+   *
+   * @param \Drupal\drealty\ListingInterface
+   *   The listing entity.
+   *
+   * @return int[]
+   *   Listing revision IDs (in ascending order).
+   */
+  public function revisionIds(ListingInterface $listing);
+
+  /**
    * Returns a list of revision IDs having a given user as listing author.
    *
    * @param \Drupal\Core\Session\AccountInterface $account
