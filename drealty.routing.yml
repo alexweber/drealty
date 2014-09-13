@@ -52,7 +52,8 @@ entity.drealty_connection.delete_form:
 drealty.listing_type_list:
   path: '/admin/drealty/listing-types'
   defaults:
-    _entity_list: 'drealty_listing_type'
+    _content: '\Drupal\Core\Entity\Controller\EntityListController::listing'
+    entity_type: 'drealty_listing_type'
     _title: 'DRealty Listing Types'
   requirements:
     _permission: 'administer drealty listing types'
