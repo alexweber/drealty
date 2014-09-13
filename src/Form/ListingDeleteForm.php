@@ -72,9 +72,9 @@ class ListingDeleteForm extends ContentEntityConfirmFormBase {
   /**
    * {@inheritdoc}
    */
-  public function submit(array $form, FormStateInterface $form_state) {
+  public function submitForm(array &$form, FormStateInterface $form_state) {
     $this->entity->delete();
-    $this->logger('content')->notice('@type: deleted %title.', array('@type' => $this->entity->bundle(), '%title' => $this->entity->label()));
+    $this->logger('drealty')->notice('Listing type deleted: %title.', array('%title' => $this->entity->label()));
     $listing_type_storage = $this->entityManager->getStorage('drealty_listing_type');
     $listing_type = $listing_type_storage->load($this->entity->bundle())->label();
     drupal_set_message(t('@type %title has been deleted.', array('@type' => $listing_type, '%title' => $this->entity->label())));
