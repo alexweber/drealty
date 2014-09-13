@@ -12,7 +12,7 @@ use Drupal\drealty\ListingInterface;
 use Drupal\drealty\ListingTypeInterface;
 //use Drupal\drealty\RetsResourceInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
-use Drupal\language\Entity\Language as LanguageEntity;
+use Drupal\language\Entity\ConfigurableLanguage;
 
 /**
  * Denotes that the listing is not published.
@@ -426,10 +426,9 @@ function drealty_modules_uninstalled($modules) {
   }
 }
 
-/**
- * Implements hook_ENTITY_TYPE_delete() for 'language_entity'.
+ * Implements hook_ENTITY_TYPE_delete() for 'configurable_language'.
  */
-function drealty_language_entity_delete(LanguageEntity $language) {
+function drealty_language_entity_delete(ConfigurableLanguage $language) {
   // On listings with this language, unset the language.
   \Drupal::entityManager()->getStorage('drealty_listing')->clearRevisionsLanguage($language);
 }
