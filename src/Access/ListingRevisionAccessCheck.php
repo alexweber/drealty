@@ -29,7 +29,7 @@ class ListingRevisionAccessCheck implements AccessInterface {
   /**
    * The listing access controller.
    *
-   * @var \Drupal\Core\Entity\EntityAccessControllerInterface
+   * @var \Drupal\Core\Entity\EntityAccessControlHandlerInterface
    */
   protected $listingAccess;
 
@@ -57,7 +57,7 @@ class ListingRevisionAccessCheck implements AccessInterface {
    */
   public function __construct(EntityManagerInterface $entity_manager, Connection $connection) {
     $this->listingStorage = $entity_manager->getStorage('drealty_listing');
-    $this->listingAccess = $entity_manager->getAccessController('drealty_listing');
+    $this->listingAccess = $entity_manager->getAccessControlHandler('drealty_listing');
     $this->connection = $connection;
   }
 

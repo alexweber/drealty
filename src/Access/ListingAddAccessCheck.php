@@ -48,7 +48,7 @@ class ListingAddAccessCheck implements AccessInterface {
    *   A \Drupal\Core\Access\AccessInterface constant value.
    */
   public function access(AccountInterface $account, ListingTypeInterface $listing_type = NULL) {
-    $access_controller = $this->entityManager->getAccessController('drealty_listing');
+    $access_controller = $this->entityManager->getAccessControlHandler('drealty_listing');
     // If checking whether a listing of a particular type may be created.
     if ($listing_type) {
       return $access_controller->createAccess($listing_type->id(), $account) ? static::ALLOW : static::DENY;
