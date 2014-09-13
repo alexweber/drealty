@@ -10,7 +10,7 @@ namespace Drupal\drealty\Entity;
 use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
-use Drupal\Core\Field\FieldDefinition;
+use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Language\LanguageInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\drealty\ListingInterface;
@@ -297,36 +297,36 @@ class Listing extends ContentEntityBase implements ListingInterface {
   /**
    * {@inheritdoc}
    */
-  public static function baseFieldDefinitions(EntityTypeInterface $entity_type) {
-    $fields['id'] = FieldDefinition::create('integer')
+  public static function baseBaseFieldDefinitions(EntityTypeInterface $entity_type) {
+    $fields['id'] = BaseFieldDefinition::create('integer')
       ->setLabel(t('Listing ID'))
       ->setDescription(t('The listing ID.'))
       ->setReadOnly(TRUE)
       ->setSetting('unsigned', TRUE);
 
-    $fields['uuid'] = FieldDefinition::create('uuid')
+    $fields['uuid'] = BaseFieldDefinition::create('uuid')
       ->setLabel(t('UUID'))
       ->setDescription(t('The listing UUID.'))
       ->setReadOnly(TRUE);
 
-    $fields['vid'] = FieldDefinition::create('integer')
+    $fields['vid'] = BaseFieldDefinition::create('integer')
       ->setLabel(t('Revision ID'))
       ->setDescription(t('The listing revision ID.'))
       ->setReadOnly(TRUE)
       ->setSetting('unsigned', TRUE);
 
-    $fields['type'] = FieldDefinition::create('entity_reference')
+    $fields['type'] = BaseFieldDefinition::create('entity_reference')
       ->setLabel(t('Type'))
       ->setDescription(t('The listing type.'))
       ->setSetting('target_type', 'drealty_listing_type')
       ->setReadOnly(TRUE);
 
-    $fields['langcode'] = FieldDefinition::create('language')
+    $fields['langcode'] = BaseFieldDefinition::create('language')
       ->setLabel(t('Language code'))
       ->setDescription(t('The listing language code.'))
       ->setRevisionable(TRUE);
 
-    $fields['title'] = FieldDefinition::create('string')
+    $fields['title'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Title'))
       ->setDescription(t('The title of this listing, always treated as non-markup plain text.'))
       ->setRequired(TRUE)
@@ -345,51 +345,51 @@ class Listing extends ContentEntityBase implements ListingInterface {
       ))
       ->setDisplayConfigurable('form', TRUE);
 
-    $fields['uid'] = FieldDefinition::create('entity_reference')
+    $fields['uid'] = BaseFieldDefinition::create('entity_reference')
       ->setLabel(t('Author'))
       ->setDescription(t('The user that is the listing author.'))
       ->setRevisionable(TRUE)
       ->setSetting('target_type', 'user')
       ->setTranslatable(TRUE);
 
-    $fields['status'] = FieldDefinition::create('boolean')
+    $fields['status'] = BaseFieldDefinition::create('boolean')
       ->setLabel(t('Publishing status'))
       ->setDescription(t('A boolean indicating whether the listing is published.'))
       ->setRevisionable(TRUE)
       ->setTranslatable(TRUE);
 
-    $fields['created'] = FieldDefinition::create('created')
+    $fields['created'] = BaseFieldDefinition::create('created')
       ->setLabel(t('Created'))
       ->setDescription(t('The time that the listing was created.'))
       ->setRevisionable(TRUE)
       ->setTranslatable(TRUE);
 
-    $fields['changed'] = FieldDefinition::create('changed')
+    $fields['changed'] = BaseFieldDefinition::create('changed')
       ->setLabel(t('Changed'))
       ->setDescription(t('The time that the listing was last edited.'))
       ->setRevisionable(TRUE)
       ->setTranslatable(TRUE);
 
-    $fields['featured'] = FieldDefinition::create('boolean')
+    $fields['featured'] = BaseFieldDefinition::create('boolean')
       ->setLabel(t('Featured'))
       ->setDescription(t('A boolean indicating whether the listing should be displayed on the front page.'))
       ->setRevisionable(TRUE)
       ->setTranslatable(TRUE);
 
-    $fields['revision_timestamp'] = FieldDefinition::create('created')
+    $fields['revision_timestamp'] = BaseFieldDefinition::create('created')
       ->setLabel(t('Revision timestamp'))
       ->setDescription(t('The time that the current revision was created.'))
       ->setQueryable(FALSE)
       ->setRevisionable(TRUE);
 
-    $fields['revision_uid'] = FieldDefinition::create('entity_reference')
+    $fields['revision_uid'] = BaseFieldDefinition::create('entity_reference')
       ->setLabel(t('Revision user ID'))
       ->setDescription(t('The user ID of the author of the current revision.'))
       ->setSetting('target_type', 'user')
       ->setQueryable(FALSE)
       ->setRevisionable(TRUE);
 
-    $fields['revision_log'] = FieldDefinition::create('string_long')
+    $fields['revision_log'] = BaseFieldDefinition::create('string_long')
       ->setLabel(t('Revision log message'))
       ->setDescription(t('The log entry explaining the changes in this revision.'))
       ->setRevisionable(TRUE)
@@ -401,7 +401,7 @@ class Listing extends ContentEntityBase implements ListingInterface {
   /**
    * {@inheritdoc}
    */
-  public static function bundleFieldDefinitions(EntityTypeInterface $entity_type, $bundle, array $base_field_definitions) {
+  public static function bundleBaseFieldDefinitions(EntityTypeInterface $entity_type, $bundle, array $base_field_definitions) {
     $listing_type = ListingType::load($bundle);
     $fields = array();
 
@@ -413,11 +413,6 @@ class Listing extends ContentEntityBase implements ListingInterface {
     // @todo Fix this in https://drupal.org/node/2248795
     if (!$listing_type) {
       return $fields;
-    }
-
-    if (isset($listing_type->title_label)) {
-      $fields['title'] = clone $base_field_definitions['title'];
-      $fields['title']->setLabel($listing_type->title_label);
     }
 
     $options = $listing_type->getModuleSettings('drealty')['options'];
