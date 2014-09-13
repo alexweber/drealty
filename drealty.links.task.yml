@@ -25,11 +25,11 @@ drealty.listing_revision_overview:
   base_route: entity.drealty_listing.canonical
   title: 'Revisions'
   weight: 30
-drealty.type_edit:
+drealty.listing_type_edit:
   title: 'Edit'
   route_name: entity.drealty_listing_type.edit_form
   base_route: entity.drealty_listing_type.edit_form
-drealty.overview_types:
+drealty.listing_type_list:
   title: List
   route_name: drealty.listing_type_list
   base_route: drealty.listing_type_list
