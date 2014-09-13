@@ -1,6 +1,6 @@
 id: drealty_listing.full
 label: 'Full content'
-status: false
+status: true
 cache: true
 targetEntityType: drealty_listing
 dependencies:
