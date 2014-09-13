@@ -13,6 +13,7 @@ use Drupal\drealty\ListingTypeInterface;
 //use Drupal\drealty\RetsResourceInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\language\Entity\ConfigurableLanguage;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 
 /**
  * Denotes that the listing is not published.
@@ -111,6 +112,23 @@ function drealty_theme() {
       'template' => 'field--drealty-listing--title',
     ),
   );
+}
+
+/**
+ * Implements hook_entity_view_display_alter().
+ */
+function drealty_entity_view_display_alter(EntityViewDisplayInterface $display, $context) {
+  if ($context['entity_type'] === 'drealty_listing') {
+    // Hide field labels in search index.
+    if ($context['view_mode'] === 'search_index') {
+      foreach ($display->getComponents() as $name => $options) {
+        if (isset($options['label'])) {
+          $options['label'] = 'hidden';
+          $display->setComponent($name, $options);
+        }
+      }
+    }
+  }
 }
 
 /**
