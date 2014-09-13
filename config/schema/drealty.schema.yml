@@ -1,3 +1,21 @@
+# RETS Resource config entity.
+drealty.drealty_resource.*:
+  type: mapping
+  label: 'RETS Resource'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    uuid:
+      type: string
+      label: 'UUID'
+    label:
+      type: label
+      label: 'System Name'
+    connection:
+      type: drealty_connection
+      label: 'Connection'
+
 # Connection config entity.
 drealty.drealty_connection.*:
   type: mapping
